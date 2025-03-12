@@ -38,12 +38,22 @@ export default function RootLayout({
     <html
       lang="en"
       className={cx(
-        'text-black bg-cream dark:text-white dark:bg-black',
+        'text-black dark:text-white',
         geistSans.variable,
         geistMono.variable
       )}
     >
-      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+      <body 
+        className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto"
+        style={{
+          background: `repeating-linear-gradient(
+            90deg,
+            #FFF7C4, /* Light Yellow */
+            #FFF7C4 50px,
+            #FFEE99 50px,
+            #FFEE62 100px
+        )`,}}
+      >
         <main className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
           <Navbar />
           {children}
