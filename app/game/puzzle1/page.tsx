@@ -1,13 +1,6 @@
 'use client';
 import React, { useState } from 'react';
 
-export const metadata = {
-    title: 'Puzzle 1',
-    description: 'Checkbox game puzzles.',
-  }
-
-
-
 export default function Page() {
 
   const [check1, setCheck1] = useState(false);
