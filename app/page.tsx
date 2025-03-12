@@ -30,7 +30,7 @@ export default function Home() {
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
             href="/game"
             target="_blank"
-            rel="noopener noreferrer"
+            //rel="noopener noreferrer"
           >
             <Image
               //className="dark:invert"
