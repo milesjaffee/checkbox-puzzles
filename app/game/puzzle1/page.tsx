@@ -12,7 +12,6 @@ export default function Page() {
   const handleCheckboxChange = (whichBox: String) => {
     if (whichBox === 'one') {
       setCheck1(!check1);
-      setCheck4(false);
     } else if (whichBox === 'two') {
       setCheck2(!check2);
       setCheck3(false);
@@ -21,9 +20,10 @@ export default function Page() {
       setCheck5(false);
     } else if (whichBox === 'four') {
       setCheck4(!check4);
+      setCheck1(false);
     } else if (whichBox === 'five') {
       setCheck5(!check5);
-      setCheck1(false);
+      setCheck4(false);
     }
 
     if (check1 && check2 && check3 && check4 && check5) {
@@ -42,12 +42,13 @@ export default function Page() {
         </ol>
 
         <div className="flex gap-4 items-left flex-col sm:flex-col">
-          <input
+
+          <div><input
             type="checkbox"
             checked={check1}
             onChange={() => handleCheckboxChange('one')}
           />
-          <label>Box 1</label>
+          <label>Box 1</label></div>
 
           <input
             type="checkbox"

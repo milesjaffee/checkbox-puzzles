@@ -12,7 +12,7 @@ export const metadata = {
                 <a
                 className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
                 href="/game/puzzle1"
-                target="_blank"
+                //target="_blank"
                 //rel="noopener noreferrer"
                 >
                 Demo Short
