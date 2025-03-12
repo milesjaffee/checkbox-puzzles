@@ -49,9 +49,24 @@ export default function RootLayout({
           background: `repeating-linear-gradient(
             0deg,
             #FFF7E4, /* Light Yellow */
-            #f0e053 10px
-        )`,}}
+            #f0e053 15px
+        )`,
+      backgroundSize: "100% 200px",
+      animation: "scrollBackground 20s linear infinite",
+      }}
       >
+        <style>
+        {`
+          @keyframes scrollBackground {
+            from {
+              background-position: 0 0;
+            }
+            to {
+              background-position: 0 200px;
+            }
+          }
+        `}
+      </style>
         <main className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
           <Navbar />
           {children}
