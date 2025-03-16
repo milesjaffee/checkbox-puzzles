@@ -68,7 +68,7 @@ export default function Page() {
             type="checkbox"
             checked={check1}
             onChange={() => handleCheckboxChange('one')}
-            disabled={numClicks>6}
+            disabled={numClicks>5}
           />
           <label>{" "}Box 1</label></div>
 
@@ -76,7 +76,7 @@ export default function Page() {
             type="checkbox"
             checked={check2}
             onChange={() => handleCheckboxChange('two')}
-            disabled={numClicks>6}
+            disabled={numClicks>5}
           />
           <label>{" "}Box 2</label></div>
 
@@ -84,7 +84,7 @@ export default function Page() {
             type="checkbox"
             checked={check3}
             onChange={() => handleCheckboxChange('three')}
-            disabled={numClicks>6}
+            disabled={numClicks>5}
           />
           <label>{" "}Box 3</label></div>
 
@@ -92,22 +92,23 @@ export default function Page() {
             type="checkbox"
             checked={check4}
             onChange={() => handleCheckboxChange('four')}
-            disabled={numClicks>6}
+            disabled={numClicks>5}
           />
           <label>{" "}Box 4</label></div>
 
-          <div><input  type="checkbox" checked={check5} onChange={() => handleCheckboxChange('five')}  disabled={numClicks>6} />  
+          <div><input  type="checkbox" checked={check5} onChange={() => handleCheckboxChange('five')}  disabled={numClicks>5} />  
           <label>{" "}Box 5</label></div>
         
-          <div><input  type="checkbox" checked={check6} onChange={() => handleCheckboxChange('six')} disabled={numClicks>6}  />  
+          <div><input  type="checkbox" checked={check6} onChange={() => handleCheckboxChange('six')} disabled={numClicks>5}  />  
           <label>{" "}Box 6</label></div>
 
         
           <div>
             <p>Current clicks: {numClicks}</p>
           <button
+
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            onClick={() => handleCheckboxChange('reset')}/>
+            onClick={() => handleCheckboxChange('reset')}>RESET</button>
           </div>
  
 
