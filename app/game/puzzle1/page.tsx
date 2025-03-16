@@ -42,11 +42,12 @@ export default function Page() {
         <p></p>
         <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Rules:</h2>
         <p>Check all the boxes to solve the puzzle :)</p>
+        <p></p>
 
         <div className="flex gap-4 items-left flex-col sm:flex-col">
 
         <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Puzzle</h2>
-
+        <p></p>
           <div><input
             type="checkbox"
             checked={check1}
