@@ -57,12 +57,19 @@ export default function Page() {
         <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Puzzle 3: "Golf"</h1>
         <p></p>
         <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Rules:</h2>
-        <p>Check all the boxes in only SIX clicks. Yes, there is a way.</p>
-        <p>Hit "reset" to reset.</p>
-        <p></p>
+        
+        <ol>
+          <li>Check all the boxes in only {" "}
+          <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+              6
+            </code>
+            
+            {" "}clicks.</li>
+          <li>Hit "reset" to reset.</li>
+        </ol>
         <div className="flex gap-4 items-left flex-col sm:flex-col">
 
-        <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Puzzle</h2>
+        <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">Puzzle</h2>
         <p></p>
           <div><input
             type="checkbox"

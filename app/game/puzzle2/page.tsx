@@ -59,11 +59,12 @@ export default function Page() {
         <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Puzzle 2: "Long Demo"</h1>
         <p></p>
         <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Rules:</h2>
-        <p>Check all the boxes to solve the puzzle :)</p>
-        <p></p>
+        <ol>
+          <li>Check all the boxes to solve the puzzle :)</li>
+        </ol>
         <div className="flex gap-4 items-left flex-col sm:flex-col">
 
-        <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Puzzle</h2>
+        <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">Puzzle</h2>
         <p></p>
           <div><input
             type="checkbox"
