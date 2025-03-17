@@ -9,8 +9,18 @@ export default function Page() {
   const [check4, setCheck4] = useState(false);
   const [check5, setCheck5] = useState(false);
   const [check6, setCheck6] = useState(false);
+
   const [numClicks, setNumClicks] = useState(0);
   const setchecks = [setCheck1, setCheck2, setCheck3, setCheck4, setCheck5, setCheck6];
+
+  const checkboxes = [
+    { id: "one", label: "Box 1", checked: check1 },
+    { id: "two", label: "Box 2", checked: check2 },
+    { id: "three", label: "Box 3", checked: check3 },
+    { id: "four", label: "Box 4", checked: check4 },
+    { id: "five", label: "Box 5", checked: check5 },
+    { id: "six", label: "Box 6", checked: check6 },
+  ];
 
   const handleCheckboxChange = (whichBox: String) => {
     setNumClicks(numClicks + 1);
@@ -40,17 +50,9 @@ export default function Page() {
       setNumClicks(0);
     }
 
-    checkDone();
-
     //4 1 3 6 5 2
 
   };
-
-  const checkDone = () => {
-    /*if (check1 && check2 && check3 && check4 && check5) {
-      alert('Congratulations! You solved the puzzle');
-    }*/
-  }
   
     return (
       <section>
@@ -61,7 +63,7 @@ export default function Page() {
         <ol>
           <li>Check all the boxes in only {" "}
           <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              6
+              7
             </code>
             
             {" "}clicks.</li>
@@ -71,45 +73,18 @@ export default function Page() {
 
         <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">Puzzle</h2>
         <p></p>
-          <div><input
-            type="checkbox"
-            checked={check1}
-            onChange={() => handleCheckboxChange('one')}
-            disabled={numClicks>5}
-          />
-          <label>{" "}Box 1</label></div>
+        {checkboxes.map((checkbox) => (
+          <label key={checkbox.id}>
+            <input
+              type="checkbox"
+              checked={checkbox.checked}
+              onChange={() => handleCheckboxChange(checkbox.id)}
+              disabled={numClicks>6}
+            />
+            {checkbox.label}
+          </label>
+        ))}
 
-          <div><input
-            type="checkbox"
-            checked={check2}
-            onChange={() => handleCheckboxChange('two')}
-            disabled={numClicks>5}
-          />
-          <label>{" "}Box 2</label></div>
-
-          <div><input
-            type="checkbox"
-            checked={check3}
-            onChange={() => handleCheckboxChange('three')}
-            disabled={numClicks>5}
-          />
-          <label>{" "}Box 3</label></div>
-
-          <div><input
-            type="checkbox"
-            checked={check4}
-            onChange={() => handleCheckboxChange('four')}
-            disabled={numClicks>5}
-          />
-          <label>{" "}Box 4</label></div>
-
-          <div><input  type="checkbox" checked={check5} onChange={() => handleCheckboxChange('five')}  disabled={numClicks>5} />  
-          <label>{" "}Box 5</label></div>
-        
-          <div><input  type="checkbox" checked={check6} onChange={() => handleCheckboxChange('six')} disabled={numClicks>5}  />  
-          <label>{" "}Box 6</label></div>
-
-        
           <div>
             <p>Current clicks: {numClicks}</p>
           <button

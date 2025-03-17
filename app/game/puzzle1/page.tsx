@@ -9,6 +9,14 @@ export default function Page() {
   const [check4, setCheck4] = useState(false);
   const [check5, setCheck5] = useState(false);
 
+  const checkboxes = [
+    { id: "one", label: "Box 1", checked: check1 },
+    { id: "two", label: "Box 2", checked: check2 },
+    { id: "three", label: "Box 3", checked: check3 },
+    { id: "four", label: "Box 4", checked: check4 },
+    { id: "five", label: "Box 5", checked: check5 },
+  ];
+
   const handleCheckboxChange = (whichBox: String) => {
     if (whichBox === 'one') {
       setCheck1(!check1);
@@ -26,15 +34,7 @@ export default function Page() {
       setCheck1(false);
     };
 
-    checkDone();
-
   };
-
-  const checkDone = () => {
-    /*if (check1 && check2 && check3 && check4 && check5) {
-      alert('Congratulations! You solved the puzzle');
-    }*/
-  }
   
     return (
       <section>
@@ -50,40 +50,16 @@ export default function Page() {
 
         <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">Puzzle</h2>
         <p></p>
-          <div><input
-            type="checkbox"
-            checked={check1}
-            onChange={() => handleCheckboxChange('one')}
-          />
-          <label>{" "}Box 1</label></div>
-
-          <div><input
-            type="checkbox"
-            checked={check2}
-            onChange={() => handleCheckboxChange('two')}
-          />
-          <label>{" "}Box 2</label></div>
-
-          <div><input
-            type="checkbox"
-            checked={check3}
-            onChange={() => handleCheckboxChange('three')}
-          />
-          <label>{" "}Box 3</label></div>
-
-          <div><input
-            type="checkbox"
-            checked={check4}
-            onChange={() => handleCheckboxChange('four')}
-          />
-          <label>{" "}Box 4</label></div>
-
-          <div><input
-            type="checkbox"
-            checked={check5}
-            onChange={() => handleCheckboxChange('five')}
-          />
-          <label>{" "}Box 5</label></div>
+          {checkboxes.map((checkbox) => (
+          <label key={checkbox.id}>
+            <input
+              type="checkbox"
+              checked={checkbox.checked}
+              onChange={() => handleCheckboxChange(checkbox.id)}
+            />
+            {checkbox.label}
+          </label>
+        ))}
 
 
         </div>
