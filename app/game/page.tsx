@@ -4,51 +4,31 @@ export const metadata = {
   }
   
   export default function Page() {
+
+    const puzzles = [
+      { id: "puzzle1", label: "1. Tutorial", href: "/game/puzzle1" },
+      { id: "puzzle2", label: "2. Tutorial (Long)", href: "/game/puzzle2" },
+      { id: "puzzle3", label: "3. The Limit", href: "/game/puzzle3" },
+      { id: "puzzle4", label: "4. Mini Golf", href: "/game/puzzle4" },
+      { id: "puzzle5", label: "5. Dancing", href: "/game/puzzle5" },
+    ];
+  
+
     return (
       <section>
         <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Checkbox Nightmare</h1>
-        <ol className="flex gap-4 items-left flex-col sm:flex-col">
-            <li>
-                <a
-                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-                href="/game/puzzle1"
-                //target="_blank"
-                //rel="noopener noreferrer"
-                >
-                1. Tutorial
-                </a>
-            </li>
-            <li>
-                <a
-                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-                href="/game/puzzle2"
-                //target="_blank"
-                //rel="noopener noreferrer"
-                >
-                2. Tutorial (Long)
-                </a>
-            </li>
-            <li>
-                <a
-                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-                href="/game/puzzle3"
-                //target="_blank"
-                //rel="noopener noreferrer"
-                >
-                3. The Limit
-                </a>
-            </li>
-            <li>
-                <a
-                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-                href="/game/puzzle4"
-                //target="_blank"
-                //rel="noopener noreferrer"
-                >
-                4. Mini Golf
-                </a>
-            </li>
-        </ol>
+          <ol className="flex gap-4 items-left flex-col sm:flex-col">
+        {puzzles.map(({ id, label, href }) => (
+          <li key={id}>
+            <a
+              className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+              href={href}
+            >
+              {label}
+            </a>
+          </li>
+        ))}
+      </ol>
       </section>
     )
   }
