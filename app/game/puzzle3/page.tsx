@@ -56,14 +56,14 @@ export default function Page() {
   
     return (
       <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Puzzle 3: "Golf"</h1>
+        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Puzzle 3: "The Limit"</h1>
         <p></p>
         <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Rules:</h2>
         
         <ol>
           <li>Check all the boxes in only {" "}
           <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              7
+              10
             </code>
             
             {" "}clicks.</li>
@@ -79,7 +79,7 @@ export default function Page() {
               type="checkbox"
               checked={checkbox.checked}
               onChange={() => handleCheckboxChange(checkbox.id)}
-              disabled={numClicks>6}
+              disabled={numClicks>9}
             />
             {checkbox.label}
           </label>

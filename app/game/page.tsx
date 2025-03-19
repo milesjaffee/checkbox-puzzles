@@ -15,7 +15,7 @@ export const metadata = {
                 //target="_blank"
                 //rel="noopener noreferrer"
                 >
-                1. Short Demo
+                1. Tutorial
                 </a>
             </li>
             <li>
@@ -25,7 +25,7 @@ export const metadata = {
                 //target="_blank"
                 //rel="noopener noreferrer"
                 >
-                2. Long Demo
+                2. Tutorial (Long)
                 </a>
             </li>
             <li>
@@ -35,7 +35,17 @@ export const metadata = {
                 //target="_blank"
                 //rel="noopener noreferrer"
                 >
-                3. Golf
+                3. The Limit
+                </a>
+            </li>
+            <li>
+                <a
+                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+                href="/game/puzzle4"
+                //target="_blank"
+                //rel="noopener noreferrer"
+                >
+                4. Mini Golf
                 </a>
             </li>
         </ol>

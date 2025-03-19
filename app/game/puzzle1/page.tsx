@@ -38,7 +38,7 @@ export default function Page() {
   
     return (
       <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Puzzle 1: "Short Demo"</h1>
+        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Puzzle 1: "Tutorial"</h1>
         <p></p>
         <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Rules:</h2>
         <ol>
