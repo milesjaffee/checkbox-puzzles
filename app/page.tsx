@@ -16,9 +16,9 @@ export default function Home() {
           <li className="mb-2 tracking-[-.01em]">
             To progress, select each{" "}
             <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              checkbox{" "}
+              checkbox
             </code>
-             on the page.
+            {" "}on the page.
           </li>
           <li className="tracking-[-.01em]">
             No, really - it's as simple as that! ;)

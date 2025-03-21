@@ -17,18 +17,18 @@ export const metadata = {
     return (
       <section>
         <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Checkbox Nightmare</h1>
-          <ol className="flex gap-4 items-left flex-col sm:flex-col">
+          <ul className="flex gap-4 items-left flex-col sm:flex-col">
         {puzzles.map(({ id, label, href }) => (
           <li key={id}>
             <a
-              className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
+              className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-left bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
               href={href}
             >
               {label}
             </a>
           </li>
         ))}
-      </ol>
+      </ul>
       </section>
     )
   }
