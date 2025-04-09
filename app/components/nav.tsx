@@ -24,7 +24,7 @@ export function Navbar() {
           <div className="flex flex-row space-x-0 pr-10">
             {Object.entries(navItems).map(([path, { name }]) => {
               return (
-                <>
+
                 
                 <Link
                   key={path}
@@ -34,7 +34,6 @@ export function Navbar() {
                   &lt;{name}/&gt; &nbsp;
                 </Link>
                  
-                </>
               )
             })}
           </div>
