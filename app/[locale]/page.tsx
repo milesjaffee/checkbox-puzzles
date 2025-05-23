@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
+import { useI18n, useScopedI18n } from "@/locales/client";
 
 export default function Home() {
+  const t = useI18n();
   return (
     <div>
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -14,14 +17,14 @@ export default function Home() {
         />
         <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2 tracking-[-.01em]">
-            To progress, select each{" "}
+            {t('homepage-checkbox-1')}{" "}
             <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              checkbox
+              {t('homepage-checkbox-2')}
             </code>
-            {" "}on the page.
+            {" "}{t('homepage-checkbox-3')}
           </li>
           <li className="tracking-[-.01em]">
-            No, really - it's as simple as that! ;)
+            {t('homepage-simple')}
           </li>
         </ol>
 

@@ -1,8 +1,11 @@
+"use client";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Navbar } from './components/nav'
-import Footer from './components/footer'
+import "@/app/globals.css";
+import { Navbar } from '../components/nav'
+import Footer from '../components/footer'
+import React from 'react';
+import { I18nProviderClient } from "@/locales/client";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +17,7 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
+/*export const metadata: Metadata = {
   title: "Checkbox Nightmare",
   description: "Checkbox Nightmare, Created by Miles Jaffee",
 
@@ -25,18 +28,23 @@ export const metadata: Metadata = {
     type: 'website',
   }
   
-}
+}*/
 
 const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
 
-export default function RootLayout({
+export default function SubLayout({
   children,
+  params,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
+  const unwrappedParams = React.use(params);
+  const locale = unwrappedParams.locale;
+
   return (
     <html
-      lang="en"
+      lang={locale? unwrappedParams.locale : "en"}
       className={cx(
         'text-black',
         geistSans.variable,
@@ -68,11 +76,15 @@ export default function RootLayout({
         `}
       </style>
         <main className="relative flex flex-col items-center justify-items-center h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-        <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl p-4 w-full max-w-2xl ">
-          <Navbar />
-          {children}
-          <Footer />
+
+          <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl p-4 w-full max-w-2xl ">
+            <I18nProviderClient locale={locale}>
+              <Navbar />
+              {children}
+              <Footer />
+            </I18nProviderClient>
           </div>
+
         </main>
       </body>
     </html>
