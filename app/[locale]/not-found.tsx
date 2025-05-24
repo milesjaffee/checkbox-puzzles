@@ -75,8 +75,7 @@ export default function NotFound() {
                   <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         404 - Page Not Found
       </h1>
-      <p className="mb-4">The page you are looking for does not exist. Have a kitty... (Sourced from <a href="https://thecatapi.com/" className="text-sky-600">thecatapi.com</a>)</p>
-      <p className="mb-4">If you are looking for the game, it can be found <a href="/en/game" className="text-sky-600">here</a>.</p>
+      <p className="mb-4">The page you are looking for does not exist. Have a kitty... (Sourced from <a href="https://thecatapi.com/">thecatapi.com</a>)</p>
       {catUrl ? (
         <img
           src={catUrl}

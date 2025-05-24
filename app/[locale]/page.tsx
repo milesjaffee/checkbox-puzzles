@@ -17,14 +17,14 @@ export default function Home() {
         />
         <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
           <li className="mb-2 tracking-[-.01em]">
-            {t('homepage-checkbox-1')}{" "}
+            {t('homepage.checkbox.1')}{" "}
             <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              {t('homepage-checkbox-2')}
+              {t('homepage.checkbox.2')}
             </code>
-            {" "}{t('homepage-checkbox-3')}
+            {" "}{t('homepage.checkbox.3')}
           </li>
           <li className="tracking-[-.01em]">
-            {t('homepage-simple')}
+            {t('homepage.simple')}
           </li>
         </ol>
 

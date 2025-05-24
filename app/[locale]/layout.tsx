@@ -6,6 +6,7 @@ import { Navbar } from '../components/nav'
 import Footer from '../components/footer'
 import React from 'react';
 import { I18nProviderClient } from "@/locales/client";
+import { redirect } from 'next/navigation';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,14 +38,14 @@ export default function SubLayout({
   params,
 }: {
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
+  params: Promise<{ locale?: string }>;
 }) {
   const unwrappedParams = React.use(params);
-  const locale = unwrappedParams.locale;
+  let locale = unwrappedParams.locale || 'en';
 
   return (
     <html
-      lang={locale? unwrappedParams.locale : "en"}
+      lang={locale}
       className={cx(
         'text-black',
         geistSans.variable,
