@@ -26,50 +26,45 @@ export default function Footer() {
   const changeLocale = useChangeLocale();
 
   return (
-    <footer className="mb-16 flex-col">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0">
+    <footer className="mb-4 flex flex-col items-center justify-center">
+      <div className="font-sm mt-8 flex space-y-2 text-neutral-600">
         
-        <li>
+        <p className="flex flex-row items-center content-evenly">
           <a
-            className="flex items-center transition-all hover:text-neutral-800"
+            className="flex items-center transition-all hover:text-neutral-800 mx-2 h-7"
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/milesjaffee/checkbox-puzzles"
           >
-            <ArrowIcon />
-            <p className="ml-2 h-7">{t('footer.github')}</p>
+            {t('footer.github')}{" "}
           </a>
-        </li>
-        <li>
+          {" "}|{" "}
           <a
-            className="flex items-center transition-all hover:text-neutral-800"
+            className="flex items-center transition-all hover:text-neutral-800 mx-2 h-7"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://vercel.com/templates/next.js/portfolio-starter-kit"
+            href="https://vercel.com/home"
           >
-            <ArrowIcon />
-            <p className="ml-2 h-7">{t('footer.vercel')}</p>
+            {t('footer.vercel')}{" "}
           </a>
-        </li>
-        <li>
-          <a className="flex items-center transition-all hover:text-neutral-800"
+          {" "}|{" "}
+          <a className="flex items-center transition-all hover:text-neutral-800 mx-2 h-7"
           rel="noopener noreferrer"
           target="_blank"
           href="https://opensource.org/license/mit"
           >
-            <ArrowIcon />
-            <p className="ml-2 h-7">
               © {new Date().getFullYear()} {t('footer.license')}
-            </p>
           </a>
-        </li>
+
+        </p>
         
-      </ul>
-      <div className="flex items-center">
-          <button type="button" className="border-1" onClick={() => changeLocale("en")}>
+      </div>
+      <div className="flex items-center justify-center mt-2 content-evenly space-x-4">
+          <button type="button" className="mx-2" onClick={() => changeLocale("en")}>
           🇺🇸EN
         </button>
-        <button type="button" className="border-1" onClick={() => changeLocale("es")}>
+        |
+        <button type="button" className="mx-2" onClick={() => changeLocale("es")}>
           🇲🇽ES
         </button>
       </div>

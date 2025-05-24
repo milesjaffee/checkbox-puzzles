@@ -1,9 +1,8 @@
-export const metadata = {
-    title: 'Puzzles',
-    description: 'Checkbox game puzzles.',
-  }
+import { useI18n, useScopedI18n } from "@/locales/client";
+import LocalizedLink from "@/app/components/LocalizedLink";
   
   export default function Page() {
+    const t = useI18n();
 
     const puzzles = [
       { id: "puzzle1", label: "1. Tutorial", href: "/game/puzzle1" },
@@ -16,7 +15,7 @@ export const metadata = {
 
     return (
       <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Checkbox Nightmare</h1>
+        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('game.title')}</h1>
           <ul className="flex gap-4 items-left flex-col sm:flex-col">
         {puzzles.map(({ id, label, href }) => (
           <li key={id}>

@@ -1,7 +1,7 @@
 export default {
     "footer": {
         "github": "github",
-        "vercel": "made with vercel",
+        "vercel": "vercel",
         "license": "MIT License",
     },
     "homepage": {
@@ -10,7 +10,11 @@ export default {
             "2": "checkbox",
             "3": "on the page."
         },
-        "simple": "No, really - it's as simple as that! ;)"
+        "simple": "No, really - it's as simple as that! ;)",
+        "playnow": "Play now",
+        "readblog": "Read my blog",
+        "imagealt": "Checkbox Nightmare logo",
+        "imgsrc": "/checkbox nightmare.png",
     },
     "navbar": {
         "home": "home",
