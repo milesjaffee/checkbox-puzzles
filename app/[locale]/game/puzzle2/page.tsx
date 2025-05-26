@@ -1,7 +1,10 @@
 'use client';
 import React, { useState } from 'react';
+import { useI18n, useScopedI18n } from "@/locales/client";
+import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 
 export default function Page() {
+  const t = useI18n();
 
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
@@ -14,15 +17,16 @@ export default function Page() {
   const [check9, setCheck9] = useState(false);
 
   const checkboxes = [
-    { id: "one", label: "Box 1", checked: check1 },
-    { id: "two", label: "Box 2", checked: check2 },
-    { id: "three", label: "Box 3", checked: check3 },
-    { id: "four", label: "Box 4", checked: check4 },
-    { id: "five", label: "Box 5", checked: check5 },
-    { id: "six", label: "Box 6", checked: check6 },
-    { id: "seven", label: "Box 7", checked: check7 },
-    { id: "eight", label: "Box 8", checked: check8 },
-    { id: "nine", label: "Box 9", checked: check9 },
+    { id: "one", label: t('puzzles.box', {num: '1'}), checked: check1 },
+    { id: "two", label: t('puzzles.box', {num: '2'}), checked: check2 },
+    { id: "three", label: t('puzzles.box', {num: '3'}), checked: check3 },
+    { id: "four", label: t('puzzles.box', {num: '4'}), checked: check4 },
+    { id: "five", label: t('puzzles.box', {num: '5'}), checked: check5 },
+    { id: "six", label: t('puzzles.box', {num: '6'}), checked: check6 },
+    { id: "seven", label: t('puzzles.box', {num: '7'}), checked: check7 },
+    { id: "eight", label: t('puzzles.box', {num: '8'}), checked: check8 },
+    { id: "nine", label: t('puzzles.box', {num: '9'}), checked: check9 },
+
   ];
 
   const handleCheckboxChange = (whichBox: String) => {
@@ -60,15 +64,17 @@ export default function Page() {
   
     return (
       <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Puzzle 2: "Tutorial (Long)"</h1>
+        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('puzzles.number', {num: '2'})}: '{t('puzzles.2.title')}'</h1>
         <p></p>
-        <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Rules:</h2>
+        <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">{t('puzzles.rules.rules')}</h2>
         <ol>
-          <li>Check all the boxes to solve the puzzle :)</li>
+          <li>{t('puzzles.rules.checkall')}</li>
         </ol>
+        <p></p>
+
         <div className="flex gap-4 items-left flex-col sm:flex-col">
 
-        <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">Puzzle</h2>
+        <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.puzzle')}</h2>
         <p></p>
         {checkboxes.map((checkbox) => (
           <label key={checkbox.id}>
@@ -84,18 +90,7 @@ export default function Page() {
         </div>
 
         {check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8 && check9 ?
-          <div>
-            <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Congratulations!</h2>
-            <p>You solved the puzzle! </p>
-            <a
-                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-                href="/game/puzzle3"
-                //target="_blank"
-                //rel="noopener noreferrer"
-                >
-                Play Next Puzzle
-                </a>
-          </div>
+          <CongratulationsMessage href="/game/puzzle3" />
           : null}
 
       </section>

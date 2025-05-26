@@ -71,7 +71,6 @@ export default function NotFound() {
     
               <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl p-4 w-full max-w-2xl ">
                 
-                  <Navbar />
                   <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
         404 - Page Not Found
       </h1>
@@ -91,7 +90,6 @@ export default function NotFound() {
       ) : (
         <p>Loading cat...</p>
       )}
-                  <Footer />
                 
               </div>
     

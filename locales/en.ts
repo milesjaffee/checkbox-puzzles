@@ -26,6 +26,10 @@ export default {
     },
     "puzzles": {
         "box": "Box {num}",
+        "clicks": {
+            "reset": "RESET",
+            "clicks": "Current clicks: {num}",
+        },
         "congratulations": {
             "title": "Congratulations!",
             "message": "You solved the puzzle! 🎉",
@@ -38,6 +42,7 @@ export default {
             "checkall": "Check all the boxes to solve the puzzle :)",
             "limit": "Check all the boxes in only {limit} clicks.",
             "limit-reset": "Hit \"reset\" to reset.",
+            "shuffle": "You get a fun surprise every {num} clicks :)",
         },
         "1": {
             "title": "Tutorial",
@@ -45,11 +50,9 @@ export default {
         "2": {
             "title": "Tutorial (Long)",
         },
-
         "3": {
             "title": "The Limit",
         },
-
         "4": {
             "title": "Mini Golf",
         },

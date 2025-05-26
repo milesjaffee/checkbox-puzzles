@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import { useI18n, useScopedI18n } from "@/locales/client";
-import LocalizedLink from "@/app/components/LocalizedLink";
+import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 
 export default function Page() {
   const t = useI18n();
@@ -68,16 +68,7 @@ export default function Page() {
         </div>
 
         {check1 && check2 && check3 && check4 && check5 ?
-          <div>
-            <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.congratulations.title')}</h2>
-            <p>{t('puzzles.congratulations.message')}</p>
-            <button className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto">
-                
-              <LocalizedLink href="/game/puzzle2">  
-                {t('puzzles.congratulations.next')}
-              </LocalizedLink>
-            </button>
-          </div>
+          <CongratulationsMessage href="/game/puzzle2" />
           : null}
 
       </section>

@@ -10,7 +10,7 @@ interface LocalizedLinkProps extends LinkProps {
 export default function LocalizedLink({ href, children, ...props }: LocalizedLinkProps) {
     const params = useParams() as { locale?: string };
     let locale = params.locale ?? 'en'; // fallback to 'en' if missing
-    if (!['en', 'es'].includes(locale)) {
+    if (!['en', 'es', 'tp'].includes(locale)) {
         locale = 'en';
     }
 
