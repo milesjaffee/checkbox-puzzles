@@ -1,5 +1,7 @@
 'use client';
 import React, { useState } from 'react';
+import { useI18n, useScopedI18n } from "@/locales/client";
+import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 
 type Checkbox = {
   id: string;
@@ -8,6 +10,7 @@ type Checkbox = {
 };
 
 export default function Page() {
+const t = useI18n();
 
   const [check1, setCheck1] = useState(false);
   const [check2, setCheck2] = useState(false);
@@ -20,12 +23,12 @@ export default function Page() {
   const setchecks = [setCheck1, setCheck2, setCheck3, setCheck4, setCheck5, setCheck6];
 
   const checkboxes = [
-    { id: "one", label: "Box 1", checked: check1 },
-    { id: "two", label: "Box 2", checked: check2 },
-    { id: "three", label: "Box 3", checked: check3 },
-    { id: "four", label: "Box 4", checked: check4 },
-    { id: "five", label: "Box 5", checked: check5 },
-    { id: "six", label: "Box 6", checked: check6 },
+    { id: "one", label: t('puzzles.box', {num: '1'}), checked: check1 },
+    { id: "two", label: t('puzzles.box', {num: '2'}), checked: check2 },
+    { id: "three", label: t('puzzles.box', {num: '3'}), checked: check3 },
+    { id: "four", label: t('puzzles.box', {num: '4'}), checked: check4 },
+    { id: "five", label: t('puzzles.box', {num: '5'}), checked: check5 },
+    { id: "six", label: t('puzzles.box', {num: '6'}), checked: check6 },
   ];
 
   const [order, setOrder] = useState(["one", "two", "three", "four", "five", "six"]);
@@ -81,27 +84,26 @@ export default function Page() {
   
     return (
       <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">Puzzle 5: "Dancing"</h1>
+        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('puzzles.number', {num: '5'})}: '{t('puzzles.5.title')}'</h1>
         <p></p>
-        <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Rules:</h2>
-        
+        <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">{t('puzzles.rules.rules')}</h2>
         <ol>
-          <li>Check all the boxes in only {" "}
-          <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              9
+          <li>{t('puzzles.rules.limit', {limit: 
+            <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+            9
             </code>
-            
-            {" "}clicks.</li>
-          <li>Hit "reset" to reset.</li>
-          <li>You get a fun surprise every{" "}
-          <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              4
-            </code> 
-            {" "}clicks :)</li>
+          })}</li>
+          <li>{t('puzzles.rules.shuffle', {num: 
+            <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+            4
+            </code>
+          })}</li>
+          <li>{t('puzzles.rules.limit-reset')}</li>
         </ol>
+        <p></p>
         <div className="flex gap-4 items-left flex-col sm:flex-col">
 
-        <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">Puzzle</h2>
+        <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.puzzle')}</h2>
         <p></p>
         {order.map((id) => {
         const checkbox = checkboxes.find((c) => c.id === id);
@@ -119,29 +121,18 @@ export default function Page() {
       })}
 
           <div>
-            <p>Current clicks: {numClicks}</p>
+          <p>{t('puzzles.clicks.clicks', {num: numClicks})}</p>
           <button
 
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            onClick={() => handleCheckboxChange('reset')}>RESET</button>
+            onClick={() => handleCheckboxChange('reset')}>{t('puzzles.clicks.reset')}</button>
           </div>
  
 
         </div>
 
         {check1 && check2 && check3 && check4 && check5 && check6 ?
-          <div>
-            <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">Congratulations!</h2>
-            <p>You solved the puzzle! </p>
-            <a
-                className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-                href="/game/puzzle6"
-                //target="_blank"
-                //rel="noopener noreferrer"
-                >
-                Play Next Puzzle
-                </a>
-          </div>
+          <CongratulationsMessage href="/game" />
           : null}
 
       </section>
