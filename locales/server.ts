@@ -1,7 +1,12 @@
-import { createI18nServer } from "next-international/server";
+import en from '@/locales/en'
+import es from '@/locales/es'
 
-export const { getI18n, getScopedI18n, getStaticParams } = createI18nServer({
-  en: () => import("./en"),
-  es: () => import("./es"),
-  tp: () => import("./tp"),
-});
+const translations = {
+  en,
+  es,
+} as const
+
+export function getTranslation(locale: string) {
+  const t = translations[locale as keyof typeof translations] ?? translations.en
+  return t
+}

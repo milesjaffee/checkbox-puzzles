@@ -24,6 +24,13 @@ export default {
         "game": "musi",
         "blog": "lipu sona mi",
     },
+    "notfound": {
+        "title": "ike nanpa 404: lipu li lon ala",
+        "message": "sina wile e lipu. taso, lipu ni li lon ala. o lukin e soweli... (ni li tan {link})",
+        "gameLink": "sina wile e musi la, sina ken lukin e ona lon {link}.",
+        "here": "ni a",
+        "loading": "mi pana e soweli tawa sina...",
+    },
     "puzzles": {
         "box": "poki nanpa {num}",
         "clicks": {

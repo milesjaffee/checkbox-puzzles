@@ -24,6 +24,13 @@ export default {
         "game": "juego",
         "blog": "el blog",
     },
+    "notfound": {
+        "title": "404 - Página No Encontrada",
+        "message": "La página que estás buscando no existe. Toma un gatito... (Fuente: {link})",
+        "gameLink": "Si buscas el juego, puedes encontrarlo {link}.",
+        "here": "aquí",
+        "loading": "Cargando gatito...",
+    },
     "puzzles": {
         "box": "Caja no. {num}",
         "clicks": {

@@ -1,22 +1,18 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server'
 
-const locales = ['en', 'es'];
+const PUBLIC_LOCALES = ['en', 'es']
+const DEFAULT_LOCALE = 'en'
 
 export function middleware(request: NextRequest) {
-  /*const pathname = request.nextUrl.pathname;
+  const pathname = request.nextUrl.pathname
+  const pathnameParts = pathname.split('/')
+  const potentialLocale = pathnameParts[1]
 
-  // Redirect / to /en
-  if (pathname === '/') {
-    return NextResponse.redirect(new URL('/en', request.url));
-  }
+  const isLocale = PUBLIC_LOCALES.includes(potentialLocale)
+  const locale = isLocale ? potentialLocale : DEFAULT_LOCALE
 
-  // Ensure /game is not misinterpreted as a locale
-  const pathParts = pathname.split('/').filter(Boolean);
-  const maybeLocale = pathParts[0];
+  const response = NextResponse.next()
+  response.cookies.set('NEXT_LOCALE', locale)
 
-  if (!locales.includes(maybeLocale)) {
-    return NextResponse.redirect(new URL(`/en${pathname}`, request.url));
-  }
-
-  return NextResponse.next();*/
+  return response
 }

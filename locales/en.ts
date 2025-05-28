@@ -24,6 +24,13 @@ export default {
         "game": "game",
         "blog": "the blog",
     },
+    "notfound": {
+        "title": "404 - Page Not Found",
+        "message": "The page you are looking for does not exist. Have a kitty... (Sourced from {link})",
+        "gameLink": "If you are looking for the game, it can be found {link}.",
+        "here": "here",
+        "loading": "Loading cat...",
+    },
     "puzzles": {
         "box": "Box {num}",
         "clicks": {
@@ -59,7 +66,6 @@ export default {
         "5": {
             "title": "Dancing",
         },
-    }
+    },
 
 } as const;
-  

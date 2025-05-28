@@ -44,8 +44,8 @@ export default function SubLayout({
   let locale = unwrappedParams.locale || 'en';
 
   return (
+
     <html
-      lang={locale}
       className={cx(
         'text-black',
         geistSans.variable,
@@ -79,15 +79,17 @@ export default function SubLayout({
         <main className="relative flex flex-col items-center justify-items-center h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
 
           <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl p-4 w-full max-w-2xl ">
-            <I18nProviderClient locale={locale}>
-              <Navbar />
-              {children}
-              <Footer />
-            </I18nProviderClient>
+              <I18nProviderClient locale={locale}>
+            <Navbar />
+            {children}
+            <Footer />
+          </I18nProviderClient>
           </div>
 
         </main>
       </body>
     </html>
-  )
+   
+      
+  );
 }

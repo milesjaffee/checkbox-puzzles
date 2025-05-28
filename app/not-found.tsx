@@ -1,102 +1,15 @@
-//import Image from 'next/image';
 'use client';
-import { useEffect, useState } from 'react';
-import { Navbar } from '@/app/components/nav'
-import Footer from '@/app/components/footer'
-import { Geist, Geist_Mono } from "next/font/google";
-import "@/app/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
-
-export default function NotFound() {
-  const [catUrl, setCatUrl] = useState<string | null>(null);
-
-  const fetchCat = async () => {
-    try {
-      const response = await fetch('https://api.thecatapi.com/v1/images/search');
-      const data = await response.json();
-      setCatUrl(data[0].url);
-    } catch (error) {
-      console.error('Failed to fetch cat image:', error);
-    }
-  };
+export default function RootNotFoundRedirect() {
+  const router = useRouter();
 
   useEffect(() => {
-    fetchCat();
-  }, []);
+    const locale = navigator.language.startsWith('es') ? 'es' : 'en';
+    router.replace(`/${locale}/404`);
+  }, [router]);
 
-  return (
-    <html
-      className={cx(
-        'text-black',
-        geistSans.variable,
-        geistMono.variable
-      )}
-    >
-      <body 
-        className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto"
-        style={{
-          background: `repeating-linear-gradient(
-            0deg,
-            #FFF7E4, /* Light Yellow */
-            #f0e053 15px
-        )`,
-      backgroundSize: "100% 200px",
-      animation: "scrollBackground 20s linear infinite",
-      }}
-      >
-        <style>
-        {`
-          @keyframes scrollBackground {
-            from {
-              background-position: 0 0;
-            }
-            to {
-              background-position: 0 200px;
-            }
-          }
-        `}
-      </style>
-    <main className="relative flex flex-col items-center justify-items-center h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-    
-              <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl p-4 w-full max-w-2xl ">
-                
-                  <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        404 - Page Not Found
-      </h1>
-      <p className="mb-4">The page you are looking for does not exist. Have a kitty... (Sourced from <a href="https://thecatapi.com/" className="text-sky-600">thecatapi.com</a>)</p>
-      <p className="mb-4">If you are looking for the game, it can be found <a href="/en/game" className="text-sky-600">here</a>.</p>
-      {catUrl ? (
-        <img
-          src={catUrl}
-          alt="Random cat"
-          style={{
-            maxWidth: '100%',
-            height: '400px',
-            borderRadius: '12px',
-            border: '2px solid #ccc'
-          }}
-        />
-      ) : (
-        <p>Loading cat...</p>
-      )}
-                
-              </div>
-    
-            </main>
-            </body>
-          </html>
-      
-
-  );
+  return null;
 }
