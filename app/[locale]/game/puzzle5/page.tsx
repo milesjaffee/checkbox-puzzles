@@ -3,12 +3,6 @@ import React, { useState } from 'react';
 import { useI18n, useScopedI18n } from "@/locales/client";
 import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 
-type Checkbox = {
-  id: string;
-  label: string;
-  checked: boolean;
-};
-
 export default function Page() {
 const t = useI18n();
 
