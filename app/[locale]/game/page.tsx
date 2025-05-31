@@ -11,13 +11,14 @@ import LocalizedLink from "@/app/components/LocalizedLink";
       "puzzles.3.title",
       "puzzles.4.title",
       "puzzles.5.title",
+      "puzzles.6.title",
     ] as const;
 
     return (
       <section>
       <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('game.title')}</h1>
         <ul className="flex gap-4 items-left flex-col sm:flex-col">
-          {Array.from({ length: 5 }, (key, index) => {
+          {Array.from({ length: 6 }, (key, index) => {
           const id = `puzzle${index + 1}`;
           const label = t(puzzleKeys[index]) ?? `Puzzle ${index + 1}`;
           const href = `/game/${id}`;

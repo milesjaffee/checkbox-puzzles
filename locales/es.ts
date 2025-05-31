@@ -47,9 +47,10 @@ export default {
         "rules" : { 
             "rules": "Reglas:",
             "checkall": 'Marca todas las casillas para resolver el rompecabezas :)',
-            "limit": 'Marca todas las casillas en solo {limit} clics.',
+            "limit": 'Termina en solo {limit} clics.',
             "limit-reset": 'Presiona "restablecer" para reiniciar.',
             "shuffle": '¡Recibirás una divertida sorpresa cada {num} clics! :)',
+            "uncheck": 'Desmarca todas las casillas para resolver el rompecabezas.',
          },
          "1": {
             "title": "Tutorial",
@@ -66,6 +67,9 @@ export default {
         "5": {
             "title": "Bailar",
         },
+        "6": {
+            "title": "Solo di no",
+        }
          },
 
 } as const;

@@ -47,9 +47,10 @@ export default {
         "rules": {
             "rules": "Rules:",
             "checkall": "Check all the boxes to solve the puzzle :)",
-            "limit": "Check all the boxes in only {limit} clicks.",
+            "limit": "Finish the puzzle in only {limit} clicks.",
             "limit-reset": "Hit \"reset\" to reset.",
             "shuffle": "You get a fun surprise every {num} clicks :)",
+            "uncheck": "Uncheck all the boxes to solve the puzzle.",
         },
         "1": {
             "title": "Tutorial",
@@ -65,6 +66,9 @@ export default {
         },
         "5": {
             "title": "Dancing",
+        },
+        "6": {
+            "title": "Just Say No",
         },
     },
 

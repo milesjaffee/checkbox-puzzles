@@ -126,7 +126,7 @@ const t = useI18n();
         </div>
 
         {check1 && check2 && check3 && check4 && check5 && check6 ?
-          <CongratulationsMessage href="/game" />
+          <CongratulationsMessage href="/game/puzzle6" />
           : null}
 
       </section>

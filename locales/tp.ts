@@ -47,9 +47,10 @@ export default {
         "rules": {
             "rules": "lawa a:",
             "checkall": "o kule e poki ale. ni la, sina pini pona :)",
-            "limit": "o kule e poki ale kepeken luka {limit} taso.",
+            "limit": "o pini e musi kepeken luka {limit} taso.",
             "limit-reset": "sina wile open sin la, o luka e poki pi \"o open sin\"",
             "shuffle": "nanpa {num} li kipisi e nanpa luka la, mi pana e sin pona tawa sina :)",
+            "uncheck": "o kule ala a e poki ale. ni la, sina pini pona.",
         },
         "1": {
             "title": "sona sin",
@@ -66,6 +67,9 @@ export default {
         "5": {
             "title": "tawa nasa",
         },
+        "6": {
+            "title": "o toki e a ala",
+        }
     }
 
 } as const;
