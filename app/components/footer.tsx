@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import React from 'react'
+import { useI18n, useScopedI18n, useChangeLocale, useCurrentLocale } from "@/locales/client";
 
 function ArrowIcon() {
   return (
@@ -19,36 +20,55 @@ function ArrowIcon() {
 }
 
 export default function Footer() {
+  const t = useI18n();
+
+  const currentLocale = useCurrentLocale();
+  const changeLocale = useChangeLocale();
+
   return (
-    <footer className="mb-16">
-      <ul className="font-sm mt-8 flex flex-col space-x-0 space-y-2 text-neutral-600 md:flex-row md:space-x-4 md:space-y-0">
+    <footer className="mb-4 flex flex-col items-center justify-center">
+      <div className="font-sm mt-8 flex space-y-2 text-neutral-600">
         
-        <li>
+        <p className="flex flex-row items-center content-evenly">
           <a
-            className="flex items-center transition-all hover:text-neutral-800"
+            className="flex items-center transition-all hover:text-neutral-800 mx-2 h-7"
             rel="noopener noreferrer"
             target="_blank"
             href="https://github.com/milesjaffee/checkbox-puzzles"
           >
-            <ArrowIcon />
-            <p className="ml-2 h-7">github</p>
+            {t('footer.github')}{" "}
           </a>
-        </li>
-        <li>
+          {" "}|{" "}
           <a
-            className="flex items-center transition-all hover:text-neutral-800"
+            className="flex items-center transition-all hover:text-neutral-800 mx-2 h-7"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://vercel.com/templates/next.js/portfolio-starter-kit"
+            href="https://vercel.com/home"
           >
-            <ArrowIcon />
-            <p className="ml-2 h-7">made with vercel</p>
+            {t('footer.vercel')}{" "}
           </a>
-        </li>
-      </ul>
-      <p className="mt-8 text-neutral-600 ">
-        © {new Date().getFullYear()} MIT Licensed
-      </p>
+          {" "}|{" "}
+          <a className="flex items-center transition-all hover:text-neutral-800 mx-2 h-7"
+          rel="noopener noreferrer"
+          target="_blank"
+          href="https://opensource.org/license/mit"
+          >
+              © {new Date().getFullYear()} {t('footer.license')}
+          </a>
+
+        </p>
+        
+      </div>
+      <div className="flex items-center justify-center mt-2 content-evenly space-x-4">
+          <button type="button" className="mx-2" onClick={() => changeLocale("en")}>
+          🇺🇸EN
+        </button>
+        |
+        <button type="button" className="mx-2" onClick={() => changeLocale("es")}>
+          🇲🇽ES
+        </button>
+      </div>
+      
     </footer>
   )
 }

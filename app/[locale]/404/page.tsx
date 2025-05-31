@@ -1,9 +1,14 @@
-//import Image from 'next/image';
 'use client';
+import { useI18n } from '@/locales/client'; // adjust import path
 import { useEffect, useState } from 'react';
-  
+import "@/app/globals.css";
+import LocalizedLink from '@/app/components/LocalizedLink';
+
 
 export default function NotFound() {
+
+    const t = useI18n();
+
   const [catUrl, setCatUrl] = useState<string | null>(null);
 
   const fetchCat = async () => {
@@ -21,11 +26,15 @@ export default function NotFound() {
   }, []);
 
   return (
-    <section>
+    <div>
+      
       <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        404 - Page Not Found
+        {t("notfound.title")}
       </h1>
-      <p className="mb-4">The page you are looking for does not exist. Have a kitty...</p>
+      <p className="mb-4">{t('notfound.message', {link: <a href="https://thecatapi.com/" className="text-sky-600">thecatapi.com</a> })} </p>
+      <p className="mb-4">{t('notfound.gameLink', { link: 
+        <LocalizedLink href="/"><span className="text-sky-600">{t('notfound.here')}</span></LocalizedLink>
+      })}</p>
       {catUrl ? (
         <img
           src={catUrl}
@@ -40,7 +49,9 @@ export default function NotFound() {
       ) : (
         <p>Loading cat...</p>
       )}
+                
+    
+ </div>
 
-    </section>
-  )
+  );
 }
