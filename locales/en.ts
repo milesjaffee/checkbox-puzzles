@@ -51,6 +51,8 @@ export default {
             "limit-reset": "Hit \"reset\" to reset.",
             "shuffle": "You get a fun surprise every {num} clicks :)",
             "uncheck": "Uncheck all the boxes to solve the puzzle.",
+            "chord": "Select only the notes in this chord to solve the puzzle.",
+            "chord-notes": "For non-musicians, this chord contains the notes {notes1} and {notes2}.",
         },
         "1": {
             "title": "Tutorial",

@@ -51,6 +51,8 @@ export default {
             "limit-reset": 'Presiona "restablecer" para reiniciar.',
             "shuffle": '¡Recibirás una divertida sorpresa cada {num} clics! :)',
             "uncheck": 'Desmarca todas las casillas para resolver el rompecabezas.',
+            "chord": 'Selecciona solo las notas de este acorde para resolver el rompecabezas.',
+            "chord-notes": 'Si no eres musical, este acorde contiene las notas {notes1} y {notes2}.',
          },
          "1": {
             "title": "Tutorial",

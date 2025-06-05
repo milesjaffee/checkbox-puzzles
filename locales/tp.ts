@@ -51,6 +51,8 @@ export default {
             "limit-reset": "sina wile open sin la, o luka e poki pi \"o open sin\"",
             "shuffle": "nanpa {num} li kipisi e nanpa luka la, mi pana e sin pona tawa sina :)",
             "uncheck": "o kule ala a e poki ale. ni la, sina pini pona.",
+            "chord": "o kule e poki lon kulupu kalama ni a taso. ni la, sina pini pona.",
+            "chord-notes": "sina sona ala e kalama pona la, kulupu kalama ni li jo e kalama lon {notes1} {notes2}.",
         },
         "1": {
             "title": "sona sin",
