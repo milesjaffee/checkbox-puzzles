@@ -72,6 +72,9 @@ export default {
         "6": {
             "title": "Just Say No",
         },
+        "7": {
+            "title": "Kurtág Would Be Proud",
+        },
     },
 
 } as const;

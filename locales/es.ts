@@ -71,7 +71,10 @@ export default {
         },
         "6": {
             "title": "Solo di no",
-        }
+        },
+        "7": {
+            "title": "Kurtág estaría orgulloso",
+        },
          },
 
 } as const;

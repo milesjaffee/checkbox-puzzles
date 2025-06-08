@@ -71,7 +71,10 @@ export default {
         },
         "6": {
             "title": "o toki e a ala",
-        }
+        },
+        "7": {
+            "title": "jan Kutako li pilin pona",
+        },
     }
 
 } as const;
