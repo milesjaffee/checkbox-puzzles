@@ -1,19 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-
-const PUBLIC_LOCALES = ['en', 'es', 'tp']
-const DEFAULT_LOCALE = 'en'
+import { localeKeys, defaultLocale } from '@/locales';
 
 export function middleware(request: NextRequest) {
   
   const { pathname } = request.nextUrl;
 
-  const isLocalePrefixed = PUBLIC_LOCALES.some((locale) =>
+  const isLocalePrefixed = Array.isArray(localeKeys) && localeKeys.some((locale: string) =>
     pathname.startsWith(`/${locale}`)
   );
 
   if (!isLocalePrefixed && !pathname.startsWith('/_next')) {
     const url = request.nextUrl.clone();
-    url.pathname = `/${DEFAULT_LOCALE}${pathname}`;
+    url.pathname = `/${defaultLocale}${pathname}`;
     return NextResponse.redirect(url);
   }
   return NextResponse.next();

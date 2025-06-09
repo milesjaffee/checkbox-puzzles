@@ -1,14 +1,12 @@
+import { use } from 'react';
 import { notFound } from 'next/navigation';
 import { getPageData } from '@/lib/getPageData'; // Your content fetcher
 
-interface Params {
-    locale: string;
-    slug?: string[];
-  }
+type Params = { locale: string; slug?: string[] };
 
-  export default async function Page({ params }: { params: Params }) {
-    const slug = params.slug?.join('/') || '';
-    const pageData = await getPageData(params.locale, slug);
+  export default function Page({ params }: { params: Promise<Params> }) {
+    const { locale, slug } = use(params); // Unwrap the async params
+    const pageData = use(getPageData(locale, slug?.join('/') || ''));
   
     if (!pageData) {
       notFound();

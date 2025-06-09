@@ -2,6 +2,7 @@
 
 import Link, { LinkProps } from 'next/link';
 import { usePathname, useParams } from 'next/navigation';
+import { localeKeys, defaultLocale } from '@/locales';
 
 interface LocalizedLinkProps extends LinkProps {
     children: React.ReactNode;
@@ -10,7 +11,7 @@ interface LocalizedLinkProps extends LinkProps {
 export default function LocalizedLink({ href, children, ...props }: LocalizedLinkProps) {
     const params = useParams() as { locale?: string };
     let locale = params.locale ?? 'en'; // fallback to 'en' if missing
-    if (!['en', 'es', 'tp'].includes(locale)) {
+    if (!Array.isArray(localeKeys) || !localeKeys.some((key) => key === locale)) {
         locale = 'en';
     }
 

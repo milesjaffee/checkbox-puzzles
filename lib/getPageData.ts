@@ -1,6 +1,3 @@
-// Define supported locales
-
-const supportedLocales = ['en', 'es', 'tp'];
 
 // Number of puzzles you want to support
 const NUM_PUZZLES = 7;
@@ -21,8 +18,6 @@ const validPaths = new Set<string>([
  * Returns fake page data if the locale and path are valid, or null otherwise.
  */
 export async function getPageData(locale: string, slugPath: string) {
-  // Restrict to implemented locales only
-  if (!supportedLocales.includes(locale)) return null;
 
   // Normalize path
   const normalizedPath = slugPath.replace(/\/$/, '');
