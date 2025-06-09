@@ -2,9 +2,9 @@ import { NextRequest, NextResponse } from 'next/server'
 
 const PUBLIC_LOCALES = ['en', 'es', 'tp']
 const DEFAULT_LOCALE = 'en'
-const PUBLIC_FILE = /\.(.*)$/;
 
 export function middleware(request: NextRequest) {
+  
   const { pathname } = request.nextUrl;
 
   const isLocalePrefixed = PUBLIC_LOCALES.some((locale) =>
@@ -16,15 +16,6 @@ export function middleware(request: NextRequest) {
     url.pathname = `/${DEFAULT_LOCALE}${pathname}`;
     return NextResponse.redirect(url);
   }
-
-  if (pathname === '/404') {
-    const locale = PUBLIC_LOCALES.find((locale) =>
-      pathname.startsWith(`/${locale}`)
-    ) || DEFAULT_LOCALE;
-
-    return NextResponse.redirect(new URL(`/${locale}/404`, request.url));
-  }
-
   return NextResponse.next();
 }
 
