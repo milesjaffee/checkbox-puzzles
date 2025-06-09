@@ -4,76 +4,54 @@ import { useI18n, useScopedI18n } from "@/locales/client";
 import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 
 export default function Page() {
-const t = useI18n();
+  const t = useI18n();
+  const maxClicks = 9;
+  const checkCount = 6;
+  const shuffleAfter = 4;
+  const clickOrder = [5, 2, 1, 3, 4, 6];
+  const finalState = (Array(checkCount).fill(true));
 
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [check3, setCheck3] = useState(false);
-  const [check4, setCheck4] = useState(false);
-  const [check5, setCheck5] = useState(false);
-  const [check6, setCheck6] = useState(false);
+  const [done, setDone] = useState(false);
+  const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
+  const [clicks, setClicks] = useState(0);
+  const [order, setOrder] = useState([...Array(checkCount).keys()]);
 
-  const [numClicks, setNumClicks] = useState(0);
-  const setchecks = [setCheck1, setCheck2, setCheck3, setCheck4, setCheck5, setCheck6];
-
-  const checkboxes = [
-    { id: "one", label: t('puzzles.box', {num: '1'}), checked: check1 },
-    { id: "two", label: t('puzzles.box', {num: '2'}), checked: check2 },
-    { id: "three", label: t('puzzles.box', {num: '3'}), checked: check3 },
-    { id: "four", label: t('puzzles.box', {num: '4'}), checked: check4 },
-    { id: "five", label: t('puzzles.box', {num: '5'}), checked: check5 },
-    { id: "six", label: t('puzzles.box', {num: '6'}), checked: check6 },
-  ];
-
-  const [order, setOrder] = useState(["one", "two", "three", "four", "five", "six"]);
-
-  const shuffle = (array: string[]): string[] => {
-    const newArray = [...array]; // Create a copy of the array
-    for (let i = newArray.length - 1; i > 0; i--) {
+  const shuffle = () => {
+    const shuffled = [...order];
+    for (let i = shuffled.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-    return newArray;
+    setOrder(shuffled);
   };
 
-  const handleCheckboxChange = (whichBox: String) => {
-    console.log(whichBox);
-    setNumClicks(numClicks + 1);
-    
-    if (whichBox === 'one') {
-      setCheck1(!check1);
-      setCheck3(false);
-      
-    } else if (whichBox === 'two') {
-      setCheck2(!check2);
-      setCheck1(false);
-    } else if (whichBox === 'three') {
-      setCheck3(!check3);
-      setCheck4(false);
-    } else if (whichBox === 'four') {
-      setCheck4(!check4);
-      setCheck6(false);
-    } else if (whichBox === 'five') {
-      setCheck5(!check5);
-        setCheck2(false);
-    } else if (whichBox === 'six') {
-      setCheck6(!check6);
-    } 
-    else if (whichBox === 'reset') {
-      
-      setNumClicks(0);
-        setchecks.forEach(setcheck => {
-          setcheck(false);
-        });
-      
-    }
+  const onChange = (index: number) => {
+    setChecked(prev => {
+      const newChecked = [...prev];
+      newChecked[index] = !(newChecked[index]);
 
-    if (numClicks % 4 === 3) {
-      setOrder(shuffle(order));
-    }
+      const positionInOrder = clickOrder.indexOf(index + 1);
+      if (positionInOrder >= 0 && positionInOrder < (clickOrder.length-1)) {
+        const nextIndex = clickOrder[positionInOrder + 1];
+        newChecked[nextIndex-1] = false; // Automatically uncheck the next box in order
+      }
 
-    //5 2 1 3 4 6
+      if (newChecked.every((val, idx) => val === finalState[idx])) setDone(true);
+      return newChecked;
+    });
+  }
 
+  const handleChange = (index: number) => {
+    if (clicks >= maxClicks) return;
+    setClicks(c => c + 1);
+    onChange(index);
+    if ((clicks+1) % shuffleAfter === 0) shuffle();
+  };
+
+  const reset = () => {
+    setChecked(Array(checkCount).fill(false));
+    setClicks(0);
+    setOrder([...Array(checkCount).keys()]);
   };
   
     return (
@@ -84,12 +62,12 @@ const t = useI18n();
         <ol>
           <li>{t('puzzles.rules.limit', {limit: 
             <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-            9
+            {maxClicks}
             </code>
           })}</li>
           <li>{t('puzzles.rules.shuffle', {num: 
             <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-            4
+            {shuffleAfter}
             </code>
           })}</li>
           <li>{t('puzzles.rules.limit-reset')}</li>
@@ -99,33 +77,29 @@ const t = useI18n();
 
         <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.puzzle')}</h2>
         <p></p>
-        {order.map((id) => {
-        const checkbox = checkboxes.find((c) => c.id === id);
-        return (
-          <label key={checkbox?.id}>
+        {order.map((i) => (
+          <label key={i}>
             <input
               type="checkbox"
-              checked={checkbox?.checked || false}
-              onChange={() => handleCheckboxChange(checkbox?.id || "")}
-              disabled={numClicks>8}
+              checked={checked[i]}
+              onChange={() => handleChange(i)}
+              disabled={clicks >= maxClicks}
             />
-            {checkbox?.label}
+            {t('puzzles.box', {num: (i + 1).toString()})}
           </label>
-        );
-      })}
+        ))}
 
           <div>
-          <p>{t('puzzles.clicks.clicks', {num: numClicks})}</p>
+          <p>{t('puzzles.clicks.clicks', {num: clicks})}</p>
           <button
 
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            onClick={() => handleCheckboxChange('reset')}>{t('puzzles.clicks.reset')}</button>
+            onClick={reset}>{t('puzzles.clicks.reset')}</button>
           </div>
- 
 
         </div>
 
-        {check1 && check2 && check3 && check4 && check5 && check6 ?
+        {done ?
           <CongratulationsMessage href="/game/puzzle6" />
           : null}
 

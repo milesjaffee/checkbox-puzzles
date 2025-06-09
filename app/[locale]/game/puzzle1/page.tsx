@@ -5,38 +5,32 @@ import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 
 export default function Page() {
   const t = useI18n();
+  const checkCount = 5;
+  const clickOrder = [3, 2, 5, 1, 4];
+  const finalState = (Array(checkCount).fill(true));
 
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [check3, setCheck3] = useState(false);
-  const [check4, setCheck4] = useState(false);
-  const [check5, setCheck5] = useState(false);
+  const [done, setDone] = useState(false);
+  const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
+  const [order, setOrder] = useState([...Array(checkCount).keys()]);
 
-  const checkboxes = [
-    { id: "one", label: t('puzzles.box', {num: '1'}), checked: check1 },
-    { id: "two", label: t('puzzles.box', {num: '2'}), checked: check2 },
-    { id: "three", label: t('puzzles.box', {num: '3'}), checked: check3 },
-    { id: "four", label: t('puzzles.box', {num: '4'}), checked: check4 },
-    { id: "five", label: t('puzzles.box', {num: '5'}), checked: check5 },
-  ];
+  const onChange = (index: number) => {
+    setChecked(prev => {
+      const newChecked = [...prev];
+      newChecked[index] = !(newChecked[index]);
 
-  const handleCheckboxChange = (whichBox: String) => {
-    if (whichBox === 'one') {
-      setCheck1(!check1);
-      setCheck4(false);
-    } else if (whichBox === 'two') {
-      setCheck2(!check2);
-      setCheck5(false);
-    } else if (whichBox === 'three') {
-      setCheck3(!check3);
-      setCheck2(false);
-    } else if (whichBox === 'four') {
-      setCheck4(!check4);
-    } else if (whichBox === 'five') {
-      setCheck5(!check5);
-      setCheck1(false);
-    };
+      const positionInOrder = clickOrder.indexOf(index + 1);
+      if (positionInOrder >= 0 && positionInOrder < (clickOrder.length-1)) {
+        const nextIndex = clickOrder[positionInOrder + 1];
+        newChecked[nextIndex-1] = false; // Automatically uncheck the next box in order
+      }
 
+      if (newChecked.every((val, idx) => val === finalState[idx])) setDone(true);
+      return newChecked;
+    });
+  }
+
+  const handleChange = (index: number) => {
+    onChange(index);
   };
   
     return (
@@ -48,26 +42,23 @@ export default function Page() {
           <li>{t('puzzles.rules.checkall')}</li>
         </ol>
         <p></p>
-
         <div className="flex gap-4 items-left flex-col sm:flex-col">
 
         <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.puzzle')}</h2>
         <p></p>
-          {checkboxes.map((checkbox) => (
-          <label key={checkbox.id}>
+        {order.map((i) => (
+          <label key={i}>
             <input
               type="checkbox"
-              checked={checkbox.checked}
-              onChange={() => handleCheckboxChange(checkbox.id)}
+              checked={checked[i]}
+              onChange={() => handleChange(i)}
             />
-            {checkbox.label}
+            {t('puzzles.box', {num: (i + 1).toString()})}
           </label>
         ))}
-
-
         </div>
 
-        {check1 && check2 && check3 && check4 && check5 ?
+        {done?
           <CongratulationsMessage href="/game/puzzle2" />
           : null}
 
