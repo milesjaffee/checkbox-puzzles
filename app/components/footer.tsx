@@ -73,7 +73,7 @@ export default function Footer() {
         </button>
         |
         <button type="button" className="mx-2" onClick={() => changeLocale("tp")}>
-          🏳️TP
+          🇦🇶TP
         </button>
       </div>
       
