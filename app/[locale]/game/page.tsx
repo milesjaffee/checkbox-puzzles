@@ -36,6 +36,9 @@ import LocalizedLink from "@/app/components/LocalizedLink";
           );
           })}
       </ul>
+      <p className="text-sm mt-8 italic">{t('game.emailme', {email: 
+        <a href="mailto:mej327@lehigh.edu" className="text-blue-500 hover:underline">mej327@lehigh.edu</a>
+      })}</p>
       </section>
     )
   }

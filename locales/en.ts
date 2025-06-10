@@ -7,6 +7,7 @@ export default {
     "game": {
         "title": "Checkbox Nightmare",
         "support": "Support me",
+        "emailme": "Have an idea for a puzzle? Email me at {email} with the subject \"CHECKBOX IDEA\"!",
     },
     "homepage": {
         "checkbox": {

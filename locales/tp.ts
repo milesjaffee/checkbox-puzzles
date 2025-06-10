@@ -7,6 +7,7 @@ export default {
     "game": {
         "title": "musi pi tenpo lape ike pi poki anu",
         "support": "o esun e mi",
+        "emailme": "sina li jo e sona nasin sin pi musi ni la, o lipu e mi kepeken nimi {email}. o nimi e lipu sina sama \"CHECKBOX IDEA\"!",
     },
     "homepage": {
         "checkbox": {

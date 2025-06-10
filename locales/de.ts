@@ -7,6 +7,7 @@ export default {
     "game": {
         "title": "Kontrollkästchenalbtraum",
         "support": "Unterstütze mich",
+        "emailme": "Hast du eine Idee für ein Rätsel? Schick mir eine E-Mail an {email} mit dem Betreff \"CHECKBOX IDEA\"!",
     },
     "homepage": {
         "checkbox": {

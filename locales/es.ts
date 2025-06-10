@@ -7,6 +7,7 @@ export default {
     "game": {
         "title": "Pesadilla de Casilla",
         "support": "Apóyame",
+        "emailme": "¿Tienes una idea para un rompecabezas? ¡Envíame un correo a {email} con el asunto \"CHECKBOX IDEA\"!",
     },
     "homepage": {
         "checkbox": {
