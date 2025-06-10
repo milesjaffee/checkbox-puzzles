@@ -6,6 +6,8 @@ export default {
     },
     "game": {
         "title": "Checkbox Nightmare",
+        "support": "Support me",
+        "emailme": "Have an idea for a puzzle? Email me at {email} with the subject \"CHECKBOX IDEA\"!",
     },
     "homepage": {
         "checkbox": {
@@ -51,6 +53,8 @@ export default {
             "limit-reset": "Hit \"reset\" to reset.",
             "shuffle": "You get a fun surprise every {num} clicks :)",
             "uncheck": "Uncheck all the boxes to solve the puzzle.",
+            "chord": "Select only the notes in this chord to solve the puzzle.",
+            "chord-notes": "For non-musicians, this chord contains the notes {notes1} and {notes2}.",
         },
         "1": {
             "title": "Tutorial",
@@ -69,6 +73,9 @@ export default {
         },
         "6": {
             "title": "Just Say No",
+        },
+        "7": {
+            "title": "Kurtág Would Be Proud",
         },
     },
 

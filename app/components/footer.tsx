@@ -67,6 +67,14 @@ export default function Footer() {
         <button type="button" className="mx-2" onClick={() => changeLocale("es")}>
           🇲🇽ES
         </button>
+        |
+        <button type="button" className="mx-2" onClick={() => changeLocale("de")}>
+          🇩🇪DE
+        </button>
+        |
+        <button type="button" className="mx-2" onClick={() => changeLocale("tp")}>
+          🇦🇶TP
+        </button>
       </div>
       
     </footer>

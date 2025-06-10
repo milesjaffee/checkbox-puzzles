@@ -41,24 +41,42 @@ export default function SubLayout({
   params: Promise<{ locale?: string }>;
 }) {
   const unwrappedParams = React.use(params);
-  let locale = unwrappedParams.locale || 'en';
+  let locale: keyof typeof kofiText = (unwrappedParams.locale as keyof typeof kofiText) || 'en';
+
+  const kofiText = {
+    en: 'Support me',
+    es: 'Apóyame',
+    tp: 'o esun e mi',
+    de: 'Unterstütze mich',
+    // Add more translations as needed
+  };
 
   return (
-
     <html
+    lang={locale}
       className={cx(
         'text-black',
         geistSans.variable,
         geistMono.variable
       )}
     >
+      <head>
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#f0e053" />
+        <meta name="description" content="Checkbox Nightmare, Created by Miles Jaffee" />
+        <meta name="keywords" content="checkbox, nightmare, puzzle, game, miles jaffee" />
+        <meta name="author" content="Miles Jaffee" />
+        <link rel="icon" href="/favicon.ico" />
+        <title>Checkbox Nightmare</title>
+      </head>
       <body 
         className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto"
         style={{
           background: `repeating-linear-gradient(
             0deg,
-            #FFF7E4, /* Light Yellow */
-            #f0e053 15px
+            #FFF7E4,
+            #f0e053 12px
         )`,
       backgroundSize: "100% 200px",
       animation: "scrollBackground 20s linear infinite",
@@ -76,18 +94,43 @@ export default function SubLayout({
           }
         `}
       </style>
-        <main className="relative flex flex-col items-center justify-items-center h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
+        <main className="relative flex flex-col items-center justify-items-center h-screen p-8 pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
 
           <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl p-4 w-full max-w-2xl ">
               <I18nProviderClient locale={locale}>
+                
             <Navbar />
             {children}
             <Footer />
+            <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+            <script
+              dangerouslySetInnerHTML={{
+              __html: `
+              const updateKofiWidget = (locale) => {
+              kofiWidgetOverlay.draw('milesjaffee', {
+                type: 'floating-chat',
+                'floating-chat.donateButton.text': '${kofiText[locale] ?? kofiText.en}',
+                'floating-chat.donateButton.background-color': '#fffc',
+                'floating-chat.donateButton.text-color': '#000'
+              });
+              };
+
+              // Initial setup
+              updateKofiWidget('${locale}');
+              `,
+              }}
+            ></script>
+
+            
           </I18nProviderClient>
           </div>
 
         </main>
+
+       
       </body>
+
+      
     </html>
    
       

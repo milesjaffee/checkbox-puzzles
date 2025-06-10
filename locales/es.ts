@@ -6,6 +6,8 @@ export default {
     },
     "game": {
         "title": "Pesadilla de Casilla",
+        "support": "Apóyame",
+        "emailme": "¿Tienes una idea para un rompecabezas? ¡Envíame un correo a {email} con el asunto \"CHECKBOX IDEA\"!",
     },
     "homepage": {
         "checkbox": {
@@ -51,6 +53,8 @@ export default {
             "limit-reset": 'Presiona "restablecer" para reiniciar.',
             "shuffle": '¡Recibirás una divertida sorpresa cada {num} clics! :)',
             "uncheck": 'Desmarca todas las casillas para resolver el rompecabezas.',
+            "chord": 'Selecciona solo las notas de este acorde para resolver el rompecabezas.',
+            "chord-notes": 'Si no eres musical, este acorde contiene las notas {notes1} y {notes2}.',
          },
          "1": {
             "title": "Tutorial",
@@ -69,7 +73,10 @@ export default {
         },
         "6": {
             "title": "Solo di no",
-        }
+        },
+        "7": {
+            "title": "Kurtág estaría orgulloso",
+        },
          },
 
 } as const;

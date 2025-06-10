@@ -5,61 +5,32 @@ import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 
 export default function Page() {
   const t = useI18n();
+  const checkCount = 9;
+  const clickOrder = [8, 9, 3, 4, 6, 5, 2, 1, 7];
+  const finalState = (Array(checkCount).fill(true));
 
-  const [check1, setCheck1] = useState(false);
-  const [check2, setCheck2] = useState(false);
-  const [check3, setCheck3] = useState(false);
-  const [check4, setCheck4] = useState(false);
-  const [check5, setCheck5] = useState(false);
-  const [check6, setCheck6] = useState(false);
-  const [check7, setCheck7] = useState(false);
-  const [check8, setCheck8] = useState(false);
-  const [check9, setCheck9] = useState(false);
+  const [done, setDone] = useState(false);
+  const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
+  const [order, setOrder] = useState([...Array(checkCount).keys()]);
 
-  const checkboxes = [
-    { id: "one", label: t('puzzles.box', {num: '1'}), checked: check1 },
-    { id: "two", label: t('puzzles.box', {num: '2'}), checked: check2 },
-    { id: "three", label: t('puzzles.box', {num: '3'}), checked: check3 },
-    { id: "four", label: t('puzzles.box', {num: '4'}), checked: check4 },
-    { id: "five", label: t('puzzles.box', {num: '5'}), checked: check5 },
-    { id: "six", label: t('puzzles.box', {num: '6'}), checked: check6 },
-    { id: "seven", label: t('puzzles.box', {num: '7'}), checked: check7 },
-    { id: "eight", label: t('puzzles.box', {num: '8'}), checked: check8 },
-    { id: "nine", label: t('puzzles.box', {num: '9'}), checked: check9 },
+  const onChange = (index: number) => {
+    setChecked(prev => {
+      const newChecked = [...prev];
+      newChecked[index] = !(newChecked[index]);
 
-  ];
+      const positionInOrder = clickOrder.indexOf(index + 1);
+      if (positionInOrder >= 0 && positionInOrder < (clickOrder.length-1)) {
+        const nextIndex = clickOrder[positionInOrder + 1];
+        newChecked[nextIndex-1] = false; // Automatically uncheck the next box in order
+      }
 
-  const handleCheckboxChange = (whichBox: String) => {
-    if (whichBox === 'one') {
-      setCheck1(!check1);
-        setCheck7(false);
-    } else if (whichBox === 'two') {
-      setCheck2(!check2);
-        setCheck6(false);
-    } else if (whichBox === 'three') {
-      setCheck3(!check3);
-        setCheck1(false);
-    } else if (whichBox === 'four') {
-      setCheck4(!check4);
-      setCheck5(false);
-    } else if (whichBox === 'five') {
-      setCheck5(!check5);
-        setCheck9(false);
-    } else if (whichBox === 'six') {
-      setCheck6(!check6);
-      setCheck3(false);
-    } else if (whichBox === 'seven') {
-        setCheck7(!check7);
-    } else if (whichBox === 'eight') {
-        setCheck8(!check8);
-        setCheck4(false);
-    } else if (whichBox === 'nine') {
-        setCheck9(!check9);
-        setCheck2(false);
-    };
+      if (newChecked.every((val, idx) => val === finalState[idx])) setDone(true);
+      return newChecked;
+    });
+  }
 
-    //8 4 5 9 2 6 3 1 7
-
+  const handleChange = (index: number) => {
+    onChange(index);
   };
   
     return (
@@ -71,25 +42,23 @@ export default function Page() {
           <li>{t('puzzles.rules.checkall')}</li>
         </ol>
         <p></p>
-
         <div className="flex gap-4 items-left flex-col sm:flex-col">
 
         <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.puzzle')}</h2>
         <p></p>
-        {checkboxes.map((checkbox) => (
-          <label key={checkbox.id}>
+        {order.map((i) => (
+          <label key={i}>
             <input
               type="checkbox"
-              checked={checkbox.checked}
-              onChange={() => handleCheckboxChange(checkbox.id)}
+              checked={checked[i]}
+              onChange={() => handleChange(i)}
             />
-            {checkbox.label}
+            {t('puzzles.box', {num: (i + 1).toString()})}
           </label>
         ))}
-
         </div>
 
-        {check1 && check2 && check3 && check4 && check5 && check6 && check7 && check8 && check9 ?
+        {done?
           <CongratulationsMessage href="/game/puzzle3" />
           : null}
 

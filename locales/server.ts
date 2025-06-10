@@ -1,12 +1,8 @@
-import en from '@/locales/en'
-import es from '@/locales/es'
+import locales from '@/locales';
 
-const translations = {
-  en,
-  es,
-} as const
+const translations = {locales} as const
 
 export function getTranslation(locale: string) {
-  const t = translations[locale as keyof typeof translations] ?? translations.en
+  const t = translations.locales[locale as keyof typeof translations.locales] ?? translations.locales.en
   return t
 }
