@@ -6,6 +6,7 @@ export default {
     },
     "game": {
         "title": "musi pi tenpo lape ike pi poki anu",
+        "support": "o esun e mi",
     },
     "homepage": {
         "checkbox": {

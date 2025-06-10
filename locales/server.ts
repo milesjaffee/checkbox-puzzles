@@ -1,20 +1,8 @@
-import fs from 'fs';
-import path from 'path';
+import locales from '@/locales';
 
-const localesDir = path.join(process.cwd(), 'locales');
-
-const translations = Object.fromEntries(
-  fs
-    .readdirSync(localesDir)
-    .filter((file) => file.endsWith('.ts'))
-    .map((file) => {
-      const locale = file.replace('.ts', '');
-      const modulePath = path.join(localesDir, file);
-      const translation = require(modulePath).default;
-      return [locale, translation];
-    })
-) as Record<string, any>;
+const translations = {locales} as const
 
 export function getTranslation(locale: string) {
-  return translations[locale] ?? translations.en;
+  const t = translations.locales[locale as keyof typeof translations.locales] ?? translations.locales.en
+  return t
 }

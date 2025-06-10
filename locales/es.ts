@@ -6,6 +6,7 @@ export default {
     },
     "game": {
         "title": "Pesadilla de Casilla",
+        "support": "Apóyame",
     },
     "homepage": {
         "checkbox": {

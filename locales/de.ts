@@ -1,0 +1,80 @@
+export default {
+    "footer": {
+        "github": "GitHub",
+        "vercel": "Vercel",
+        "license": "MIT-Lizenz",
+    },
+    "game": {
+        "title": "Kontrollkästchenalbtraum",
+        "support": "Unterstütze mich",
+    },
+    "homepage": {
+        "checkbox": {
+            "1": "Um weiterzukommen, aktiviere jedes",
+            "2": "Kontrollkästchen",
+            "3": "auf der Seite."
+        },
+        "simple": "Nein, wirklich - so einfach ist das! ;)",
+        "playnow": "Jetzt spielen",
+        "readblog": "Lies meinen Blog",
+        "imagealt": "Kontrollkästchen-Albtraum-Logo",
+        "imgsrc": "/checkbox nightmare de.png",
+    },
+    "navbar": {
+        "home": "startseite",
+        "game": "spiel",
+        "blog": "der blog",
+    },
+    "notfound": {
+        "title": "404 - Seite nicht gefunden",
+        "message": "Die gesuchte Seite existiert nicht. Hier ist eine Katze für dich... (Quelle: {link})",
+        "gameLink": "Falls du das Spiel suchst, findest du es {link}.",
+        "here": "hier",
+        "loading": "Katze wird geladen...",
+    },
+    "puzzles": {
+        "box": "Kästchen {num}",
+        "clicks": {
+            "reset": "ZURÜCKSETZEN",
+            "clicks": "Aktuelle Klicks: {num}",
+        },
+        "congratulations": {
+            "title": "Glückwunsch!",
+            "message": "Du hast das Rätsel gelöst! 🎉",
+            "next": "Nächstes Rätsel spielen",
+        },
+        "number": "Rätsel {num}",
+        "puzzle": "Rätsel",
+        "rules": {
+            "rules": "Regeln:",
+            "checkall": "Aktiviere alle Kästchen, um das Rätsel zu lösen :)",
+            "limit": "Löse das Rätsel mit nur {limit} Klicks.",
+            "limit-reset": "Klicke auf „zurücksetzen“, um neu zu starten.",
+            "shuffle": "Alle {num} Klicks gibt es eine lustige Überraschung :)",
+            "uncheck": "Deaktiviere alle Kästchen, um das Rätsel zu lösen.",
+            "chord": "Wähle nur die Noten in diesem Akkord, um das Rätsel zu lösen.",
+            "chord-notes": "Für Nicht-Musiker: Dieser Akkord enthält die Noten {notes1} und {notes2}.",
+        },
+        "1": {
+            "title": "Tutorial",
+        },
+        "2": {
+            "title": "Tutorial (Lang)",
+        },
+        "3": {
+            "title": "Die Grenze",
+        },
+        "4": {
+            "title": "Mini-Golf",
+        },
+        "5": {
+            "title": "Tanzen",
+        },
+        "6": {
+            "title": "Sag einfach Nein",
+        },
+        "7": {
+            "title": "Kurtág wäre stolz",
+        },
+    },
+} as const;

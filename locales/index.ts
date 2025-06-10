@@ -2,6 +2,7 @@
 const locales = {
     en: () => import('./en'),
     es: () => import('./es'),
+    de: () => import('./de'),
     tp: () => import('./tp'),
   };
   

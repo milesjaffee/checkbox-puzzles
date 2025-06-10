@@ -6,6 +6,7 @@ export default {
     },
     "game": {
         "title": "Checkbox Nightmare",
+        "support": "Support me",
     },
     "homepage": {
         "checkbox": {

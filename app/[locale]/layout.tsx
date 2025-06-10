@@ -41,10 +41,17 @@ export default function SubLayout({
   params: Promise<{ locale?: string }>;
 }) {
   const unwrappedParams = React.use(params);
-  let locale = unwrappedParams.locale || 'en';
+  let locale: keyof typeof kofiText = (unwrappedParams.locale as keyof typeof kofiText) || 'en';
+
+  const kofiText = {
+    en: 'Support me',
+    es: 'Apóyame',
+    tp: 'o esun e mi',
+    de: 'Unterstütze mich',
+    // Add more translations as needed
+  };
 
   return (
-
     <html
       className={cx(
         'text-black',
@@ -80,14 +87,39 @@ export default function SubLayout({
 
           <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl p-4 w-full max-w-2xl ">
               <I18nProviderClient locale={locale}>
+                
             <Navbar />
             {children}
             <Footer />
+            <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
+            <script
+              dangerouslySetInnerHTML={{
+              __html: `
+              const updateKofiWidget = (locale) => {
+              kofiWidgetOverlay.draw('milesjaffee', {
+                type: 'floating-chat',
+                'floating-chat.donateButton.text': '${kofiText[locale] ?? kofiText.en}',
+                'floating-chat.donateButton.background-color': '#fffc',
+                'floating-chat.donateButton.text-color': '#000'
+              });
+              };
+
+              // Initial setup
+              updateKofiWidget('${locale}');
+              `,
+              }}
+            ></script>
+
+            
           </I18nProviderClient>
           </div>
 
         </main>
+
+       
       </body>
+
+      
     </html>
    
       
