@@ -7,7 +7,7 @@ export default function Home() {
   const t = useI18n();
   return (
     <div>
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+      <main className="flex flex-col gap-[32px] row-start-2 items-center">
         <Image
           //className="dark:invert"
           src={t('homepage.imgsrc') ?? "@public/checkbox nightmare.png"}
