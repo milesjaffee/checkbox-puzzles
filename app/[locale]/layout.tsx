@@ -1,12 +1,11 @@
 "use client";
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
 import { Navbar } from '../components/nav'
 import Footer from '../components/footer'
 import React from 'react';
 import { I18nProviderClient } from "@/locales/client";
-import { redirect } from 'next/navigation';
+import { SessionProvider } from 'next-auth/react';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,19 +16,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-/*export const metadata: Metadata = {
-  title: "Checkbox Nightmare",
-  description: "Checkbox Nightmare, Created by Miles Jaffee",
-
-  openGraph: {
-    title: "Checkbox Nightmare",
-    description: "Checkbox Nightmare, Created by Miles Jaffee",
-    locale: 'en_US',
-    type: 'website',
-  }
-  
-}*/
 
 const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
 
@@ -94,6 +80,7 @@ export default function SubLayout({
           }
         `}
       </style>
+      <SessionProvider>
         <main className="relative flex flex-col items-center justify-items-center h-screen p-8 pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
 
           <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl sm:px-10 p-4 w-full max-w-2xl ">
@@ -126,6 +113,7 @@ export default function SubLayout({
           </div>
 
         </main>
+        </SessionProvider>
 
        
       </body>
