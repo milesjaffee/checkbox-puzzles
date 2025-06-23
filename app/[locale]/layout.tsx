@@ -6,7 +6,9 @@ import Footer from '@/app/components/footer'
 import React from 'react';
 import { I18nProviderClient } from "@/locales/client";
 import { SessionProvider } from 'next-auth/react';
-import AccountBar from '@/app/components/signin';
+import { Analytics } from "@vercel/analytics/next";
+import { createSupabaseServerClient } from "@/lib/supabaseServer";
+import LoginLogoutButton from "@/app/components/loginlogout";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -81,16 +83,17 @@ export default function SubLayout({
           }
         `}
       </style>
-      <SessionProvider>
         <main className="relative flex flex-col items-center justify-items-center h-screen p-8 pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
-          <AccountBar />
+          <LoginLogoutButton />
 
           <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl sm:px-10 p-4 w-full max-w-2xl ">
               <I18nProviderClient locale={locale}>
                 
             <Navbar />
             {children}
+           
             <Footer />
+            
             <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
             <script
               dangerouslySetInnerHTML={{
@@ -113,9 +116,9 @@ export default function SubLayout({
             
           </I18nProviderClient>
           </div>
-
+          <Analytics />
         </main>
-        </SessionProvider>
+
 
        
       </body>
