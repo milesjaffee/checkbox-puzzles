@@ -1,11 +1,12 @@
 "use client";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
-import { Navbar } from '../components/nav'
-import Footer from '../components/footer'
+import { Navbar } from '@/app/components/nav'
+import Footer from '@/app/components/footer'
 import React from 'react';
 import { I18nProviderClient } from "@/locales/client";
 import { SessionProvider } from 'next-auth/react';
+import AccountBar from '@/app/components/signin';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -82,6 +83,7 @@ export default function SubLayout({
       </style>
       <SessionProvider>
         <main className="relative flex flex-col items-center justify-items-center h-screen p-8 pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
+          <AccountBar />
 
           <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl sm:px-10 p-4 w-full max-w-2xl ">
               <I18nProviderClient locale={locale}>
