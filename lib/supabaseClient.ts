@@ -1,7 +1,13 @@
-import { createClient } from '@supabase/supabase-js';
+import { createBrowserClient } from '@supabase/ssr';
 
-export const supabase = createClient(
+export const supabase = createBrowserClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-  { auth: {debug: true,} }
+  {
+    auth: {
+      persistSession: true, // MUST be true for cookies to store session
+      autoRefreshToken: true,
+      detectSessionInUrl: true,
+    },
+  }
 );
