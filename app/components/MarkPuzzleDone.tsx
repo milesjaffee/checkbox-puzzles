@@ -1,45 +1,39 @@
+// components/MarkPuzzleDone.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
+import { createClient } from '@supabase/supabase-js';
 
 type Props = {
-  puzzleId: string; // e.g., 'puzzle1' or a slug
+  puzzleId: string;
 };
 
 export default function MarkPuzzleDone({ puzzleId }: Props) {
   const [timestamp, setTimestamp] = useState<string | null>(null);
-  const [hasSent, setHasSent] = useState(false);
 
   useEffect(() => {
-    if (!hasSent) {
-      const markComplete = async () => {
-        try {
-          const res = await fetch('/puzzle/complete', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ puzzleId }),
-          });
+    const supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    );
 
-          if (!res.ok) {
-            throw new Error('Failed to mark puzzle as complete');
-          }
+    const markDone = async () => {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) return console.error('User not logged in');
 
-          setHasSent(true);
-          setTimestamp(res.headers.get('completedAt') || new Date().toISOString());
-        } catch (err) {
-          console.error(err);
-        }
-      };
+      const res = await fetch('/en/api/puzzle/complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ puzzleId, userId: user.id }),
+      });
 
-      markComplete();
-    }
-  }, [hasSent, puzzleId]);
+      const result = await res.json();
+      setTimestamp(result.completedAt || new Date().toISOString());
+    };
 
-  if (!hasSent || !timestamp) return null;
+    markDone();
+  }, [puzzleId]);
 
-  return (
-    <p className="text-sm text-green-600 mt-2">
-      Puzzle marked as done at <strong>{timestamp}</strong>
-    </p>
-  );
+  if (!timestamp) return <p>Marking puzzle as done...</p>;
+  return <p>Puzzle marked as done: {timestamp}</p>;
 }
