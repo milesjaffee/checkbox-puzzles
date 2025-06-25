@@ -15,7 +15,6 @@ export default function OAuthCallback() {
     handleAuth();
   }, [router]);
 
-  redirect("/");
   return (
 <div><p>Logging in...</p></div>
   );

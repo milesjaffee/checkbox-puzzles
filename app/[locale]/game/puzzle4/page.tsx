@@ -85,7 +85,7 @@ export default function Page() {
         </div>
 
         {done?
-          <CongratulationsMessage href="/game/puzzle5" />
+          <CongratulationsMessage puzzleNum={4} />
           : null}
 
       </section>
