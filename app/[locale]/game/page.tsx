@@ -1,6 +1,7 @@
 'use client';
 import { useI18n, useScopedI18n } from "@/locales/client";
 import LocalizedLink from "@/app/components/LocalizedLink";
+import { useEffect, useState } from "react";
   
   export default function Page() {
     const t = useI18n();
@@ -14,6 +15,26 @@ import LocalizedLink from "@/app/components/LocalizedLink";
       "puzzles.6.title",
       "puzzles.7.title",
     ] as const;
+
+    const [completed, setCompleted] = useState<number[]>([]);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchCompleted = async () => {
+        try {
+          const res = await fetch(`/en/api/puzzle/progress`);
+          const { completedPuzzles } = await res.json();
+          setCompleted(completedPuzzles || []);
+        } catch (error) {
+          console.error("Error fetching completed puzzles", error);
+          setCompleted([]);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      loading ? fetchCompleted() : null;
+    }, []);
 
     return (
       <section>
@@ -29,7 +50,11 @@ import LocalizedLink from "@/app/components/LocalizedLink";
               className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-left bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full"
             >
               <LocalizedLink href={href}>
-              {index + 1}. {label}
+                 {index + 1}. {label} {completed.includes(index) ? (
+                <span className="rounded-lg border border-green-500 bg-green-500/20 px-2 py-1 mx-3">
+                  ✅Done
+                </span>
+                ) : null}
               </LocalizedLink>
             </button>
             </li>
