@@ -21,6 +21,7 @@ export default function LoginLogoutButton() {
   }, []);
 
   const login = async () => {
+    localStorage.setItem("redirectAfterLogin", window.location.href);
     const currentLocale = window.location.pathname.split("/")[1] || "en";
     await supabase.auth.signInWithOAuth({
       provider: "google",

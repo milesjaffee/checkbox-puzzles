@@ -10,7 +10,11 @@ export default function OAuthCallback() {
     const handleAuth = async () => {
       const { error } = await supabase.auth.exchangeCodeForSession(window.location.href);
       if (error) console.error("Session exchange failed:", error);
-      redirect("/");
+      
+      const redirectUrl = localStorage.getItem("redirectAfterLogin") || "/";
+      console.log("Redirecting to ", redirectUrl);
+      localStorage.removeItem("redirectAfterLogin");
+      redirect(redirectUrl);
     };
     handleAuth();
   }, [router]);
