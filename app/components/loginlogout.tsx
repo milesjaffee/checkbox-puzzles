@@ -27,6 +27,8 @@ export default function LoginLogoutButton() {
     const currentLocale = window.location.pathname.split("/")[1] || "en";
     const origin = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
 
+    localStorage.setItem("redirectTo", `${origin}/${currentLocale}/api/auth/callback`);
+
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
