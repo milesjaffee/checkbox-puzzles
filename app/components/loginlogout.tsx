@@ -25,14 +25,17 @@ export default function LoginLogoutButton() {
   const login = async () => {
     localStorage.setItem("redirectAfterLogin", window.location.href);
     const currentLocale = window.location.pathname.split("/")[1] || "en";
-    const origin = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+    let origin = window.location.origin;
+    if (!origin.endsWith("/")) {
+      origin += "/";
+    }
 
-    localStorage.setItem("redirectTo", `${origin}/${currentLocale}/api/auth/callback`);
+    localStorage.setItem("redirectTo", `${origin}${currentLocale}/api/auth/callback`);
 
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${origin}/${currentLocale}/api/auth/callback`,
+        redirectTo: `${origin}${currentLocale}/api/auth/callback`,
       },
     });
   };
