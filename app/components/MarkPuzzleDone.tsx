@@ -4,12 +4,14 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabaseClient';
 import LoginLogoutButton from './loginlogout';
+import { useI18n, useScopedI18n } from "@/locales/client";
 
 type Props = {
   puzzleId: string;
 };
 
 export default function MarkPuzzleDone({ puzzleId }: Props) {
+    const t = useI18n();
   const [timestamp, setTimestamp] = useState<string | null>(null);
   const [loggedOut, setLoggedOut] = useState(false);
 
@@ -37,8 +39,8 @@ export default function MarkPuzzleDone({ puzzleId }: Props) {
   }, [puzzleId]);
 
   if (loggedOut) {
-    return <p>Log in to track progress: [<LoginLogoutButton/>]</p>;
+    return <p>{t('auth.markdone.login', {login: <LoginLogoutButton />})}</p>;
   }
-  if (!timestamp) return <p>Marking puzzle as done...</p>;
-  return <p>Puzzle marked as done: {timestamp}</p>;
+  if (!timestamp) return <p>{t('auth.markdone.marking')}</p>;
+  return <p>{t('auth.markdone.done', {timestamp: timestamp})}</p>;
 }

@@ -1,4 +1,15 @@
 export default {
+    "auth": {
+        "done": "✅Done",
+        "login": "Login with Google",
+        "logout": "Logout ({email})",
+        "markdone": {
+            "login": "Log in to track progress: [{login}]",
+            "marking": "Marking puzzle as done...",
+            "done": "Puzzle marked as done: {timestamp}",
+        },
+
+    },
     "footer": {
         "github": "github",
         "vercel": "vercel",

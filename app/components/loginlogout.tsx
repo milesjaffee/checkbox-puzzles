@@ -2,8 +2,10 @@
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabaseClient";
+import { useI18n, useScopedI18n } from "@/locales/client";
 
 export default function LoginLogoutButton() {
+  const t = useI18n();
   const [user, setUser] = useState<{ email?: string } | null>(null);
 
   useEffect(() => {
@@ -23,10 +25,12 @@ export default function LoginLogoutButton() {
   const login = async () => {
     localStorage.setItem("redirectAfterLogin", window.location.href);
     const currentLocale = window.location.pathname.split("/")[1] || "en";
+    const origin = process.env.NEXT_PUBLIC_SITE_URL || window.location.origin;
+
     await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${window.location.origin}/${currentLocale}/api/auth/callback`,
+        redirectTo: `${origin}/${currentLocale}/api/auth/callback`,
       },
     });
   };
@@ -37,9 +41,9 @@ export default function LoginLogoutButton() {
 
   return user ? (
     <button onClick={logout}>
-      Logout ({user.email ?? "User"})
+      {t('auth.logout', {email: user.email ?? "User"})}
     </button>
   ) : (
-    <button onClick={login}>Login with Google</button>
+    <button onClick={login}>{t('auth.login')}</button>
   );
 }

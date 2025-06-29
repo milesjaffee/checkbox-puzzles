@@ -52,7 +52,7 @@ import { useEffect, useState } from "react";
               <LocalizedLink href={href}>
                  {index + 1}. {label} {completed.includes(index) ? (
                 <span className="rounded-lg border border-green-500 bg-green-500/20 px-2 py-1 mx-3">
-                  ✅Done
+                  {t('auth.done')}
                 </span>
                 ) : null}
               </LocalizedLink>
