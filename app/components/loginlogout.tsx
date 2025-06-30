@@ -34,12 +34,24 @@ export default function LoginLogoutButton() {
 
     localStorage.setItem("redirectingTo", `${origin}api/auth/callback`);
 
-    await supabase.auth.signInWithOAuth({
+    const projectRef = process.env.NEXT_PUBLIC_SUPABASE_URL!.split('.')[0].split('//')[1];
+  
+    // Clear old verifier
+    document.cookie.split(';').forEach(c => {
+      document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
+    });
+
+
+    let { data, error} = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
         redirectTo: `${origin}api/auth/callback`,
       },
     });
+   
+
+    if (error) console.error("OAuth error:", error);
+    else console.log("Redirecting to:", data.url);
     
   };
 

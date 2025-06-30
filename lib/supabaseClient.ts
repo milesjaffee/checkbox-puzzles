@@ -8,6 +8,7 @@ export const supabase = createBrowserClient(
       persistSession: true, // MUST be true for cookies to store session
       autoRefreshToken: true,
       detectSessionInUrl: true,
+      flowType: "pkce",
     },
   }
 );
