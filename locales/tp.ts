@@ -33,6 +33,14 @@ export default {
         "here": "ni a",
         "loading": "mi pana e soweli tawa sina...",
     },
+    "privacypolicy": {
+        "title": "nasin pi kon sona",
+        "lastupdated": "ni li ante lon tenpo {date}",
+        "oauth": "mi pana e ken tawa sina kepeken ilo Google OAuth",
+        "dataUsage": "mi jo e sona sina sitelen e sona sina pi ilo lipu tan ni taso: mi pana e ken tawa sina.",
+        "dataProtection": "mi pana ala e sona sina tawa jan ante. mi wile e ni: mi en sina taso li jo e sona sina a.",
+        "contact": "sina pilin nasa tawa ni la, o kalama e ilo lipu ni: {email}.",
+    },
     "puzzles": {
         "box": "poki nanpa {num}",
         "clicks": {

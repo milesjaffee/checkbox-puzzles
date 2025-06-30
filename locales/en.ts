@@ -33,6 +33,14 @@ export default {
         "here": "here",
         "loading": "Loading cat...",
     },
+    "privacypolicy": {
+        "title": "Privacy Policy",
+        "lastupdated": "Last updated: {date}",
+        "oauth": "Checkbox Nightmare ('we') uses Google OAuth for authentication.",
+        "dataUsage": "We only collect your email and profile data for login purposes.",
+        "dataProtection": "We do not share your data with third parties and take reasonable measures to protect it.",
+        "contact": "For any questions or concerns, please contact {email}.",
+    },
     "puzzles": {
         "box": "Box {num}",
         "clicks": {
