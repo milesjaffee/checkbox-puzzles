@@ -1,23 +1,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { useI18n, useScopedI18n, useChangeLocale, useCurrentLocale } from "@/locales/client";
-
-function ArrowIcon() {
-  return (
-    <svg
-      width="12"
-      height="12"
-      viewBox="0 0 12 12"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M2.07102 11.3494L0.963068 10.2415L9.2017 1.98864H2.83807L2.85227 0.454545H11.8438V9.46023H10.2955L10.3097 3.09659L2.07102 11.3494Z"
-        fill="currentColor"
-      />
-    </svg>
-  )
-}
+import LocalizedLink from "@/app/components/LocalizedLink";
 
 export default function Footer() {
   const t = useI18n();
@@ -75,6 +59,12 @@ export default function Footer() {
         <button type="button" className="mx-2" onClick={() => changeLocale("tp")}>
           🇦🇶TP
         </button>
+      </div>
+
+      <div className="text-sm text-neutral-500 mt-2">
+        <p><LocalizedLink href="/privacypolicy">
+          {t('privacypolicy.title')}
+        </LocalizedLink></p>
       </div>
       
     </footer>

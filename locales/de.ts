@@ -33,6 +33,14 @@ export default {
         "here": "hier",
         "loading": "Katze wird geladen...",
     },
+    "privacypolicy": {
+        "title": "Datenschutzrichtlinie Kontrollkästchenalbtraum",
+        "lastupdated": "Letzte Aktualisierung: {date}",
+        "oauth": "Checkbox Nightmare ('wir') verwendet Google OAuth zur Authentifizierung.",
+        "dataUsage": "Wir sammeln nur deine E-Mail-Adresse und Profildaten für Anmeldezwecke.",
+        "dataProtection": "Wir geben deine Daten nicht an Dritte weiter und ergreifen angemessene Maßnahmen, um sie zu schützen.",
+        "contact": "Bei Fragen oder Bedenken kontaktiere uns bitte unter {email}.",
+    },
     "puzzles": {
         "box": "Kästchen {num}",
         "clicks": {

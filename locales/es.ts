@@ -33,6 +33,14 @@ export default {
         "here": "aquí",
         "loading": "Cargando gatito...",
     },
+    "privacypolicy": {
+        "title": "Política de Privacidad",
+        "lastupdated": "Última actualización: {date}",
+        "oauth": "Checkbox Nightmare ('nosotros') utiliza Google OAuth para la autenticación.",
+        "dataUsage": "Solo recopilamos tu dirección de correo electrónico y datos de perfil para fines de inicio de sesión.",
+        "dataProtection": "No compartimos tus datos con terceros, y tomamos medidas razonables para protegerlos.",
+        "contact": "Para cualquier pregunta o inquietud, por favor contáctanos a {email}.",
+    },
     "puzzles": {
         "box": "Caja no. {num}",
         "clicks": {
