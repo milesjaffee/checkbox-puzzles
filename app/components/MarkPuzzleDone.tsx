@@ -24,7 +24,7 @@ export default function MarkPuzzleDone({ puzzleId }: Props) {
         return;
       }
 
-      const res = await fetch('/en/api/puzzle/complete', {
+      const res = await fetch('/api/puzzle/complete', {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },

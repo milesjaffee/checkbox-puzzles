@@ -22,7 +22,7 @@ import { useEffect, useState } from "react";
     useEffect(() => {
       const fetchCompleted = async () => {
         try {
-          const res = await fetch(`/en/api/puzzle/progress`);
+          const res = await fetch(`/api/puzzle/progress`);
           const { completedPuzzles } = await res.json();
           setCompleted(completedPuzzles || []);
         } catch (error) {
