@@ -9,6 +9,13 @@ export const supabase = createBrowserClient(
       autoRefreshToken: true,
       detectSessionInUrl: true,
       flowType: "pkce",
+      storage: {
+        getItem: (key) => localStorage.getItem(key),
+        setItem: (key, value) => localStorage.setItem(key, value),
+        removeItem: (key) => localStorage.removeItem(key),
+      }
     },
+    
+  
   }
 );

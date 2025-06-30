@@ -35,11 +35,7 @@ export default function LoginLogoutButton() {
     localStorage.setItem("redirectingTo", `${origin}api/auth/callback`);
 
     const projectRef = process.env.NEXT_PUBLIC_SUPABASE_URL!.split('.')[0].split('//')[1];
-  
-    // Clear old verifier
-    document.cookie.split(';').forEach(c => {
-      document.cookie = c.replace(/^ +/, '').replace(/=.*/, '=;expires=' + new Date().toUTCString() + ';path=/');
-    });
+    document.cookie = `sb-${projectRef}-auth-token-code-verifier=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
 
 
     let { data, error} = await supabase.auth.signInWithOAuth({

@@ -15,6 +15,12 @@ export const createSupabaseServerClient = async () => {
             name: cookie.name,
             value: cookie.value,
           })),
+        setAll: (cookies) => {
+          cookies.forEach((cookie) => {
+            cookieStore.set(cookie.name, cookie.value, 
+            )});
+          },
+        
       },
       auth: {
         persistSession: true, // MUST be true for cookies to store session

@@ -26,27 +26,48 @@ export default function OAuthCallback() {
 }*/
 'use server';
 import { NextRequest, NextResponse } from "next/server";
-//import { supabase } from "@/lib/supabaseClient";
-import { createClient } from "@supabase/supabase-js";
+import { createSupabaseServerClient } from "@/lib/supabaseServer";
+//import { createClient } from "@supabase/supabase-js";
 
 export async function GET(req: NextRequest) {
-  const url = req.nextUrl.href;
   const { origin } = req.nextUrl;
+  const code = req.nextUrl.searchParams.get('code');
 
-  const supabase = createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  );
-
-  const { data, error } = await supabase.auth.exchangeCodeForSession(url);
-
-  if (error) {
-    console.error("Session exchange failed:", error);
-    return NextResponse.redirect(`${origin}/en/login?error=auth_failed`);
+  if (!code) {
+    return NextResponse.redirect(`${origin}/en/login?error=missing_code`);
   }
 
-  const redirectUrl = req.cookies.get("redirectAfterLogin")?.value || "/";
-  const response = NextResponse.redirect(redirectUrl);
+  console.log('Received code:', code);
+console.log('Cookies:', req.cookies.getAll());
 
-  return response;
+  const supabase = await createSupabaseServerClient();
+
+  try {
+    const { data, error } = await supabase.auth.exchangeCodeForSession(code);
+
+    if (error) {
+      console.error("Session exchange failed:", error);
+      return NextResponse.redirect(`${origin}/en/login?error=auth_failed`);
+    }
+
+    const redirectUrl = req.cookies.get("redirectAfterLogin")?.value || "/";
+    const response = NextResponse.redirect(redirectUrl);
+
+    /*const authCookies = data?.session?.access_token 
+        ? [
+            `sb-access-token=${data.session.access_token}; Path=/; HttpOnly; ${process.env.NODE_ENV === 'production' ? 'Secure; SameSite=None' : ''}`,
+            `sb-refresh-token=${data.session.refresh_token}; Path=/; HttpOnly; ${process.env.NODE_ENV === 'production' ? 'Secure; SameSite=None' : ''}`
+          ]
+        : [];
+      
+      // Set all cookies
+      authCookies.forEach(cookie => {
+        response.headers.append('Set-Cookie', cookie);
+      });*/
+      return response;
+    } catch (err) {
+      console.error("Unusual Error during OAuth callback:", err);
+      return NextResponse.redirect(`${origin}/en/login?error=server_error`);
+    }
+
 }
