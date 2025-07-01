@@ -23,7 +23,6 @@ export default function LoginLogoutButton() {
   }, []);
 
   const login = async () => {
-    localStorage.setItem("redirectAfterLogin", window.location.href);
 
     let origin = window.location.origin;
     if (!origin.endsWith("/")) {
@@ -36,6 +35,8 @@ export default function LoginLogoutButton() {
 
     const projectRef = process.env.NEXT_PUBLIC_SUPABASE_URL!.split('.')[0].split('//')[1];
     document.cookie = `sb-${projectRef}-auth-token-code-verifier=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+
+    document.cookie = `redirectAfterLogin=${encodeURIComponent(window.location.href)}; path=/;`;
 
 
     let { data, error} = await supabase.auth.signInWithOAuth({
