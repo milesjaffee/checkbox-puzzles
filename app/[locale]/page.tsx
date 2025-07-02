@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useI18n, useScopedI18n } from "@/locales/client";
 import LocalizedLink from "@/app/components/LocalizedLink";
+import LocalizedLinkButton from "@/app/components/LocalizedLinkButton";
 
 export default function Home() {
   const t = useI18n();
@@ -30,10 +31,8 @@ export default function Home() {
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <button
-            className="rounded-full flex flex-row border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-          >
-            <LocalizedLink
+          
+            <LocalizedLinkButton
               href="/game">
 
               <div className="flex flex-row items-center justify-center gap-2.5">
@@ -48,8 +47,8 @@ export default function Home() {
                 {t('homepage.playnow')}
                 </div>
 
-            </LocalizedLink>
-          </button>
+            </LocalizedLinkButton>
+          
           <button
             className="rounded-full border border-solid border-black/[.2] transition-colors flex items-center justify-center hover:bg-[#f2f2f277] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
           >

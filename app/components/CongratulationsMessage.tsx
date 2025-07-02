@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { useI18n, useScopedI18n } from "@/locales/client";
-import LocalizedLink from "@/app/components/LocalizedLink";
+import LocalizedLinkButton from "@/app/components/LocalizedLinkButton";
 import MarkPuzzleDone from "@/app/components/MarkPuzzleDone";
 
 export default function CongratulationsMessage({href, puzzleNum, video}: {href?: string, puzzleNum?: number, video?: string}) {
@@ -24,14 +24,14 @@ export default function CongratulationsMessage({href, puzzleNum, video}: {href?:
                     />
                 </div>
             }
-            <button className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto">
                 
-                <LocalizedLink href={puzzleNum ?
+                <LocalizedLinkButton href={puzzleNum ?
                     "/game/puzzle"+(puzzleNum+1) : href || "/game"
                     }>  
-                {t('puzzles.congratulations.next')}
-                </LocalizedLink>
-            </button>
+                    <p className="flex justify-between items-center w-full">
+                <span>{t('puzzles.congratulations.next')}</span> <span className="flex-end align-self-right">{'==>'}</span></p>
+                </LocalizedLinkButton>
+            
         </div>
     );
     
