@@ -1,4 +1,15 @@
 export default {
+    "auth": {
+        "done": "✅ Hecho",
+        "login": "Iniciar sesión con Google",
+        "logout": "Cerrar sesión ({email})",
+        "markdone": {
+            "login": "Inicia sesión para rastrear el progreso: [{login}]",
+            "marking": "Marcando rompecabezas como hecho...",
+            "done": "Rompecabezas marcado como hecho: {timestamp}",
+        },
+
+    },
     "footer": {
         "github": "github",
         "vercel": "vercel",

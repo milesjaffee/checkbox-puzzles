@@ -1,4 +1,15 @@
 export default {
+    "auth": {
+        "done": "✅Abgeschlossen",
+        "login": "Anmelden mit Google",
+        "logout": "Abmelden: {email}",
+        "markdone": {
+            "login": "Du musst eingeloggt sein, um dieses Rätsel als abgeschlossen zu markieren: [{login}]",
+            "marking": "Rätsel wird als abgeschlossen markiert...",
+            "done": "Rätsel abgeschlossen am {timestamp}",
+        },
+
+    },
     "footer": {
         "github": "GitHub",
         "vercel": "Vercel",

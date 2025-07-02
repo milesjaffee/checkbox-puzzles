@@ -83,7 +83,7 @@ export default function SubLayout({
           }
         `}
       </style>
-        <main className="relative flex flex-col items-center justify-items-center h-screen px-18 pb-20 pt-6 gap-10 sm:gap-16 font-[family-name:var(--font-geist-sans)]">
+        <main className="relative flex flex-col items-center justify-items-center h-screen px-16 pb-20 mb-20 pt-6 gap-10 sm:gap-16 font-[family-name:var(--font-geist-sans)]">
         <I18nProviderClient locale={locale}>
           
             <div className="fixed top-4 sm:right-4 bg-[rgba(255,255,255,0.8)] backdrop-blur-lg rounded-lg shadow-xl p-2">
@@ -92,7 +92,7 @@ export default function SubLayout({
 
 
 
-          <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl sm:px-10 p-4 w-full max-w-2xl ">
+          <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl sm:px-10 mb-20 p-4 w-full max-w-2xl ">
               
                 
             <Navbar />

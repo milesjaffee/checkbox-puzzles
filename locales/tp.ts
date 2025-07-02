@@ -1,4 +1,15 @@
 export default {
+    "auth": {
+        "done": "✅ pini",
+        "login": "o kama kepeken ilo Google",
+        "logout": "jan {email} o weka",
+        "markdone": {
+            "login": "sina wile lipu e musi pini sina: [{login}]",
+            "marking": "mi sitelen e musi pini...",
+            "done": "pini ni li lipu lon tenpo {timestamp}",
+        },
+
+    },
     "footer": {
         "github": "ma Kito",
         "vercel": "ilo Feselo",
