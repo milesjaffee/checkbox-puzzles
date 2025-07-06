@@ -88,6 +88,9 @@ export default {
         "7": {
             "title": "jan Kutako li pilin pona",
         },
+        "8": {
+            "title": "tawa pi ma Tenesi",
+        },
     }
 
 } as const;

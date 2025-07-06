@@ -88,6 +88,9 @@ export default {
         "7": {
             "title": "Kurtág Would Be Proud",
         },
+        "8": {
+            "title": "Tennessee Waltz",
+        },
     },
 
 } as const;
