@@ -15,6 +15,7 @@ import { useEffect, useState } from "react";
       "puzzles.6.title",
       "puzzles.7.title",
       "puzzles.8.title",
+      "puzzles.9.title",
     ] as const;
 
     const [completed, setCompleted] = useState<number[]>([]);

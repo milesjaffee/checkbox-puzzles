@@ -66,6 +66,7 @@ export default {
             "uncheck": "Uncheck all the boxes to solve the puzzle.",
             "chord": "Select only the notes in this chord to solve the puzzle.",
             "chord-notes": "For non-musicians, this chord contains the notes {notes1} and {notes2}.",
+            "decrease": "Every time you reset, the maximum click count decreases by {amount}.",
         },
         "1": {
             "title": "Tutorial",
@@ -90,6 +91,9 @@ export default {
         },
         "8": {
             "title": "Tennessee Waltz",
+        },
+        "9": {
+            "title": "Decrease",
         },
     },
 

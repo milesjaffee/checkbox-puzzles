@@ -66,6 +66,7 @@ export default {
             "uncheck": "Deaktiviere alle Kästchen, um das Rätsel zu lösen.",
             "chord": "Wähle nur die Noten in diesem Akkord, um das Rätsel zu lösen.",
             "chord-notes": "Für Nicht-Musiker: Dieser Akkord enthält die Noten {notes1} und {notes2}.",
+            "decrease": "Jedes Mal, wenn du zurücksetzt, verringert sich die maximale Klickanzahl um {amount}.",
         },
         "1": {
             "title": "Tutorial",
@@ -90,6 +91,9 @@ export default {
         },
         "8": {
             "title": "Tennessee-Waltz",
+        },
+        "9": {
+            "title": "Verkleinern"
         },
     },
 } as const;
