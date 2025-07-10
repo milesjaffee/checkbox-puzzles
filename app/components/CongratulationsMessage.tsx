@@ -2,14 +2,18 @@
 
 import React, { useState } from 'react';
 import { useI18n, useScopedI18n } from "@/locales/client";
-import LocalizedLink from "@/app/components/LocalizedLink";
+import LocalizedLinkButton from "@/app/components/LocalizedLinkButton";
+import MarkPuzzleDone from "@/app/components/MarkPuzzleDone";
 
-export default function CongratulationsMessage({href, video}: {href: string, video?: string}) {
+export default function CongratulationsMessage({href, puzzleNum, video}: {href?: string, puzzleNum?: number, video?: string}) {
     const t = useI18n();
     return (
         <div>
             <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.congratulations.title')}</h2>
             <p>{t('puzzles.congratulations.message')}</p>
+            {puzzleNum &&
+                <MarkPuzzleDone puzzleId={puzzleNum.toString()} />
+            }
             {video && 
                 <div className="mt-4">
                     <iframe
@@ -20,12 +24,14 @@ export default function CongratulationsMessage({href, video}: {href: string, vid
                     />
                 </div>
             }
-            <button className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto">
                 
-                <LocalizedLink href={href}>  
-                {t('puzzles.congratulations.next')}
-                </LocalizedLink>
-            </button>
+                <LocalizedLinkButton href={puzzleNum ?
+                    "/game/puzzle"+(puzzleNum+1) : href || "/game"
+                    }>  
+                    <p className="flex justify-between items-center w-full">
+                <span>{t('puzzles.congratulations.next')}</span> <span className="flex-end align-self-right">{'==>'}</span></p>
+                </LocalizedLinkButton>
+            
         </div>
     );
     

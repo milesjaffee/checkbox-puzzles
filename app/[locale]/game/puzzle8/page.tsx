@@ -5,10 +5,10 @@ import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 
 export default function Page() {
   const t = useI18n();
-  const maxClicks = 9;
-  const checkCount = 6;
-  const shuffleAfter = 4;
-  const clickOrder = [5, 2, 1, 3, 4, 6];
+  const maxClicks = 18;
+  const checkCount = 8;
+  const shuffleAfter = 3;
+  const clickOrder = [6, 1, 3, 5, 2, 4, 8, 7];
   const finalState = (Array(checkCount).fill(true));
 
   const [done, setDone] = useState(false);
@@ -56,7 +56,7 @@ export default function Page() {
   
     return (
       <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('puzzles.number', {num: '5'})}: '{t('puzzles.5.title')}'</h1>
+        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('puzzles.number', {num: '8'})}: '{t('puzzles.8.title')}'</h1>
         <p></p>
         <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">{t('puzzles.rules.rules')}</h2>
         <ol>
@@ -77,7 +77,7 @@ export default function Page() {
 
         <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.puzzle')}</h2>
         <p></p>
-        {order.map((i) => (
+        {order.map((i, index) => (
           <label key={i}>
             <input
               type="checkbox"
@@ -85,7 +85,7 @@ export default function Page() {
               onChange={() => handleChange(i)}
               disabled={clicks >= maxClicks}
             />
-            {t('puzzles.box', {num: (i + 1).toString()})}
+            {t('puzzles.box', {num: (index + 1).toString()})}
           </label>
         ))}
 
@@ -100,7 +100,7 @@ export default function Page() {
         </div>
 
         {done ?
-          <CongratulationsMessage puzzleNum={5} />
+          <CongratulationsMessage puzzleNum={8} />
           : null}
 
       </section>

@@ -1,4 +1,15 @@
 export default {
+    "auth": {
+        "done": "✅Done",
+        "login": "Login with Google",
+        "logout": "Logout ({email})",
+        "markdone": {
+            "login": "Log in to track progress: [{login}]",
+            "marking": "Marking puzzle as done...",
+            "done": "Puzzle marked as done: {timestamp}",
+        },
+
+    },
     "footer": {
         "github": "github",
         "vercel": "vercel",
@@ -63,6 +74,7 @@ export default {
             "uncheck": "Uncheck all the boxes to solve the puzzle.",
             "chord": "Select only the notes in this chord to solve the puzzle.",
             "chord-notes": "For non-musicians, this chord contains the notes {notes1} and {notes2}.",
+            "decrease": "Every time you reset, the maximum click count decreases by {amount}.",
         },
         "1": {
             "title": "Tutorial",
@@ -84,6 +96,12 @@ export default {
         },
         "7": {
             "title": "Kurtág Would Be Proud",
+        },
+        "8": {
+            "title": "Tennessee Waltz",
+        },
+        "9": {
+            "title": "Decrease",
         },
     },
 

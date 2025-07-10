@@ -1,12 +1,14 @@
 "use client";
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "@/app/globals.css";
-import { Navbar } from '../components/nav'
-import Footer from '../components/footer'
+import { Navbar } from '@/app/components/nav'
+import Footer from '@/app/components/footer'
 import React from 'react';
 import { I18nProviderClient } from "@/locales/client";
-import { redirect } from 'next/navigation';
+import { SessionProvider } from 'next-auth/react';
+import { Analytics } from "@vercel/analytics/next";
+import LoginLogoutButton from "@/app/components/loginlogout";
+import { supabase} from "@/lib/supabaseClient";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -17,19 +19,6 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
-
-/*export const metadata: Metadata = {
-  title: "Checkbox Nightmare",
-  description: "Checkbox Nightmare, Created by Miles Jaffee",
-
-  openGraph: {
-    title: "Checkbox Nightmare",
-    description: "Checkbox Nightmare, Created by Miles Jaffee",
-    locale: 'en_US',
-    type: 'website',
-  }
-  
-}*/
 
 const cx = (...classes: string[]) => classes.filter(Boolean).join(' ')
 
@@ -94,14 +83,23 @@ export default function SubLayout({
           }
         `}
       </style>
-        <main className="relative flex flex-col items-center justify-items-center h-screen p-8 pb-20 gap-16 font-[family-name:var(--font-geist-sans)]">
+        <main className="relative flex flex-col items-center justify-items-center h-screen px-16 pb-20 mb-20 pt-6 gap-10 sm:gap-16 font-[family-name:var(--font-geist-sans)]">
+        <I18nProviderClient locale={locale}>
+          
+            <div className="fixed top-4 sm:right-4 bg-[rgba(255,255,255,0.8)] backdrop-blur-lg rounded-lg shadow-xl p-2">
+            <LoginLogoutButton />
+            </div>
 
-          <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl sm:px-10 p-4 w-full max-w-2xl ">
-              <I18nProviderClient locale={locale}>
+
+
+          <div className="bg-[rgba(255,255,255,0.6)] backdrop-blur-lg rounded-2xl shadow-xl sm:px-10 mb-20 p-4 w-full max-w-2xl ">
+              
                 
             <Navbar />
             {children}
+           
             <Footer />
+            
             <script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'></script>
             <script
               dangerouslySetInnerHTML={{
@@ -121,11 +119,12 @@ export default function SubLayout({
               }}
             ></script>
 
-            
-          </I18nProviderClient>
           </div>
-
+          </I18nProviderClient>
+          
+          <Analytics />
         </main>
+
 
        
       </body>

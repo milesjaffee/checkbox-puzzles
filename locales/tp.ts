@@ -1,4 +1,15 @@
 export default {
+    "auth": {
+        "done": "✅ pini",
+        "login": "o kama kepeken ilo Google",
+        "logout": "jan {email} o weka",
+        "markdone": {
+            "login": "sina wile lipu e musi pini sina: [{login}]",
+            "marking": "mi sitelen e musi pini...",
+            "done": "pini ni li lipu lon tenpo {timestamp}",
+        },
+
+    },
     "footer": {
         "github": "ma Kito",
         "vercel": "ilo Feselo",
@@ -63,6 +74,7 @@ export default {
             "uncheck": "o kule ala a e poki ale. ni la, sina pini pona.",
             "chord": "o kule e poki lon kulupu kalama ni a taso. ni la, sina pini pona.",
             "chord-notes": "sina sona ala e kalama pona la, kulupu kalama ni li jo e kalama lon {notes1} {notes2}.",
+            "decrease": "sina luka e poki pi \"o open sin\" la, nanpa luka sina lon musi li kama lili {amount}.",
         },
         "1": {
             "title": "sona sin",
@@ -84,6 +96,12 @@ export default {
         },
         "7": {
             "title": "jan Kutako li pilin pona",
+        },
+        "8": {
+            "title": "tawa pi ma Tenesi",
+        },
+        "9": {
+            "title": "o lili"
         },
     }
 

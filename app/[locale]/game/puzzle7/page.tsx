@@ -84,7 +84,7 @@ export default function Page() {
         </div>
 
         {done?
-          <CongratulationsMessage href="/game" video="https://youtube.com/embed/7nnpTOKWk-w"/>
+          <CongratulationsMessage puzzleNum={7} video="https://youtube.com/embed/7nnpTOKWk-w"/>
           : null}
 
       </section>

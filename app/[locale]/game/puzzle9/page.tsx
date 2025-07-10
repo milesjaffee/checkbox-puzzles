@@ -5,25 +5,16 @@ import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 
 export default function Page() {
   const t = useI18n();
-  const maxClicks = 9;
-  const checkCount = 6;
-  const shuffleAfter = 4;
-  const clickOrder = [5, 2, 1, 3, 4, 6];
-  const finalState = (Array(checkCount).fill(true));
+  const [maxClicks, setMaxClicks] = useState(13);
+  const checkCount = 7;
+  const decreaseAmount = 1;
+  const clickOrder = [2, 7, 6, 3, 5, 1, 4];
+  const finalState = Array(checkCount).fill(true);
 
   const [done, setDone] = useState(false);
   const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
   const [clicks, setClicks] = useState(0);
   const [order, setOrder] = useState([...Array(checkCount).keys()]);
-
-  const shuffle = () => {
-    const shuffled = [...order];
-    for (let i = shuffled.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-    }
-    setOrder(shuffled);
-  };
 
   const onChange = (index: number) => {
     setChecked(prev => {
@@ -45,18 +36,21 @@ export default function Page() {
     if (clicks >= maxClicks) return;
     setClicks(c => c + 1);
     onChange(index);
-    if ((clicks+1) % shuffleAfter === 0) shuffle();
   };
 
   const reset = () => {
     setChecked(Array(checkCount).fill(false));
     setClicks(0);
+
+    //puzzle specific
+    setMaxClicks(prev => prev - decreaseAmount);
     setOrder([...Array(checkCount).keys()]);
+
   };
   
     return (
       <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('puzzles.number', {num: '5'})}: '{t('puzzles.5.title')}'</h1>
+        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('puzzles.number', {num: '9'})}: '{t('puzzles.9.title')}'</h1>
         <p></p>
         <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">{t('puzzles.rules.rules')}</h2>
         <ol>
@@ -65,12 +59,12 @@ export default function Page() {
             {maxClicks}
             </code>
           })}</li>
-          <li>{t('puzzles.rules.shuffle', {num: 
+          <li>{t('puzzles.rules.limit-reset')}</li>
+          <li>{t('puzzles.rules.decrease', {amount: 
             <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-            {shuffleAfter}
+            {decreaseAmount}
             </code>
           })}</li>
-          <li>{t('puzzles.rules.limit-reset')}</li>
         </ol>
         <p></p>
         <div className="flex gap-4 items-left flex-col sm:flex-col">
@@ -96,11 +90,12 @@ export default function Page() {
             className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
             onClick={reset}>{t('puzzles.clicks.reset')}</button>
           </div>
+ 
 
         </div>
 
-        {done ?
-          <CongratulationsMessage puzzleNum={5} />
+        {done?
+          <CongratulationsMessage puzzleNum={9} />
           : null}
 
       </section>

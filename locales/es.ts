@@ -1,4 +1,15 @@
 export default {
+    "auth": {
+        "done": "✅ Hecho",
+        "login": "Iniciar sesión con Google",
+        "logout": "Cerrar sesión ({email})",
+        "markdone": {
+            "login": "Inicia sesión para rastrear el progreso: [{login}]",
+            "marking": "Marcando rompecabezas como hecho...",
+            "done": "Rompecabezas marcado como hecho: {timestamp}",
+        },
+
+    },
     "footer": {
         "github": "github",
         "vercel": "vercel",
@@ -63,6 +74,7 @@ export default {
             "uncheck": 'Desmarca todas las casillas para resolver el rompecabezas.',
             "chord": 'Selecciona solo las notas de este acorde para resolver el rompecabezas.',
             "chord-notes": 'Si no eres musical, este acorde contiene las notas {notes1} y {notes2}.',
+            "decrease": "Cada presion de 'Restablecer' reducirá en {amount} el número de clics permitidos para resolver el rompecabezas.",
          },
          "1": {
             "title": "Tutorial",
@@ -84,6 +96,12 @@ export default {
         },
         "7": {
             "title": "Kurtág estaría orgulloso",
+        },
+        "8": {
+            "title": "Waltz de Tennessee"
+        },
+        "9": {
+            "title": "Disminuir",
         },
          },
 

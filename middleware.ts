@@ -1,19 +1,28 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { localeKeys, defaultLocale } from '@/locales';
+import { NextRequest, NextResponse } from 'next/server';
+import { localeKeys } from '@/locales';
 
 export function middleware(request: NextRequest) {
-  
   const { pathname } = request.nextUrl;
 
-  const isLocalePrefixed = Array.isArray(localeKeys) && localeKeys.some((locale: string) =>
-    pathname.startsWith(`/${locale}`)
-  );
-
-  if (!isLocalePrefixed && !pathname.startsWith('/_next')) {
-    const url = request.nextUrl.clone();
-    url.pathname = `/${defaultLocale}${pathname}`;
-    return NextResponse.redirect(url);
+  // Safe exclusions for all API routes and known assets
+  if (
+    pathname.startsWith("/api") ||
+    pathname.startsWith("/.well-known") ||
+    pathname.startsWith("/_next") ||
+    pathname.startsWith("/favicon.ico") ||
+    pathname.match(/\.(ico|png|jpg|jpeg|webp|svg|css|js)$/)
+  ) {
+    return NextResponse.next();
   }
+
+  const segments = pathname.split("/");
+  const potentialLocale = segments[1];
+
+  // Redirect if no valid locale in the path
+  if (!localeKeys.includes(potentialLocale as any)) {
+    return NextResponse.redirect(new URL(`/en${pathname}`, request.url));
+  }
+
   return NextResponse.next();
 }
 
