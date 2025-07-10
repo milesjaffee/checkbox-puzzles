@@ -1,4 +1,4 @@
-# Checkbox Nightmare v1.2.1
+# Checkbox Nightmare v1.3.0
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G71G88MG)
 
