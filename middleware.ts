@@ -10,6 +10,7 @@ export function middleware(request: NextRequest) {
     pathname.startsWith("/.well-known") ||
     pathname.startsWith("/_next") ||
     pathname.startsWith("/favicon.ico") ||
+    pathname.startsWith("/google") ||
     pathname.match(/\.(ico|png|jpg|jpeg|webp|svg|css|js)$/)
   ) {
     return NextResponse.next();

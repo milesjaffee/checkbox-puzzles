@@ -56,6 +56,7 @@ export default function SubLayout({
         <meta name="description" content="Checkbox Nightmare, Created by Miles Jaffee" />
         <meta name="keywords" content="checkbox, nightmare, puzzle, game, miles jaffee" />
         <meta name="author" content="Miles Jaffee" />
+        <meta name="google-site-verification" content="Q2NCVJZOLlgJxzeMxTKh5gA3Y7ENcS73NqM-haQTFBc" />
         <link rel="icon" href="/favicon.ico" />
         <title>Checkbox Nightmare</title>
       </head>
