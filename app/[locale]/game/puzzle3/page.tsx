@@ -1,11 +1,8 @@
 'use client';
 import React, { useState } from 'react';
-import { useI18n, useScopedI18n } from "@/locales/client";
-import CongratulationsMessage from '@/app/components/CongratulationsMessage';
 import PuzzleBody from '@/app/components/PuzzleBody';
 
 export default function Page() {
-  const t = useI18n();
   const maxClicks = 10;
   const checkCount = 6;
   const clickOrder = [4, 1, 3, 6, 5, 2];

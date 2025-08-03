@@ -1,17 +1,17 @@
 'use client';
 import React, { useState } from 'react';
-import { useI18n, useScopedI18n } from "@/locales/client";
-import CongratulationsMessage from '@/app/components/CongratulationsMessage';
+import PuzzleBody from '@/app/components/PuzzleBody';
 
 export default function Page() {
-  const t = useI18n();
   const checkCount = 5;
   const clickOrder = [3, 2, 5, 1, 4];
   const finalState = (Array(checkCount).fill(true));
 
   const [done, setDone] = useState(false);
   const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
-  const [order, setOrder] = useState([...Array(checkCount).keys()]);
+  //const [order, setOrder] = useState([...Array(checkCount).keys()]);
+
+  const rules = ['checkall'];
 
   const onChange = (index: number) => {
     setChecked(prev => {
@@ -34,34 +34,18 @@ export default function Page() {
   };
   
     return (
-      <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('puzzles.number', {num: '1'})}: '{t('puzzles.1.title')}'</h1>
-        <p></p>
-        <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">{t('puzzles.rules.rules')}</h2>
-        <ol>
-          <li>{t('puzzles.rules.checkall')}</li>
-        </ol>
-        <p></p>
-        <div className="flex gap-4 items-left flex-col sm:flex-col">
-
-        <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.puzzle')}</h2>
-        <p></p>
-        {order.map((i) => (
-          <label key={i}>
-            <input
-              type="checkbox"
-              checked={checked[i]}
-              onChange={() => handleChange(i)}
-            />
-            {t('puzzles.box', {num: (i + 1).toString()})}
-          </label>
-        ))}
-        </div>
-
-        {done?
-          <CongratulationsMessage puzzleNum={1} />
-          : null}
-
-      </section>
+      <PuzzleBody
+        puzzleNum={1}
+        numBoxes={checkCount}
+        //maxClicks={maxClicks}
+        //clicks={clicks}
+        //no order here
+        checked={checked}
+        handleChange={handleChange}
+        //reset={reset}
+        finalState={finalState}
+        done={done}
+        rules={rules}
+      />
     )
 }
