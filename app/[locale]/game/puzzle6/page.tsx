@@ -53,7 +53,7 @@ export default function Page() {
         numBoxes={checkCount}
         maxClicks={maxClicks}
         clicks={clicks}
-        //no order here
+        
         checked={checked}
         handleChange={handleChange}
         reset={reset}

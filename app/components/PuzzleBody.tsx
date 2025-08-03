@@ -4,21 +4,26 @@ import CongratulationsMessage from "@/app/components/CongratulationsMessage";
 import { puzzleKeys } from "@/app/components/puzzlekeys";
 
 interface PuzzleBodyProps {
+    //Evergreen
     puzzleNum: number;
-    numBoxes: number;
-    clicks?: number;
-    maxClicks?: number;
-    order?: number[];
-    checked?: boolean[];
-    handleChange: (index: number) => void;
-    reset?: () => void;
-    finalState: boolean[];
-    done: boolean;
-    rules?: string[];
+    numBoxes: number; //Number of boxes
+    clicks?: number; //Current click count. Only used if maxClicks is defined.
+    maxClicks?: number; //Max allowed clicks before reset. If undefined, no limit
+    order?: number[]; //Optional order of boxes. If undefined, defaults to 1 to numBoxes
+    checked?: boolean[]; //Checked state of each box. If undefined, defaults to all permanently false
+    handleChange: (index: number) => void; //Function to handle checkbox changes
+    reset?: () => void; //Function to reset the puzzle state. If undefined, no reset button is shown
+    finalState: boolean[]; //Final state of the puzzle, used to determine if the puzzle is solved
+    done: boolean; //Is the puzzle solved?
+    rules?: string[]; //Rules for the puzzle, used to display instructions. Given as a list of strings. Goes to the formatRules function here!
 
-    shuffleAfter?: number;
-    notes?: string[];
-    decreaseAmount?: number;
+    //Puzzle specific or rare
+    shuffleAfter?: number; //Number of clicks after which the boxes are shuffled. If undefined, no shuffle
+    image?: string; //Image URI to display for the puzzle, used in rules
+    notes?: string[]; //Notes for the puzzle, used in rules. Given as a list of 2 strings
+    video?: string; //Video URI to display for the puzzle, used in the congratulations message
+    keepIndex?: boolean; //Keep index while shuffling? Defaults to false. If true, the shown index of the boxes on screen is kept even after shuffling
+    decreaseAmount?: number; //Amount to decrease maxClicks by when resetting the puzzle. If undefined, no decrease
 
 }
 
@@ -35,7 +40,10 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
     done,
     rules = [],
     shuffleAfter = 999,
+    image = '',
+    video = '',
     notes = [],
+    keepIndex = false,
     decreaseAmount = 0,
 
 }) => {
@@ -49,8 +57,17 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
                 return t('puzzles.rules.checkall');
             } else if (ruleKey === 'uncheck') {
                 return t('puzzles.rules.uncheck');
-            } else if (ruleKey === 'chord') {
-                return t('puzzles.rules.chord');
+            } 
+            
+            else if (ruleKey === 'chord') {
+                return <div>
+                    {t('puzzles.rules.chord')}
+                    <img
+                        src={image}
+                        width={400}
+                        height={200}
+                    />
+                </div>;
             } 
             
             else if (ruleKey === 'limit') {
@@ -71,7 +88,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
             } else if (ruleKey === 'decrease') {
                 return t('puzzles.rules.decrease', {
                     amount: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-                            {decreaseAmount} </code> ), });
+                            {decreaseAmount}</code> ), });
             }
             
             else {
@@ -97,7 +114,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
         
                 <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.puzzle')}</h2>
                 <p></p>
-                {order.map((i) => (
+                {order.map((i, index) => (
                   <label key={i}>
                     <input
                       type="checkbox"
@@ -105,7 +122,9 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
                       onChange={() => handleChange(i)}
                       disabled={clicks >= maxClicks}
                     />
-                    {t('puzzles.box', {num: (i+1).toString()})}
+                    {keepIndex?
+                    t('puzzles.box', {num: (index+1).toString()})
+                    : t('puzzles.box', {num: (i + 1).toString()})}
                   </label>
                 ))}
         
@@ -121,7 +140,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
                 </div>
         
                 {done?
-                  <CongratulationsMessage puzzleNum={puzzleNum} />
+                  <CongratulationsMessage puzzleNum={puzzleNum} video={video} />
                   : null}
         
               </section>
