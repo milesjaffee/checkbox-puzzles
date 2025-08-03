@@ -1,10 +1,8 @@
 'use client';
 import React, { useState } from 'react';
-import { useI18n, useScopedI18n } from "@/locales/client";
-import CongratulationsMessage from '@/app/components/CongratulationsMessage';
+import PuzzleBody from '@/app/components/PuzzleBody';
 
 export default function Page() {
-  const t = useI18n();
   const maxClicks = 5;
   const checkCount = 5;
   const clickOrder = [2, 5, 4, 3, 1];
@@ -13,7 +11,11 @@ export default function Page() {
   const [done, setDone] = useState(false);
   const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
   const [clicks, setClicks] = useState(0);
-  const [order, setOrder] = useState([...Array(checkCount).keys()]);
+  //const [order, setOrder] = useState([...Array(checkCount).keys()]);
+
+  const rules = [
+    'limit', 'limit-reset',
+  ];
 
   const onChange = (index: number) => {
     setChecked(prev => {
@@ -44,50 +46,18 @@ export default function Page() {
   };
   
     return (
-      <section>
-        <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('puzzles.number', {num: '4'})}: '{t('puzzles.4.title')}'</h1>
-        <p></p>
-        <h2 className="font-semibold text-xl mb-8 tracking-tighter font-italic">{t('puzzles.rules.rules')}</h2>
-        <ol>
-          <li>{t('puzzles.rules.limit', {limit: 
-            <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-            {maxClicks}
-            </code>
-          })}</li>
-          <li>{t('puzzles.rules.limit-reset')}</li>
-        </ol>
-        <p></p>
-        <div className="flex gap-4 items-left flex-col sm:flex-col">
-
-        <h2 className="font-semibold text-xl mt-8 tracking-tighter font-italic">{t('puzzles.puzzle')}</h2>
-        <p></p>
-        {order.map((i) => (
-          <label key={i}>
-            <input
-              type="checkbox"
-              checked={checked[i]}
-              onChange={() => handleChange(i)}
-              disabled={clicks >= maxClicks}
-            />
-            {t('puzzles.box', {num: (i + 1).toString()})}
-          </label>
-        ))}
-
-          <div>
-          <p>{t('puzzles.clicks.clicks', {num: clicks})}</p>
-          <button
-
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            onClick={reset}>{t('puzzles.clicks.reset')}</button>
-          </div>
- 
-
-        </div>
-
-        {done?
-          <CongratulationsMessage puzzleNum={4} />
-          : null}
-
-      </section>
+      <PuzzleBody
+        puzzleNum={4}
+        numBoxes={checkCount}
+        maxClicks={maxClicks}
+        clicks={clicks}
+        //no order here
+        checked={checked}
+        handleChange={handleChange}
+        reset={reset}
+        finalState={finalState}
+        done={done}
+        rules={rules}
+      />
     )
 }

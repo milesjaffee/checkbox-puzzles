@@ -11,6 +11,7 @@ export default function Page() {
   const [done, setDone] = useState(false);
   const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
   const [clicks, setClicks] = useState(0);
+  //const [order, setOrder] = useState([...Array(checkCount).keys()]);
 
   const rules = [
     'limit', 'limit-reset',
