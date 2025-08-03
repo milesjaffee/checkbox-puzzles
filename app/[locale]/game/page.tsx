@@ -2,21 +2,10 @@
 import { useI18n, useScopedI18n } from "@/locales/client";
 import LocalizedLinkButton from "@/app/components/LocalizedLinkButton";
 import { useEffect, useState } from "react";
+import { puzzleKeys } from "@/app/components/puzzlekeys";
   
   export default function Page() {
     const t = useI18n();
-
-    const puzzleKeys = [
-      "puzzles.1.title",
-      "puzzles.2.title",
-      "puzzles.3.title",
-      "puzzles.4.title",
-      "puzzles.5.title",
-      "puzzles.6.title",
-      "puzzles.7.title",
-      "puzzles.8.title",
-      "puzzles.9.title",
-    ] as const;
 
     const [completed, setCompleted] = useState<number[]>([]);
     const [loading, setLoading] = useState(true);

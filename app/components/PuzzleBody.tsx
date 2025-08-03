@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, ReactNode } from 'react';
 import { useI18n, useScopedI18n } from "@/locales/client";
 import CongratulationsMessage from "@/app/components/CongratulationsMessage";
+import { puzzleKeys } from "@/app/components/puzzlekeys";
 
 interface PuzzleBodyProps {
     puzzleNum: number;
@@ -39,17 +40,6 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
 
 }) => {
     const t = useI18n();
-    const puzzleKeys = [
-        "puzzles.1.title",
-        "puzzles.2.title",
-        "puzzles.3.title",
-        "puzzles.4.title",
-        "puzzles.5.title",
-        "puzzles.6.title",
-        "puzzles.7.title",
-        "puzzles.8.title",
-        "puzzles.9.title",
-      ] as const;
 
     const formatRules = (ruleKeys: string[]): ReactNode[] => {
         return ruleKeys.map((ruleKey) => {

@@ -76,17 +76,6 @@ export default {
             "chord-notes": "For non-musicians, this chord contains the notes {notes1} and {notes2}.",
             "decrease": "Every time you reset, the maximum click count decreases by {amount}.",
         },
-        "titles": [
-            "Tutorial",
-            "Tutorial (Long)",
-            "The Limit",
-            "Mini Golf",
-            "Dancing",
-            "Just Say No",
-            "Kurtág Would Be Proud",
-            "Tennessee Waltz",
-            "Decrease",
-        ],
         "1": {
             "title": "Tutorial",
         },
