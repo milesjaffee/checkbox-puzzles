@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import PuzzleBody from '@/app/components/PuzzleBody';
+import { onChange, reset } from '@/app/components/PuzzleFunctions';
 
 export default function Page() {
   const maxClicks = 10;
@@ -17,33 +18,10 @@ export default function Page() {
     'limit', 'limit-reset',
   ];
 
-  const onChange = (index: number) => {
-    setChecked(prev => {
-      const newChecked = [...prev];
-      newChecked[index] = !(newChecked[index]);
-
-      const positionInOrder = clickOrder.indexOf(index + 1);
-      if (positionInOrder >= 0 && positionInOrder < (clickOrder.length-1)) {
-        const nextIndex = clickOrder[positionInOrder + 1];
-        newChecked[nextIndex-1] = false; // Automatically uncheck the next box in order
-      }
-      console.log('newChecked', newChecked);
-
-      if (newChecked.every((val, idx) => val === finalState[idx])) setDone(true);
-      return newChecked;
-    });
-  }
-
   const handleChange = (index: number) => {
     if (clicks >= maxClicks) return;
     setClicks(c => c + 1);
-    onChange(index);
-  };
-
-  const reset = () => {
-    setChecked(Array(checkCount).fill(false));
-    setClicks(0);
-    //setOrder([...Array(checkCount).keys()]);
+    onChange({index, setChecked, clickOrder, finalState, setDone});
   };
   
     return (
@@ -55,7 +33,7 @@ export default function Page() {
         //no order here
         checked={checked}
         handleChange={handleChange}
-        reset={reset}
+        reset={() => reset({setChecked, setClicks, checkCount})}
         finalState={finalState}
         done={done}
         rules={rules}
