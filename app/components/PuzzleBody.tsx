@@ -24,6 +24,7 @@ interface PuzzleBodyProps {
     video?: string; //Video URI to display for the puzzle, used in the congratulations message
     keepIndex?: boolean; //Keep index while shuffling? Defaults to false. If true, the shown index of the boxes on screen is kept even after shuffling
     decreaseAmount?: number; //Amount to decrease maxClicks by when resetting the puzzle. If undefined, no decrease
+    customBoxNames?: string[]; //Custom names for the boxes, if provided, will override the default box names
 
 }
 
@@ -45,6 +46,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
     notes = [],
     keepIndex = false,
     decreaseAmount = 0,
+    customBoxNames = [],
 
 }) => {
     const t = useI18n();
@@ -60,8 +62,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
             } 
             
             else if (ruleKey === 'chord') {
-                return <div>
-                    {t('puzzles.rules.chord')}
+                return <div><p>{t('puzzles.rules.chord')}</p>
                     <img
                         src={image}
                         width={400}
@@ -122,9 +123,12 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
                       onChange={() => handleChange(i)}
                       disabled={clicks >= maxClicks}
                     />
-                    {keepIndex?
+                    {
+                    customBoxNames && customBoxNames[index] ? customBoxNames[index] :
+                    keepIndex?
                     t('puzzles.box', {num: (index+1).toString()})
-                    : t('puzzles.box', {num: (i + 1).toString()})}
+                    : t('puzzles.box', {num: (i + 1).toString()})
+                    }
                   </label>
                 ))}
         

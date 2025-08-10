@@ -57,6 +57,7 @@ const rules = [
         video="https://youtube.com/embed/7nnpTOKWk-w"
         image={imageUri}
         notes = {['G, A, B, C', 'E']}
+        customBoxNames = {notes}
       />
     )
 }
