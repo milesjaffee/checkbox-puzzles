@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import PuzzleBody from '@/app/components/PuzzleBody';
-import { onChange, reset } from '@/app/components/PuzzleFunctions';
+import { onChange, handleChange, reset } from '@/app/components/PuzzleFunctions';
 
 export default function Page() {
   const maxClicks = 10;
@@ -17,12 +17,6 @@ export default function Page() {
   const rules = [
     'limit', 'limit-reset',
   ];
-
-  const handleChange = (index: number) => {
-    if (clicks >= maxClicks) return;
-    setClicks(c => c + 1);
-    onChange({index, setChecked, clickOrder, finalState, setDone});
-  };
   
     return (
       <PuzzleBody
@@ -32,7 +26,8 @@ export default function Page() {
         clicks={clicks}
         //no order here
         checked={checked}
-        handleChange={handleChange}
+        handleChange={(index: number) => handleChange({index, setChecked, clickOrder, finalState, setDone, 
+          clicks, maxClicks, setClicks})}
         reset={() => reset({setChecked, setClicks, checkCount})}
         finalState={finalState}
         done={done}
