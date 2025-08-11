@@ -1,6 +1,7 @@
+import { puzzleKeys } from "@/app/components/puzzlekeys";
 
 // Number of puzzles you want to support
-const NUM_PUZZLES = 7;
+const NUM_PUZZLES = puzzleKeys.length;
 
 // Generate game puzzle routes: game/puzzle1 to game/puzzle7
 const puzzleRoutes = Array.from({ length: NUM_PUZZLES }, (_, i) => `game/puzzle${i + 1}`);

@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import React from 'react'
+
+import React, { useEffect } from 'react'
 import LocalizedLink from '@/app/components/LocalizedLink'
 import { useI18n, useScopedI18n } from "@/locales/client";
 
@@ -30,14 +30,18 @@ export function Navbar() {
             <p className="transition-all hover:text-neutral-800 flex align-middle place-content-evenly relative py-1 px-2 m-1">
             {Object.entries(navItems).map(([path, { name }]) => {
               return (
-                
-                <LocalizedLink
-                  key={path}
-                  href={path}
+                <label key={path}>
                   
-                >
-                  &lt;{name}/&gt; &nbsp;
-                </LocalizedLink>
+                  <LocalizedLink href={path}>
+                    <input
+                    type="checkbox"
+                    checked={true}
+                    readOnly
+                    />
+
+                    {" "+name}
+                  </LocalizedLink>
+                </label>
                  
               )
             })}

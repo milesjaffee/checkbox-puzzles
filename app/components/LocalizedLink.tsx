@@ -27,7 +27,11 @@ export default function LocalizedLink({ href, children, ...props }: LocalizedLin
     }
 
     return (
-        <Link href={localizedHref} {...props}>
+        <Link
+            href={localizedHref}
+            {...props}
+            {...(isExternalLink ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
             {children}
         </Link>
     );
