@@ -6,11 +6,12 @@ type OnChangeProps = {
     clickOrder: number[];
     finalState: boolean[];
     setDone: React.Dispatch<React.SetStateAction<boolean>>;
+    direction?: boolean;
 }
 export function onChange(
     props: OnChangeProps
 ): void {
-    const { index, setChecked, clickOrder, finalState, setDone } = props;
+    const { index, setChecked, clickOrder, finalState, setDone, direction } = props;
     setChecked(prev => {
       const newChecked = [...prev];
       newChecked[index] = !(newChecked[index]);
@@ -18,7 +19,7 @@ export function onChange(
       const positionInOrder = clickOrder.indexOf(index + 1);
       if (positionInOrder >= 0 && positionInOrder < (clickOrder.length-1)) {
         const nextIndex = clickOrder[positionInOrder + 1];
-        newChecked[nextIndex-1] = false; // Automatically uncheck the next box in order
+        newChecked[nextIndex-1] = direction? direction: false; // Automatically uncheck the next box in order
       }
 
       if (newChecked.every((val, idx) => val === finalState[idx])) setDone(true);
@@ -41,15 +42,17 @@ type HandleChangeProps = {
     shuffleAfter?: number;
     order?: number[];
     setOrder?: React.Dispatch<React.SetStateAction<number[]>>;
+
+    direction?: boolean;
 }
 export function handleChange (props: HandleChangeProps): void {
-    
-    const { index, setChecked, clickOrder, finalState, setDone, clicks, maxClicks, setClicks, shuffleAfter, order, setOrder } = props;
+
+    const { index, setChecked, clickOrder, finalState, setDone, clicks, maxClicks, setClicks, shuffleAfter, order, setOrder, direction } = props;
     if (clicks && maxClicks && clicks >= maxClicks) return;
 
     if (setClicks) setClicks(c => c + 1);
 
-    onChange({index, setChecked, clickOrder, finalState, setDone});
+    onChange({index, setChecked, clickOrder, finalState, setDone, direction: direction? true : false});
 
     if (shuffleAfter && clicks && order && setOrder && (clicks+1) % shuffleAfter === 0) shuffle({order, setOrder});
   };

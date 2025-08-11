@@ -18,14 +18,10 @@ export default function Page() {
       <PuzzleBody
         puzzleNum={1}
         numBoxes={checkCount}
-        //maxClicks={maxClicks}
-        //clicks={clicks}
-        //no order here
         checked={checked}
         handleChange={(index: number) => { 
           handleChange({index, setChecked, clickOrder, finalState, setDone, });
         }}
-        //reset={reset}
         finalState={finalState}
         done={done}
         rules={rules}

@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import PuzzleBody from '@/app/components/PuzzleBody';
-import { onChange, handleChange, reset } from '@/app/components/PuzzleFunctions';
+import { handleChange, reset } from '@/app/components/PuzzleFunctions';
 
 export default function Page() {
   const maxClicks = 10;
@@ -24,7 +24,6 @@ export default function Page() {
         numBoxes={checkCount}
         maxClicks={maxClicks}
         clicks={clicks}
-        //no order here
         checked={checked}
         handleChange={(index: number) => handleChange({index, setChecked, clickOrder, finalState, setDone, 
           clicks, maxClicks, setClicks})}

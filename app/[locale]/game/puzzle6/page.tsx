@@ -1,6 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import PuzzleBody from '@/app/components/PuzzleBody';
+import { handleChange, reset } from '@/app/components/PuzzleFunctions';
 
 export default function Page() {
   const maxClicks = 8;
@@ -18,34 +19,6 @@ export default function Page() {
     'limit',
     'limit-reset',
   ]
-
-  const onChange = (index: number) => {
-    setChecked(prev => {
-      const newChecked = [...prev];
-      newChecked[index] = !(newChecked[index]);
-
-      const positionInOrder = clickOrder.indexOf(index + 1);
-      if (positionInOrder >= 0 && positionInOrder < (clickOrder.length-1)) {
-        const nextIndex = clickOrder[positionInOrder + 1];
-        newChecked[nextIndex-1] = true; // Changed for unique puzzle
-      }
-
-      if (newChecked.every((val, idx) => val === finalState[idx])) setDone(true);
-      return newChecked;
-    });
-  }
-
-  const handleChange = (index: number) => {
-    if (clicks >= maxClicks) return;
-    setClicks(c => c + 1);
-    onChange(index);
-  };
-
-  const reset = () => {
-    setChecked(Array(checkCount).fill(true));
-    setClicks(0);
-    //setOrder([...Array(checkCount).keys()]);
-  };
   
     return (
       <PuzzleBody
@@ -55,8 +28,10 @@ export default function Page() {
         clicks={clicks}
         
         checked={checked}
-        handleChange={handleChange}
-        reset={reset}
+        handleChange={(index: number) => handleChange({index, setChecked, clickOrder, finalState, setDone, 
+                  clicks, maxClicks, setClicks, direction: true})}
+        
+                reset={() => reset({setChecked, setClicks, checkCount, originalState: Array(checkCount).fill(true)})}
         finalState={finalState}
         done={done}
         rules={rules}
