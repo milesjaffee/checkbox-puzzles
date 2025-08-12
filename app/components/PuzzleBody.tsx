@@ -13,7 +13,6 @@ interface PuzzleBodyProps {
     checked?: boolean[]; //Checked state of each box. If undefined, defaults to all permanently false
     handleChange: (index: number) => void; //Function to handle checkbox changes
     reset?: () => void; //Function to reset the puzzle state. If undefined, no reset button is shown
-    finalState: boolean[]; //Final state of the puzzle, used to determine if the puzzle is solved
     done: boolean; //Is the puzzle solved?
     rules?: string[]; //Rules for the puzzle, used to display instructions. Given as a list of strings. Goes to the formatRules function here!
 
@@ -37,7 +36,6 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
     checked = Array(numBoxes).fill(false), // Default checked state
     handleChange = (index: number) => {},
     reset,
-    finalState,
     done,
     rules = [],
     shuffleAfter = 999,

@@ -5,7 +5,7 @@ import { handleChange, randomClickOrder } from '@/app/components/PuzzleFunctions
 
 export default function Page() {
   const checkCount = 5;
-  const finalState = (Array(checkCount).fill(true));
+  //final state left as default
   const [clickOrder] = useState(() => randomClickOrder(checkCount));
 
   const [done, setDone] = useState(false);
@@ -19,9 +19,8 @@ export default function Page() {
         numBoxes={checkCount}
         checked={checked}
         handleChange={(index: number) => { 
-          handleChange({index, setChecked, clickOrder, finalState, setDone, });
+          handleChange({index, setChecked, clickOrder, setDone, });
         }}
-        finalState={finalState}
         done={done}
         rules={rules}
       />

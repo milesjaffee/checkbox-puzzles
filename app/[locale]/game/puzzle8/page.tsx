@@ -8,7 +8,6 @@ export default function Page() {
   const checkCount = 8;
   const shuffleAfter = 3;
   const [clickOrder] = useState(() => randomClickOrder(checkCount));
-  const finalState = (Array(checkCount).fill(true));
 
   const [done, setDone] = useState(false);
   const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
@@ -28,13 +27,12 @@ export default function Page() {
         maxClicks={maxClicks}
         clicks={clicks}
         checked={checked}
-        handleChange={(index: number) => handleChange({index, setChecked, clickOrder, finalState, setDone, 
-                  clicks, maxClicks, setClicks, 
-                  order, setOrder, shuffleAfter})}
-        
-                reset={() => reset({setChecked, setClicks, checkCount, setOrder})}
+        handleChange={(index: number) => handleChange({index, setChecked, clickOrder, setDone, 
+          clicks, maxClicks, setClicks, 
+          order, setOrder, shuffleAfter})}
 
-        finalState={finalState}
+        reset={() => reset({setChecked, setClicks, checkCount, setOrder})}
+
         done={done}
         rules={rules}
 

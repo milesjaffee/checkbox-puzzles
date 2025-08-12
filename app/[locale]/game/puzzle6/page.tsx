@@ -31,7 +31,7 @@ export default function Page() {
                   clicks, maxClicks, setClicks, direction: true})}
         
                 reset={() => reset({setChecked, setClicks, checkCount, originalState: Array(checkCount).fill(true)})}
-        finalState={finalState}
+                
         done={done}
         rules={rules}
       />

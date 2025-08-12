@@ -29,7 +29,6 @@ export default function Page() {
           handleChange({index, setChecked, clickOrder, finalState, setDone, direction: true})
         }}
 
-        finalState={finalState}
         done={done}
         rules={rules}
 
