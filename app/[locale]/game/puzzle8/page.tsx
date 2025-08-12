@@ -12,11 +12,10 @@ export default function Page() {
   const [done, setDone] = useState(false);
   const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
   const [clicks, setClicks] = useState(0);
-  const [order, setOrder] = useState([...Array(checkCount).keys()]);
 
     const rules = [
         'limit', 
-        'shuffle', 
+        'shuffle-checked', 
         'limit-reset', 
     ];
   
@@ -29,16 +28,14 @@ export default function Page() {
         checked={checked}
         handleChange={(index: number) => handleChange({index, setChecked, clickOrder, setDone, 
           clicks, maxClicks, setClicks, 
-          order, setOrder, shuffleAfter})}
+          shuffleOrder: checked, setShuffleOrder: setChecked, shuffleAfter})}
 
-        reset={() => reset({setChecked, setClicks, checkCount, setOrder})}
+        reset={() => reset({setChecked, setClicks, checkCount})}
 
         done={done}
         rules={rules}
 
-        order={order}
         shuffleAfter={shuffleAfter}
-        keepIndex={true}
 
       />
 

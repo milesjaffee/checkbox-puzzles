@@ -42,21 +42,22 @@ type HandleChangeProps = {
     setClicks?: React.Dispatch<React.SetStateAction<number>>;
 
     shuffleAfter?: number;
-    order?: number[];
-    setOrder?: React.Dispatch<React.SetStateAction<number[]>>;
+    shuffleOrder?: any[]; //actually just whatever is getting shuffled
+    setShuffleOrder?: React.Dispatch<React.SetStateAction<any[]>>;
 
     direction?: boolean;
 }
 export function handleChange (props: HandleChangeProps): void {
 
-    let { index, setChecked, clickOrder, finalState, setDone, clicks, maxClicks, setClicks, shuffleAfter, order, setOrder, direction } = props;
+    let { index, setChecked, clickOrder, finalState, setDone, clicks, maxClicks, setClicks, shuffleAfter, shuffleOrder, setShuffleOrder, direction } = props;
     
     if (clicks && maxClicks && clicks >= maxClicks) return;
     if (setClicks) setClicks(c => c + 1);
 
-    onChange({index, setChecked, clickOrder, finalState, setDone, direction: direction? true : false});
+    if (shuffleAfter && clicks && shuffleOrder && setShuffleOrder && (clicks+1) % shuffleAfter === 0) shuffle({order: shuffleOrder, setOrder: setShuffleOrder});
 
-    if (shuffleAfter && clicks && order && setOrder && (clicks+1) % shuffleAfter === 0) shuffle({order, setOrder});
+    onChange({index, setChecked, clickOrder, finalState, setDone, direction: direction? true : false});
+  
   };
 
 type ResetProps = {
@@ -79,8 +80,8 @@ export function reset (props: ResetProps): void {
 
 
 type ShuffleProps = {
-    order: number[];
-    setOrder: React.Dispatch<React.SetStateAction<number[]>>;
+    order: any[];
+    setOrder: React.Dispatch<React.SetStateAction<any[]>>;
 }
 export function shuffle (props: ShuffleProps): void {
     const { order, setOrder } = props;

@@ -29,7 +29,7 @@ export default function Page() {
 
         handleChange={(index: number) => handleChange({index, setChecked, clickOrder, setDone, 
           clicks, maxClicks, setClicks, 
-          order, setOrder, shuffleAfter})}
+          shuffleOrder: order, setShuffleOrder: setOrder, shuffleAfter})}
 
         reset={() => reset({setChecked, setClicks, checkCount, setOrder})}
 

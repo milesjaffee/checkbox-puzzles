@@ -74,6 +74,7 @@ export default {
             "uncheck": 'Desmarca todas las casillas para resolver el rompecabezas.',
             "chord": 'Selecciona solo las notas de este acorde para resolver el rompecabezas.',
             "chord-notes": 'Si no eres musical, este acorde contiene las notas {notes1} y {notes2}.',
+            "shuffle-checked": 'El estado de selección de las casillas se mezcla cada {num} clics.',
             "decrease": "Cada presion de 'Restablecer' reducirá en {amount} el número de clics permitidos para resolver el rompecabezas.",
          },
          "1": {

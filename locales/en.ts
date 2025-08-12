@@ -74,6 +74,7 @@ export default {
             "uncheck": "Uncheck all the boxes to solve the puzzle.",
             "chord": "Select only the notes in this chord to solve the puzzle.",
             "chord-notes": "For non-musicians, this chord contains the notes {notes1} and {notes2}.",
+            "shuffle-checked": "Checked state of boxes is shuffled every {num} clicks.",
             "decrease": "Every time you reset, the maximum click count decreases by {amount}.",
         },
         "1": {

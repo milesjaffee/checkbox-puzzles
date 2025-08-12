@@ -51,12 +51,9 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
 
     const formatRules = (ruleKeys: string[]): ReactNode[] => {
         return ruleKeys.map((ruleKey) => {
-            if (ruleKey === 'limit-reset') {
-                return t('puzzles.rules.limit-reset');
-            } else if (ruleKey === 'checkall') {
-                return t('puzzles.rules.checkall');
-            } else if (ruleKey === 'uncheck') {
-                return t('puzzles.rules.uncheck');
+            if (ruleKey === 'limit-reset') { return t('puzzles.rules.limit-reset');
+            } else if (ruleKey === 'checkall') { return t('puzzles.rules.checkall');
+            } else if (ruleKey === 'uncheck') { return t('puzzles.rules.uncheck');
             } 
             
             else if (ruleKey === 'chord') {
@@ -69,29 +66,32 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
                 </div>;
             } 
             
-            else if (ruleKey === 'limit') {
-                return t('puzzles.rules.limit', {
+            else if (ruleKey === 'limit') { return t('puzzles.rules.limit', {
                     limit: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
                             {maxClicks}</code> ), });
-            } else if (ruleKey === 'shuffle') {
-                return t('puzzles.rules.shuffle', {
+
+            } else if (ruleKey === 'shuffle') { return t('puzzles.rules.shuffle', {
                     num: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
                             {shuffleAfter? shuffleAfter: 'UNDEFINED'}</code> ), });
-            } else if (ruleKey === 'chord-notes') {
-                return t('puzzles.rules.chord-notes', {
+
+            } else if (ruleKey === 'shuffle-checked') { return t('puzzles.rules.shuffle-checked', {
+                    num: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+                            {shuffleAfter? shuffleAfter: 'UNDEFINED'}</code> ), });
+            
+
+            } else if (ruleKey === 'chord-notes') { return t('puzzles.rules.chord-notes', {
                     notes1: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
                             {notes[0]}</code> ), 
                     notes2: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-                            {notes[1]}</code> ), 
-                            });
-            } else if (ruleKey === 'decrease') {
-                return t('puzzles.rules.decrease', {
+                            {notes[1]}</code> ), });
+
+            } else if (ruleKey === 'decrease') { return t('puzzles.rules.decrease', {
                     amount: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
                             {decreaseAmount}</code> ), });
             }
             
             else {
-                return '';
+                return (ruleKey);
             }
         });
     };
