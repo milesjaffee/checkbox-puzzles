@@ -1,16 +1,15 @@
 'use client';
 import React, { useState } from 'react';
 import PuzzleBody from '@/app/components/PuzzleBody';
-import { handleChange } from '@/app/components/PuzzleFunctions';
+import { handleChange, randomClickOrder } from '@/app/components/PuzzleFunctions';
 
 export default function Page() {
   const checkCount = 5;
-  const clickOrder = [3, 2, 5, 1, 4];
   const finalState = (Array(checkCount).fill(true));
+  const [clickOrder] = useState(() => randomClickOrder(checkCount));
 
   const [done, setDone] = useState(false);
   const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
-  //const [order, setOrder] = useState([...Array(checkCount).keys()]);
 
   const rules = ['checkall'];
   

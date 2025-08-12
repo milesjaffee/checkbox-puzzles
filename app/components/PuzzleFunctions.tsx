@@ -1,5 +1,7 @@
 import React from 'react';
 
+//Exports onChange, handleChange, reset, shuffle, and randomClickOrder functions
+
 type OnChangeProps = {
     index: number;
     setChecked: React.Dispatch<React.SetStateAction<boolean[]>>;
@@ -89,3 +91,13 @@ export function shuffle (props: ShuffleProps): void {
     }
     setOrder(shuffled);
   };
+
+
+export function randomClickOrder (checkCount: number): number[] {
+    const order = Array.from({ length: checkCount }, (_, i) => i + 1);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    return order;
+  }

@@ -1,11 +1,11 @@
 'use client';
 import React, { useState } from 'react';
 import PuzzleBody from '@/app/components/PuzzleBody';
-import { handleChange } from '@/app/components/PuzzleFunctions';
+import { handleChange, randomClickOrder } from '@/app/components/PuzzleFunctions';
 
 export default function Page() {
   const checkCount = 12;
-  const clickOrder = [4, 5, 10, 2, 8, 3, 6, 2, 12, 9, 11, 9, 1, 7, 5, ];
+  const [clickOrder] = useState(() => randomClickOrder(checkCount));
   const finalState = [true, false, true, true, false, false, false, true, false, false, true, false]; //replace with music notes
 
   const notes = ['A', "A♯/B♭", 'B', 'C', 'C♯/D♭', 'D', 'D♯/E♭', 'E', 'F', 'F♯/G♭', 'G', 'G♯/A♭'];
