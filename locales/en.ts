@@ -105,8 +105,8 @@ export default {
             "13": "Three Strikes",
             "14": "Oh No",
             "15": "Who What Where When",
-            "16": "1+1=2",
-            "17": "E=mc²",
+            "16": "1 + 1 = 2",
+            "17": "E = mc²",
 
         },
         "1": {

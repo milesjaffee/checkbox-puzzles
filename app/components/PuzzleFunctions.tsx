@@ -45,18 +45,22 @@ type HandleChangeProps = {
     shuffleOrder?: any[]; //actually just whatever is getting shuffled
     setShuffleOrder?: React.Dispatch<React.SetStateAction<any[]>>;
 
+    customOnChange?: (index: number) => void;
+
     direction?: boolean;
 }
 export function handleChange (props: HandleChangeProps): void {
 
-    let { index, setChecked, clickOrder, finalState, setDone, clicks, maxClicks, setClicks, shuffleAfter, shuffleOrder, setShuffleOrder, direction } = props;
+    let { index, setChecked, clickOrder, finalState, setDone, clicks, maxClicks, setClicks, shuffleAfter, shuffleOrder, setShuffleOrder, customOnChange, direction } = props;
     
     if (clicks && maxClicks && clicks >= maxClicks) return;
     if (setClicks) setClicks(c => c + 1);
 
     if (shuffleAfter && clicks && shuffleOrder && setShuffleOrder && (clicks+1) % shuffleAfter === 0) shuffle({order: shuffleOrder, setOrder: setShuffleOrder});
 
-    onChange({index, setChecked, clickOrder, finalState, setDone, direction: direction? true : false});
+    customOnChange? customOnChange(index)
+    :
+    onChange({index, setChecked, clickOrder, finalState, setDone, direction: direction? true: false});
   
   };
 

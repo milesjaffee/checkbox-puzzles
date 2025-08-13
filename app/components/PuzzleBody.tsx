@@ -54,6 +54,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
             if (ruleKey === 'limit-reset') { return t('puzzles.rules.limit-reset');
             } else if (ruleKey === 'checkall') { return t('puzzles.rules.checkall');
             } else if (ruleKey === 'uncheck') { return t('puzzles.rules.uncheck');
+            } else if (ruleKey === 'all-previous') { return t('puzzles.rules.all-previous');
             } 
             
             else if (ruleKey === 'chord') {
