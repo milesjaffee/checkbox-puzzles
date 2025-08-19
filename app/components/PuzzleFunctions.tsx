@@ -68,18 +68,21 @@ type ResetProps = {
     setChecked: React.Dispatch<React.SetStateAction<boolean[]>>;
     setClicks: React.Dispatch<React.SetStateAction<number>>;
     checkCount: number;
+
     setOrder?: React.Dispatch<React.SetStateAction<number[]>>;
     originalState?: boolean[];
     setMaxClicks?: React.Dispatch<React.SetStateAction<number>>;
     decreaseAmount?: number;
+    setTotalResets?: React.Dispatch<React.SetStateAction<number>>;
 }
 export function reset (props: ResetProps): void {
-    const { setChecked, setClicks, checkCount, setOrder, originalState, setMaxClicks, decreaseAmount } = props;
+    const { setChecked, setClicks, checkCount, setOrder, originalState, setMaxClicks, decreaseAmount, setTotalResets } = props;
 
     setChecked(originalState? originalState : Array(checkCount).fill(false));
     setClicks(0);
     setOrder? setOrder([...Array(checkCount).keys()]): null;
     if (setMaxClicks && decreaseAmount) setMaxClicks(prev => prev - decreaseAmount);
+    if (setTotalResets) setTotalResets(prev => prev - 1);
   };
 
 

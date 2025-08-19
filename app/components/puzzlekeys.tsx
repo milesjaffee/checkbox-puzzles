@@ -9,4 +9,5 @@ export const puzzleKeys = [
     "puzzles.8.title",
     "puzzles.9.title",
     "puzzles.title.10",
+    "puzzles.title.11",
   ] as const;

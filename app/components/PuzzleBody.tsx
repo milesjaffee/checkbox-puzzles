@@ -24,6 +24,7 @@ interface PuzzleBodyProps {
     keepIndex?: boolean; //Keep index while shuffling? Defaults to false. If true, the shown index of the boxes on screen is kept even after shuffling
     decreaseAmount?: number; //Amount to decrease maxClicks by when resetting the puzzle. If undefined, no decrease
     customBoxNames?: string[]; //Custom names for the boxes, if provided, will override the default box names
+    totalResets?: number; //Total resets allowed for the puzzle. If undefined, no limit on resets
 
 }
 
@@ -45,6 +46,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
     keepIndex = false,
     decreaseAmount = 0,
     customBoxNames = [],
+    totalResets, // Default total resets
 
 }) => {
     const t = useI18n();
@@ -89,6 +91,11 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
             } else if (ruleKey === 'decrease') { return t('puzzles.rules.decrease', {
                     amount: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
                             {decreaseAmount}</code> ), });
+
+            }else if (ruleKey === 'num-resets') { return t('puzzles.rules.num-resets', {
+                    num: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+                            {totalResets}</code> ), });
+
             }
             
             else {
@@ -134,9 +141,12 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
                   {reset? <div>
                   <p>{t('puzzles.clicks.clicks', {num: clicks})}</p>
                   <button
-        
+                    disabled={totalResets || totalResets == 0? totalResets < 1 : false}
                     className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-                    onClick={reset}>{t('puzzles.clicks.reset')}</button>
+                    onClick={reset}>{t('puzzles.clicks.reset')}
+                    
+                </button>
+                    
                   </div>: null}
          
         
