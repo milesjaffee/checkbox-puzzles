@@ -79,7 +79,7 @@ export default {
 
             "all-previous": "Clicks may remove multiple boxes!",
             "num-resets": "You can only reset {num} more times!",
-            "delay": "Clicks' effects are delayed by {num} clicks.",
+            "delay": "Clicks' effects are delayed by {num}.",
             "shuffle-names": "Box names are shuffled every {num} clicks.",
             "hidden": {
                 "hidden": "You don't know {info}!",
@@ -108,33 +108,6 @@ export default {
             "16": "1 + 1 = 2",
             "17": "E = mc²",
 
-        },
-        "1": {
-            "title": "Tutorial",
-        },
-        "2": {
-            "title": "Tutorial (Long)",
-        },
-        "3": {
-            "title": "The Limit",
-        },
-        "4": {
-            "title": "Mini Golf",
-        },
-        "5": {
-            "title": "Dancing",
-        },
-        "6": {
-            "title": "Just Say No",
-        },
-        "7": {
-            "title": "Kurtág Would Be Proud",
-        },
-        "8": {
-            "title": "Tennessee Waltz",
-        },
-        "9": {
-            "title": "Decrease",
         },
     },
 

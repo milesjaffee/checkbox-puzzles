@@ -25,6 +25,7 @@ interface PuzzleBodyProps {
     decreaseAmount?: number; //Amount to decrease maxClicks by when resetting the puzzle. If undefined, no decrease
     customBoxNames?: string[]; //Custom names for the boxes, if provided, will override the default box names
     totalResets?: number; //Total resets allowed for the puzzle. If undefined, no limit on resets
+    delay?: number; //delay from click to seeing effects of click
 
 }
 
@@ -47,6 +48,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
     decreaseAmount = 0,
     customBoxNames = [],
     totalResets, // Default total resets
+    delay,
 
 }) => {
     const t = useI18n();
@@ -95,6 +97,10 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
             }else if (ruleKey === 'num-resets') { return t('puzzles.rules.num-resets', {
                     num: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
                             {totalResets}</code> ), });
+
+            }else if (ruleKey === 'delay') { return t('puzzles.rules.delay', {
+                    num: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+                            {delay}</code> ), });
 
             }
             
