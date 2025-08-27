@@ -60,10 +60,8 @@ export function handleChange (props: HandleChangeProps): void {
 
     if (shuffleAfter && clicks && shuffleOrder && setShuffleOrder && (clicks+1) % shuffleAfter === 0) shuffle({order: shuffleOrder, setOrder: setShuffleOrder});
         
-    else {
-        customOnChange ? customOnChange(index)
-        : onChange({ index, setChecked, clickOrder, finalState, setDone, direction: direction ? true : false });
-    }
+    customOnChange ? customOnChange(index)
+    : onChange({ index, setChecked, clickOrder, finalState, setDone, direction: direction ? true : false });
   
   };
 
