@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 //Exports onChange, handleChange, reset, shuffle, and randomClickOrder functions
 
@@ -49,55 +49,16 @@ type HandleChangeProps = {
     customOnChange?: (index: number) => void;
 
     direction?: boolean;
-
-    clickQueue?: number[];
-    setClickQueue?: React.Dispatch<React.SetStateAction<number[]>>;
-    delay?: number;
 }
 export function handleChange (props: HandleChangeProps): void {
 
     let { index, setChecked, clickOrder, finalState, setDone, 
-        clicks, maxClicks, setClicks, shuffleAfter, shuffleOrder, setShuffleOrder, customOnChange, direction, setClickQueue, delay } = props;
+        clicks, maxClicks, setClicks, shuffleAfter, shuffleOrder, setShuffleOrder, customOnChange, direction,} = props;
     
     if (clicks && maxClicks && clicks >= maxClicks) return;
     if (setClicks) setClicks(c => c + 1);
 
     if (shuffleAfter && clicks && shuffleOrder && setShuffleOrder && (clicks+1) % shuffleAfter === 0) shuffle({order: shuffleOrder, setOrder: setShuffleOrder});
-
-    if (delay) {
-        const newElement = index;
-
-        // Add to queue
-        setClickQueue!(prevQueue => {
-            const updatedQueue = prevQueue ? [...prevQueue, newElement] : [newElement];
-            
-            // Check if we need to process anything
-            if (updatedQueue.length > delay) {
-                const processIndex = prevQueue[0];
-                console.log("Processing:", processIndex);
-                
-                // Process the item
-                setTimeout(() => {
-                    customOnChange ? customOnChange(processIndex)
-                    : onChange({ 
-                        index: processIndex, 
-                        setChecked, 
-                        clickOrder, 
-                        finalState, 
-                        setDone, 
-                        direction: direction ? true : false 
-                    });
-                }, 1000);
-                
-                // Return the queue without the processed item
-                return updatedQueue.slice(1);
-            }
-            
-            console.log("Queue:", updatedQueue);
-            return updatedQueue;
-        });
-  
-    }
         
     else {
         customOnChange ? customOnChange(index)
@@ -105,6 +66,56 @@ export function handleChange (props: HandleChangeProps): void {
     }
   
   };
+
+
+type DelayedChangeProps = 
+    HandleChangeProps & {
+    clickQueue: number[];
+    setClickQueue: React.Dispatch<React.SetStateAction<number[]>>;
+    delay: number;
+}
+export function delayedChange(props: DelayedChangeProps): void {
+  let { index, setChecked, clickOrder, finalState, setDone, 
+      clicks, maxClicks, setClicks, shuffleAfter, shuffleOrder, setShuffleOrder, 
+      customOnChange, direction, clickQueue, setClickQueue, delay } = props;
+  
+  if (clicks && maxClicks && clicks >= maxClicks) return;
+  if (setClicks) setClicks(c => c + 1);
+
+  if (shuffleAfter && clicks && shuffleOrder && setShuffleOrder && (clicks+1) % shuffleAfter === 0) {
+    shuffle({order: shuffleOrder, setOrder: setShuffleOrder});
+  }
+
+  const newElement = index;
+
+  // Add to queue
+  setClickQueue(prevQueue => {
+    const updatedQueue = prevQueue ? [...prevQueue, newElement] : [newElement];
+    
+    if (updatedQueue.length > delay) {
+      const processIndex = updatedQueue[0];
+      console.log("Processing:", processIndex);
+      
+      // Process the item right here in the setter callback
+      customOnChange?
+        customOnChange(processIndex)
+      : 
+        onChange({ 
+          index: processIndex, 
+          setChecked, 
+          clickOrder, 
+          finalState, 
+          setDone, 
+          direction: direction ? true : false 
+        });
+      
+      
+      return updatedQueue.slice(1);
+    }
+    return updatedQueue;
+  });
+}
+
 
 type ResetProps = {
     setChecked: React.Dispatch<React.SetStateAction<boolean[]>>;

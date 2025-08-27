@@ -1,7 +1,7 @@
 'use client';
 import React, { useState } from 'react';
 import PuzzleBody from '@/app/components/PuzzleBody';
-import { handleChange, reset, randomClickOrder } from '@/app/components/PuzzleFunctions';
+import { delayedChange, reset, randomClickOrder } from '@/app/components/PuzzleFunctions';
 
 export default function Page() {
   const maxClicks = 9;
@@ -27,7 +27,7 @@ export default function Page() {
         clicks={clicks}
         checked={checked}
 
-        handleChange={(index: number) => handleChange({index, setChecked, clickOrder, setDone, 
+        handleChange={(index: number) => delayedChange({index, setChecked, clickOrder, setDone, 
           clicks, maxClicks, setClicks, clickQueue, setClickQueue, delay})}
         reset={() => reset({setChecked, setClicks, checkCount, setClickQueue})}
 
