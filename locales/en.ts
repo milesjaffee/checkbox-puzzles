@@ -83,8 +83,7 @@ export default {
             "shuffle-names": "Box names are shuffled every {num} clicks.",
             "hidden": {
                 "hidden": "You don't know {info}!",
-
-                "limit": "the number of clicks per reset",
+                "clicks": "the number of clicks per reset",
             },
             "split": "Complete one sub-puzzle to unlock the next!",
 

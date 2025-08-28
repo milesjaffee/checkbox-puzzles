@@ -26,6 +26,7 @@ interface PuzzleBodyProps {
     customBoxNames?: string[]; //Custom names for the boxes, if provided, will override the default box names
     totalResets?: number; //Total resets allowed for the puzzle. If undefined, no limit on resets
     delay?: number; //delay from click to seeing effects of click
+    hidden?: string[];
 
 }
 
@@ -49,6 +50,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
     customBoxNames = [],
     totalResets, // Default total resets
     delay,
+    hidden,
 
 }) => {
     const t = useI18n();
@@ -102,6 +104,15 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
                     num: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
                             {delay}</code> ), });
 
+            }else if (ruleKey === 'hidden' && hidden) { return hidden.map((hiddenItem) => {
+                if (hiddenItem === 'clicks') return t('puzzles.rules.hidden.hidden', {
+                    info: ( <code className="bg-black/[.05] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
+                            {t('puzzles.rules.hidden.clicks')}</code> ), });
+                //else...
+            })
+                
+                
+
             }
             
             else {
@@ -145,7 +156,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
                 ))}
         
                   {reset? <div>
-                  <p>{t('puzzles.clicks.clicks', {num: clicks})}</p>
+                  <p>{!hidden || !hidden.includes('clicks') && t('puzzles.clicks.clicks', {num: clicks})}</p>
                   <button
                     disabled={totalResets || totalResets == 0? totalResets < 1 : false}
                     className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#38383877] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"

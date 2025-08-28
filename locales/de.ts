@@ -97,32 +97,5 @@ export default {
             "17": "E = mc²",
 
         },
-        "1": {
-            "title": "Tutorial",
-        },
-        "2": {
-            "title": "Tutorial (Lang)",
-        },
-        "3": {
-            "title": "Die Grenze",
-        },
-        "4": {
-            "title": "Mini-Golf",
-        },
-        "5": {
-            "title": "Tanzen",
-        },
-        "6": {
-            "title": "Sag einfach Nein",
-        },
-        "7": {
-            "title": "Kurtág wäre stolz",
-        },
-        "8": {
-            "title": "Tennessee-Waltz",
-        },
-        "9": {
-            "title": "Verkleinern"
-        },
     },
 } as const;
