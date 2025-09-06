@@ -57,10 +57,10 @@ export default function LoginLogoutButton() {
   };
 
   return user ? (
-    <button onClick={logout}>
+    <button onClick={logout} className="cursor-pointer">
       {t('auth.logout', {email: user.email ?? "User"})}
     </button>
   ) : (
-    <button onClick={login}>{t('auth.login')}</button>
+    <button onClick={login} className="cursor-pointer">{t('auth.login')}</button>
   );
 }
