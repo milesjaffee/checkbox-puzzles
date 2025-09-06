@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef, ReactNode } from 'react';
-import { useI18n, useScopedI18n } from "@/locales/client";
+import React, { ReactNode } from 'react';
+import { useI18n, } from "@/locales/client";
 import CongratulationsMessage from "@/app/components/CongratulationsMessage";
 import { puzzleKeys } from "@/app/components/puzzlekeys";
 
@@ -27,6 +27,8 @@ interface PuzzleBodyProps {
     totalResets?: number; //Total resets allowed for the puzzle. If undefined, no limit on resets
     delay?: number; //delay from click to seeing effects of click
     hidden?: string[];
+    splitAfter?: number[];
+    doneSubpuzzles?: number;
 
 }
 
@@ -61,6 +63,7 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
             } else if (ruleKey === 'checkall') { return t('puzzles.rules.checkall');
             } else if (ruleKey === 'uncheck') { return t('puzzles.rules.uncheck');
             } else if (ruleKey === 'all-previous') { return t('puzzles.rules.all-previous');
+            } else if (ruleKey === 'split') { return t('puzzles.rules.split');
             } 
             
             else if (ruleKey === 'chord') {
@@ -121,6 +124,8 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
         });
     };
 
+
+
     return (
         <section>
                 <h1 className="font-semibold text-2xl mb-8 tracking-tighter">{t('puzzles.number', {num: puzzleNum.toString()})}: '{t(puzzleKeys[puzzleNum-1])}'</h1>
@@ -153,6 +158,8 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
                     : t('puzzles.box', {num: (i + 1).toString()})
                     }
                   </label>
+                  
+                  
                 ))}
         
                   {reset? <div>

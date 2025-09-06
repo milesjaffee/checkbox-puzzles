@@ -15,5 +15,4 @@ export const puzzleKeys = [
   "puzzles.title.14",
   "puzzles.title.15",
   "puzzles.title.16",
-  "puzzles.title.17",
 ] as const;
