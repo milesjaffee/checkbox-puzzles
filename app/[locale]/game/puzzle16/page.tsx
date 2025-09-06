@@ -41,6 +41,7 @@ const [clickQueue, setClickQueue] = useState<number[]>([]);
 
         done={done}
         rules={rules}
+        order={order}
         hidden={hidden}
         delay={delay}
         shuffleAfter={shuffleAfter}
