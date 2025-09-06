@@ -30,7 +30,11 @@ export default function CongratulationsMessage({href, puzzleNum, video}: {href?:
                     "/game/puzzle"+(puzzleNum+1) : href || "/game"
                     }>  
                     <p className="flex justify-between items-center w-full">
-                <span>{t('puzzles.congratulations.next')}</span> <span className="flex-end align-self-right">{'==>'}</span></p>
+                <span>{
+                    puzzleNum && puzzleNum < puzzleKeys.length ?
+                    t('puzzles.congratulations.next') : href || t('puzzles.congratulations.last')
+                    
+                    }</span> <span className="flex-end align-self-right">{'==>'}</span></p>
                 </LocalizedLinkButton>
             
         </div>

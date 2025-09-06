@@ -62,6 +62,7 @@ export default {
             "title": "Congratulations!",
             "message": "You solved the puzzle! 🎉",
             "next": "Play Next Puzzle",
+            "last": "Return to Home Screen"
         },
         "number": "Puzzle {num}",
         "puzzle": "Puzzle",

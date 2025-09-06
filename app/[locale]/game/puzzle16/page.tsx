@@ -9,14 +9,14 @@ export default function Page() {
   const [clickOrder] = useState(() => randomClickOrder(checkCount));
 
   const [done, setDone] = useState(false);
-  const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(false));
+  const [checked, setChecked] = useState<boolean[]>(Array(checkCount).fill(true));
   const [clicks, setClicks] = useState(0);
 
-const delay = 3;
-const [clickQueue, setClickQueue] = useState<number[]>([]);
-  const hidden = ['clicks'];
+    const delay = 3;
+    const [clickQueue, setClickQueue] = useState<number[]>([]);
+    const hidden = ['clicks'];
     const shuffleAfter = 5;
-      const [order, setOrder] = useState([...Array(checkCount).keys()]);
+    const [order, setOrder] = useState([...Array(checkCount).keys()]);
 
 
   const rules = [
