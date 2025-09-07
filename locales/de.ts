@@ -62,6 +62,8 @@ export default {
             "title": "Glückwunsch!",
             "message": "Du hast das Rätsel gelöst! 🎉",
             "next": "Nächstes Rätsel spielen",
+            "last": "Zurück zum Startbildschirm",
+
         },
         "number": "Rätsel {num}",
         "puzzle": "Rätsel",
@@ -76,6 +78,15 @@ export default {
             "chord-notes": "Für Nicht-Musiker: Dieser Akkord enthält die Noten {notes1} und {notes2}.",
             "shuffle-checked": "Der Aktivierungszustand der Kästchen wird alle {num} Klicks gemischt.",
             "decrease": "Jedes Mal, wenn du zurücksetzt, verringert sich die maximale Klickanzahl um {amount}.",
+
+            "all-previous": "Durch Klicken können mehrere Felder entfernt werden!",
+            "num-resets": "Sie können nur noch {num} Mal zurücksetzen!",
+            "delay": "Die Wirkung von Klicks wird um {num} verzögert.",
+            "shuffle-names": "Die Namen der Boxen werden alle {num} Klicks neu gemischt.",
+            "hidden": {
+                "hidden": "Sie kennen {info} nicht!",
+                "clicks": "die Anzahl der Klicks pro Reset",
+            },
         },
         "title": {
             "1": "Tutorial",

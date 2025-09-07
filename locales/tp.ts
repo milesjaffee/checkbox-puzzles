@@ -62,6 +62,7 @@ export default {
             "title": "pona a!",
             "message": "sina anpa a e musi! 🎉",
             "next": "o utala e musi sin",
+            "last": "o tawa e tomo wan",
         },
         "number": "musi nanpa {num}",
         "puzzle": "musi",
@@ -76,6 +77,15 @@ export default {
             "chord-notes": "sina sona ala e kalama pona la, kulupu kalama ni li jo e kalama lon {notes1} {notes2}.",
             "shuffle-checked": "kule poki li tawa a lon luka nanpa {num}.",
             "decrease": "sina luka e poki pi \"o open sin\" la, nanpa luka sina lon musi li kama lili {amount}.",
+
+            "all-previous": "sina luka la, poki mute li ken weka!",
+            "num-resets": "sina ken open sin lon tenpo {num} taso!",
+            "delay": "sina luka la, poka li weka lon tenpo {num}.",
+            "shuffle-names": "luka sina nanpa {num} la, nimi poki li tawa a.",
+            "hidden": {
+                "hidden": "sina sona ala e ni: {info}",
+                "clicks": "the number of clicks per reset",
+            },
         },
         "title": {
 

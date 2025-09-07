@@ -86,7 +86,6 @@ export default {
                 "hidden": "You don't know {info}!",
                 "clicks": "the number of clicks per reset",
             },
-            "split": "Complete one sub-puzzle to unlock the next!",
 
         },
         "title": {

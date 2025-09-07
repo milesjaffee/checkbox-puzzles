@@ -62,6 +62,7 @@ export default {
             "title": "¡Felicidades!",
             "message": "¡Has resuelto el rompecabezas! 🎉",
             "next": "Jugar siguiente rompecabezas",
+            "last": "Volver al inicio",
         },
         "number": "Rompecabezas no. {num}",
         "puzzle": "Rompecabezas",
@@ -76,6 +77,15 @@ export default {
             "chord-notes": 'Si no eres musical, este acorde contiene las notas {notes1} y {notes2}.',
             "shuffle-checked": 'El estado de selección de las casillas se mezcla cada {num} clics.',
             "decrease": "Cada presion de 'Restablecer' reducirá en {amount} el número de clics permitidos para resolver el rompecabezas.",
+
+            "all-previous": "Los clics pueden eliminar múltiples casillas!",
+            "num-resets": "¡Sólo puedes reiniciar {num} veces más!",
+            "delay": "Los efectos de los clics se retrasan {num}.",
+            "shuffle-names": "Los nombres de los casillas se mezclan cada {num} clics.",
+            "hidden": {
+                "hidden": "¡No sabes {info}!",
+                "clicks": "el número de clics por reinicio",
+            },
          },
 
         "title": {
