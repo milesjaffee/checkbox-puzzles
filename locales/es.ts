@@ -77,32 +77,26 @@ export default {
             "shuffle-checked": 'El estado de selección de las casillas se mezcla cada {num} clics.',
             "decrease": "Cada presion de 'Restablecer' reducirá en {amount} el número de clics permitidos para resolver el rompecabezas.",
          },
-         "1": {
-            "title": "Tutorial",
-        },
-        "2": {
-            "title": "Tutorial (Largo)",
-        },
-        "3": {
-            "title": "El limite",
-        },
-        "4": {
-            "title": "El minigolf",
-        },
-        "5": {
-            "title": "Bailar",
-        },
-        "6": {
-            "title": "Solo di no",
-        },
-        "7": {
-            "title": "Kurtág estaría orgulloso",
-        },
-        "8": {
-            "title": "Waltz de Tennessee"
-        },
-        "9": {
-            "title": "Disminuir",
+
+        "title": {
+
+            "1": "Tutorial",
+            "2": "Tutorial (Largo)",
+            "3": "El limite",
+            "4": "El minigolf",
+            "5": "Bailar",
+            "6": "Solo di no",
+            "7": "Kurtág estaría orgulloso",
+            "8": "Waltz de Tennessee",
+            "9": "Disminuir",
+            "10": "¡La amnesia!",
+            "11": "777",
+            "12": "Yendo a ciegas",
+            "13": "Tres strikes",
+            "14": "¡Oh no!",
+            "15": "Quién Qué Dónde Cuándo",
+            "16": "E = mc²",
+
         },
          },
 

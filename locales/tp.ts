@@ -77,32 +77,25 @@ export default {
             "shuffle-checked": "kule poki li tawa a lon luka nanpa {num}.",
             "decrease": "sina luka e poki pi \"o open sin\" la, nanpa luka sina lon musi li kama lili {amount}.",
         },
-        "1": {
-            "title": "sona sin",
-        },
-        "2": {
-            "title": "sona sin suli",
-        },
-        "3": {
-            "title": "lawa nanpa",
-        },
-        "4": {
-            "title": "nanpa lili",
-        },
-        "5": {
-            "title": "tawa nasa",
-        },
-        "6": {
-            "title": "o toki e a ala",
-        },
-        "7": {
-            "title": "jan Kutako li pilin pona",
-        },
-        "8": {
-            "title": "tawa pi ma Tenesi",
-        },
-        "9": {
-            "title": "o lili"
+        "title": {
+
+            "1": "sona sin",
+            "2": "sona sin suli",
+            "3": "lawa nanpa",
+            "4": "nanpa lili",
+            "5": "tawa nasa",
+            "6": "o toki e ala a",
+            "7": "jan Kutako li pilin pona",
+            "8": "tawa pi ma Tenesi",
+            "9": "o lili",
+            "10": "sona li weka a",
+            "11": "mute mute mute",
+            "12": "tawa la mi sona e ala",
+            "13": "wan tu mute",
+            "14": "ike a",
+            "15": "seme seme seme",
+            "16": "wawa li sama e suli e suno tu",
+
         },
     }
 

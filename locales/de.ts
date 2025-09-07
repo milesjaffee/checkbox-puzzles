@@ -93,8 +93,7 @@ export default {
             "13": "Drei Schläge",
             "14": "Ach nein",
             "15": "Wer was wo wann",
-            "16": "1 + 1 = 2",
-            "17": "E = mc²",
+            "16": "E = mc²",
 
         },
     },
