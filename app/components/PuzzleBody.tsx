@@ -63,7 +63,6 @@ const PuzzleBody: React.FC<PuzzleBodyProps> = ({
             } else if (ruleKey === 'checkall') { return t('puzzles.rules.checkall');
             } else if (ruleKey === 'uncheck') { return t('puzzles.rules.uncheck');
             } else if (ruleKey === 'all-previous') { return t('puzzles.rules.all-previous');
-            } else if (ruleKey === 'split') { return t('puzzles.rules.split');
             } 
             
             else if (ruleKey === 'chord') {

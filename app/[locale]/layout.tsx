@@ -66,10 +66,11 @@ export default function SubLayout({
           background: `repeating-linear-gradient(
             35deg,
             #FFF7E4,
-            #f0e053 1000px
+            #f0e053,
+              #f2d212 1000px
         )`,
       backgroundSize: "100% 650px",
-      animation: "scrollBackground 20s linear infinite",
+      animation: "scrollBackground 100s linear infinite",
       }}
       >
         <style>
