@@ -126,14 +126,10 @@ export default function SubLayout({
           
           <Analytics />
         </main>
-
-
-       
+    
       </body>
-
-      
+     
     </html>
-   
-      
+         
   );
 }

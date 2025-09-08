@@ -2,11 +2,11 @@
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G71G88MG)
 
-A Vercel-hosted puzzle game. Try it out for yourself at [https://checkbox-nightmare.vercel.app/], or run it locally by downloading this repository and running **npm i** and **npm run dev.**
+A Vercel-hosted puzzle game. Try it out for yourself at https://checkbox-nightmare.vercel.app/, or run it locally by downloading this repository and running **npm i** and **npm run dev.**
 
 ## Versions
 
-* 09/07/2025: v1.4.0 refactors puzzles to be more consistent under the hood, prettifies the background, randomizes puzzles' intended click orders, and adds 4 new mechanics. Also adds 7 new puzzles (#10-#16).
+* 09/08/2025: v1.4.0 refactors puzzles to be more consistent under the hood, prettifies the background, randomizes puzzles' intended click orders, and adds 4 new mechanics. Also adds 7 new puzzles (#10-#16).
 * 07/10/2025: v1.3.0 adds accounts and Google login, allowing the user to track what puzzles they have completed on the 'game' screen. Also adds two new puzzles.
 * 06/30/2025: v1.2.2 adds the privacy policy page.
 * 06/11/2025: v1.2.1 fixes a minor formatting issue on the homepage.

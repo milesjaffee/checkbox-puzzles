@@ -49,9 +49,3 @@ export default function Page() {
 
     )
 }
-
-//todo
-//handle puzzlefunctions stuff with checking for done within a puzzle
-//reset also resets doneSubpuzzles
-//body: gray out boxes when invalid
-//also handle click orders only being within the boxes
