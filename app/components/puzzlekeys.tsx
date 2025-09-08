@@ -1,0 +1,18 @@
+export const puzzleKeys = [
+  "puzzles.title.1",
+  "puzzles.title.2",
+  "puzzles.title.3",
+  "puzzles.title.4",
+  "puzzles.title.5",
+  "puzzles.title.6",
+  "puzzles.title.7",
+  "puzzles.title.8",
+  "puzzles.title.9",
+  "puzzles.title.10",
+  "puzzles.title.11",
+  "puzzles.title.12",
+  "puzzles.title.13",
+  "puzzles.title.14",
+  "puzzles.title.15",
+  "puzzles.title.16",
+] as const;

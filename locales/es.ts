@@ -62,6 +62,7 @@ export default {
             "title": "¡Felicidades!",
             "message": "¡Has resuelto el rompecabezas! 🎉",
             "next": "Jugar siguiente rompecabezas",
+            "last": "Volver al inicio",
         },
         "number": "Rompecabezas no. {num}",
         "puzzle": "Rompecabezas",
@@ -74,34 +75,38 @@ export default {
             "uncheck": 'Desmarca todas las casillas para resolver el rompecabezas.',
             "chord": 'Selecciona solo las notas de este acorde para resolver el rompecabezas.',
             "chord-notes": 'Si no eres musical, este acorde contiene las notas {notes1} y {notes2}.',
+            "shuffle-checked": 'El estado de selección de las casillas se mezcla cada {num} clics.',
             "decrease": "Cada presion de 'Restablecer' reducirá en {amount} el número de clics permitidos para resolver el rompecabezas.",
+
+            "all-previous": "Los clics pueden eliminar múltiples casillas!",
+            "num-resets": "¡Sólo puedes reiniciar {num} veces más!",
+            "delay": "Los efectos de los clics se retrasan {num}.",
+            "shuffle-names": "Los nombres de los casillas se mezclan cada {num} clics.",
+            "hidden": {
+                "hidden": "¡No sabes {info}!",
+                "clicks": "el número de clics por reinicio",
+            },
          },
-         "1": {
-            "title": "Tutorial",
-        },
-        "2": {
-            "title": "Tutorial (Largo)",
-        },
-        "3": {
-            "title": "El limite",
-        },
-        "4": {
-            "title": "El minigolf",
-        },
-        "5": {
-            "title": "Bailar",
-        },
-        "6": {
-            "title": "Solo di no",
-        },
-        "7": {
-            "title": "Kurtág estaría orgulloso",
-        },
-        "8": {
-            "title": "Waltz de Tennessee"
-        },
-        "9": {
-            "title": "Disminuir",
+
+        "title": {
+
+            "1": "Tutorial",
+            "2": "Tutorial (Largo)",
+            "3": "El limite",
+            "4": "El minigolf",
+            "5": "Bailar",
+            "6": "Solo di no",
+            "7": "Kurtág estaría orgulloso",
+            "8": "Waltz de Tennessee",
+            "9": "Disminuir",
+            "10": "¡La amnesia!",
+            "11": "777",
+            "12": "Yendo a ciegas",
+            "13": "Tres strikes",
+            "14": "¡Oh no!",
+            "15": "Quién Qué Dónde Cuándo",
+            "16": "E = mc²",
+
         },
          },
 

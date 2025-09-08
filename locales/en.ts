@@ -62,6 +62,7 @@ export default {
             "title": "Congratulations!",
             "message": "You solved the puzzle! 🎉",
             "next": "Play Next Puzzle",
+            "last": "Return to Home Screen"
         },
         "number": "Puzzle {num}",
         "puzzle": "Puzzle",
@@ -74,34 +75,37 @@ export default {
             "uncheck": "Uncheck all the boxes to solve the puzzle.",
             "chord": "Select only the notes in this chord to solve the puzzle.",
             "chord-notes": "For non-musicians, this chord contains the notes {notes1} and {notes2}.",
+            "shuffle-checked": "Checked state of boxes is shuffled every {num} clicks.",
             "decrease": "Every time you reset, the maximum click count decreases by {amount}.",
+
+            "all-previous": "Clicks may remove multiple boxes!",
+            "num-resets": "You can only reset {num} more times!",
+            "delay": "Clicks' effects are delayed by {num}.",
+            "shuffle-names": "Box names are shuffled every {num} clicks.",
+            "hidden": {
+                "hidden": "You don't know {info}!",
+                "clicks": "the number of clicks per reset",
+            },
+
         },
-        "1": {
-            "title": "Tutorial",
-        },
-        "2": {
-            "title": "Tutorial (Long)",
-        },
-        "3": {
-            "title": "The Limit",
-        },
-        "4": {
-            "title": "Mini Golf",
-        },
-        "5": {
-            "title": "Dancing",
-        },
-        "6": {
-            "title": "Just Say No",
-        },
-        "7": {
-            "title": "Kurtág Would Be Proud",
-        },
-        "8": {
-            "title": "Tennessee Waltz",
-        },
-        "9": {
-            "title": "Decrease",
+        "title": {
+            "1": "Tutorial",
+            "2": "Tutorial (Long)",
+            "3": "The Limit",
+            "4": "Mini Golf",
+            "5": "Dancing",
+            "6": "Just Say No",
+            "7": "Kurtág Would Be Proud",
+            "8": "Tennessee Waltz",
+            "9": "Decrease",
+            "10": "Amnesia!",
+            "11": "777",
+            "12": "Going In Blind",
+            "13": "Three Strikes",
+            "14": "Oh No",
+            "15": "Who What Where When",
+            "16": "E = mc²",
+
         },
     },
 

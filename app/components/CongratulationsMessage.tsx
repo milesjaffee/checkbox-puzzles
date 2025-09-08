@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import { useI18n, useScopedI18n } from "@/locales/client";
 import LocalizedLinkButton from "@/app/components/LocalizedLinkButton";
 import MarkPuzzleDone from "@/app/components/MarkPuzzleDone";
+import { puzzleKeys } from './puzzlekeys';
 
 export default function CongratulationsMessage({href, puzzleNum, video}: {href?: string, puzzleNum?: number, video?: string}) {
     const t = useI18n();
@@ -25,11 +26,15 @@ export default function CongratulationsMessage({href, puzzleNum, video}: {href?:
                 </div>
             }
                 
-                <LocalizedLinkButton href={puzzleNum ?
+                <LocalizedLinkButton href={puzzleNum && puzzleNum < puzzleKeys.length ?
                     "/game/puzzle"+(puzzleNum+1) : href || "/game"
                     }>  
                     <p className="flex justify-between items-center w-full">
-                <span>{t('puzzles.congratulations.next')}</span> <span className="flex-end align-self-right">{'==>'}</span></p>
+                <span>{
+                    puzzleNum && puzzleNum < puzzleKeys.length ?
+                    t('puzzles.congratulations.next') : href || t('puzzles.congratulations.last')
+                    
+                    }</span> <span className="flex-end align-self-right">{'==>'}</span></p>
                 </LocalizedLinkButton>
             
         </div>

@@ -64,12 +64,13 @@ export default function SubLayout({
         className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto"
         style={{
           background: `repeating-linear-gradient(
-            0deg,
+            35deg,
             #FFF7E4,
-            #f0e053 12px
+            #f0e053,
+              #f2d212 1000px
         )`,
-      backgroundSize: "100% 200px",
-      animation: "scrollBackground 20s linear infinite",
+      backgroundSize: "100% 650px",
+      animation: "scrollBackground 100s linear infinite",
       }}
       >
         <style>

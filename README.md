@@ -1,4 +1,4 @@
-# Checkbox Nightmare v1.3.0
+# Checkbox Nightmare v1.4.0
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/G2G71G88MG)
 
@@ -6,9 +6,10 @@ A Vercel-hosted puzzle game. Try it out for yourself at [https://checkbox-nightm
 
 ## Versions
 
+* 09/07/2025: v1.4.0 refactors puzzles to be more consistent under the hood, prettifies the background, randomizes puzzles' intended click orders, and adds 4 new mechanics. Also adds 7 new puzzles (#10-#16).
 * 07/10/2025: v1.3.0 adds accounts and Google login, allowing the user to track what puzzles they have completed on the 'game' screen. Also adds two new puzzles.
 * 06/30/2025: v1.2.2 adds the privacy policy page.
-* 06/11/2025: v1.2.1 fixes a minor formatting issue on the homepage
+* 06/11/2025: v1.2.1 fixes a minor formatting issue on the homepage.
 * 06/10/2025: v1.2.0 adds support for German and full support for Toki Pona, fixes sitewide errors with how the 404 page is found, refactors things under the hood to make future updates much easier, and adds one new puzzle.
 * 05/30/2025: v1.1.0 adds support for internationalization (with English, Spanish and a hidden easter egg language) and refactors some pages. Also adds one new puzzle.
 * 03/21/2025: v1.0.0 adds two exciting new puzzles, including the new mechanic of shuffling, and improves overall performance.

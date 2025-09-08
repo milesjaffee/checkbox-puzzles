@@ -62,6 +62,8 @@ export default {
             "title": "Glückwunsch!",
             "message": "Du hast das Rätsel gelöst! 🎉",
             "next": "Nächstes Rätsel spielen",
+            "last": "Zurück zum Startbildschirm",
+
         },
         "number": "Rätsel {num}",
         "puzzle": "Rätsel",
@@ -74,34 +76,36 @@ export default {
             "uncheck": "Deaktiviere alle Kästchen, um das Rätsel zu lösen.",
             "chord": "Wähle nur die Noten in diesem Akkord, um das Rätsel zu lösen.",
             "chord-notes": "Für Nicht-Musiker: Dieser Akkord enthält die Noten {notes1} und {notes2}.",
+            "shuffle-checked": "Der Aktivierungszustand der Kästchen wird alle {num} Klicks gemischt.",
             "decrease": "Jedes Mal, wenn du zurücksetzt, verringert sich die maximale Klickanzahl um {amount}.",
+
+            "all-previous": "Durch Klicken können mehrere Felder entfernt werden!",
+            "num-resets": "Sie können nur noch {num} Mal zurücksetzen!",
+            "delay": "Die Wirkung von Klicks wird um {num} verzögert.",
+            "shuffle-names": "Die Namen der Boxen werden alle {num} Klicks neu gemischt.",
+            "hidden": {
+                "hidden": "Sie kennen {info} nicht!",
+                "clicks": "die Anzahl der Klicks pro Reset",
+            },
         },
-        "1": {
-            "title": "Tutorial",
-        },
-        "2": {
-            "title": "Tutorial (Lang)",
-        },
-        "3": {
-            "title": "Die Grenze",
-        },
-        "4": {
-            "title": "Mini-Golf",
-        },
-        "5": {
-            "title": "Tanzen",
-        },
-        "6": {
-            "title": "Sag einfach Nein",
-        },
-        "7": {
-            "title": "Kurtág wäre stolz",
-        },
-        "8": {
-            "title": "Tennessee-Waltz",
-        },
-        "9": {
-            "title": "Verkleinern"
+        "title": {
+            "1": "Tutorial",
+            "2": "Tutorial (Lang)",
+            "3": "Die Grenze",
+            "4": "Mini-Golf",
+            "5": "Tanzen",
+            "6": "Sag einfach Nein",
+            "7": "Kurtág wäre stolz",
+            "8": "Tennessee-Waltz",
+            "9": "Verkleinern",
+            "10": "Amnesie!",
+            "11": "777",
+            "12": "Blind Reingehen",
+            "13": "Drei Schläge",
+            "14": "Ach nein",
+            "15": "Wer was wo wann",
+            "16": "E = mc²",
+
         },
     },
 } as const;
