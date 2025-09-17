@@ -20,7 +20,7 @@ export default function Page() {
 
 
   const rules = [
-    'limit', 'limit-reset', 'shuffle', 'hidden', 'delay'
+    'checkall', 'limit-reset', 'shuffle', 'hidden', 'delay'
   ];
   
     return (
