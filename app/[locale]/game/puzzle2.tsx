@@ -3,9 +3,8 @@ import React, { useState } from 'react';
 import PuzzleBody from '@/app/components/PuzzleBody';
 import { handleChange, randomClickOrder } from '@/app/components/PuzzleFunctions';
 
-export default function Page() {
-  const checkCount = 5;
-  //final state left as default
+export default function Puzzle2() {
+  const checkCount = 9;
   const [clickOrder] = useState(() => randomClickOrder(checkCount));
 
   const [done, setDone] = useState(false);
@@ -15,12 +14,14 @@ export default function Page() {
   
     return (
       <PuzzleBody
-        puzzleNum={1}
+        puzzleNum={2}
         numBoxes={checkCount}
         checked={checked}
+
         handleChange={(index: number) => { 
-          handleChange({index, setChecked, clickOrder, setDone, });
-        }}
+                  handleChange({index, setChecked, clickOrder, setDone, });
+                }}
+
         done={done}
         rules={rules}
       />
