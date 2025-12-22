@@ -1,4 +1,4 @@
-import Puzzle1 from "./puzzle1";
+import {Puzzle1} from "./puzzle1";
 import Puzzle2 from "./puzzle2";
 
 export const puzzles = [

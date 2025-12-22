@@ -32,9 +32,11 @@ export async function getPageData(locale: string, slugPath: string) {
   if (!validPaths.has(normalizedPath)) return null;
 
   if (newStylePuzzleRoutes.includes(normalizedPath)) {
-    console.log(puzzles);
     console.log(newStylePuzzleRoutes.indexOf(normalizedPath));
-    return puzzles[newStylePuzzleRoutes.indexOf(normalizedPath)];
+    console.log(puzzles[newStylePuzzleRoutes.indexOf(normalizedPath)]);
+    return {
+      content: puzzles[newStylePuzzleRoutes.indexOf(normalizedPath)],
+    };
   }
 
   // Return dummy content

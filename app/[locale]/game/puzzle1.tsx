@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import PuzzleBody from '@/app/components/PuzzleBody';
 import { handleChange, randomClickOrder } from '@/app/components/PuzzleFunctions';
 
-export default function Puzzle1() {
+export function Puzzle1() {
   const checkCount = 5;
   //final state left as default
   const [clickOrder] = useState(() => randomClickOrder(checkCount));
