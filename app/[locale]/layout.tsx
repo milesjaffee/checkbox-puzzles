@@ -5,10 +5,8 @@ import { Navbar } from '@/app/components/nav'
 import Footer from '@/app/components/footer'
 import React from 'react';
 import { I18nProviderClient } from "@/locales/client";
-import { SessionProvider } from 'next-auth/react';
 import { Analytics } from "@vercel/analytics/next";
 import LoginLogoutButton from "@/app/components/loginlogout";
-import { supabase} from "@/lib/supabaseClient";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

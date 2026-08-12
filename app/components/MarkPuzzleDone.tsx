@@ -18,21 +18,23 @@ export default function MarkPuzzleDone({ puzzleId }: Props) {
   useEffect(() => {
 
     const markDone = async () => {
-      const { data: { user } } = await supabase.auth.getUser();
-      if (!user) {
-        setLoggedOut(true);
-        return;
+      if (typeof window !== 'undefined' && window.localStorage) {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) {
+          setLoggedOut(true);
+          return;
+        }
+
+        const res = await fetch('/api/puzzle/complete', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ puzzleId }),
+        });
+
+        const result = await res.json();
+        setTimestamp(result.completedAt || new Date().toISOString());
       }
-
-      const res = await fetch('/api/puzzle/complete', {
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ puzzleId }),
-      });
-
-      const result = await res.json();
-      setTimestamp(result.completedAt || new Date().toISOString());
     };
 
     markDone();

@@ -1,29 +1,4 @@
-/*"use client";
-import { useEffect } from "react";
-import { useRouter, redirect } from "next/navigation";
-import { supabase } from "@/lib/supabaseClient";
 
-export default function OAuthCallback() {
-  const router = useRouter();
-
-  useEffect(() => {
-    const handleAuth = async () => {
-      const { error } = await supabase.auth.exchangeCodeForSession(window.location.href);
-      if (error) console.error("Session exchange failed:", error);
-      
-      const redirectUrl = localStorage.getItem("redirectAfterLogin") || "/";
-      console.log("Redirecting to ", redirectUrl);
-      localStorage.removeItem("redirectAfterLogin");
-      redirect(redirectUrl);
-    };
-    handleAuth();
-  }, [router]);
-
-  return (
-<div><p>Logging in...</p></div>
-  );
-
-}*/
 'use server';
 import { NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabaseServer";
