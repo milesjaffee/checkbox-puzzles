@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { localeKeys } from '@/locales';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Safe exclusions for all API routes and known assets
